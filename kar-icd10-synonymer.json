@@ -1,6 +1,6 @@
 {
   "_readme": "Sortert liste over ICD-10-koder I64, I65, I70-I79, I80-I89 og T80-T88, verifisert mot Helsedirektoratets offisielle kodeliste (fil: 1787255520491_Kodeliste_ICD-10_2026.xlsx). Alle koder og offisielle termer er nå hentet direkte derfra. Feltet 'arvet_relevans_synonymer'=true betyr at koden er ny/mer detaljert enn det som fantes i forrige utkast, og har derfor arvet relevans+synonymer fra en overordnet kode (f.eks. har I70.20 arvet fra gamle I70.2) - disse bør du gå gjennom og eventuelt spesifisere finere synonymer for hvert delnivå (f.eks. 'med gangren' vs 'uten gangren'). 'relevans' (hoy/middels/lav) er fortsatt et forslag til prioritering, ikke offisiell klassifisering.",
-  "count": 213,
+  "count": 222,
   "codes": [
     {
       "code": "G45.0",
@@ -97,7 +97,7 @@
       "relevans": "middels",
       "synonyms": [
         "TIA uspesifisert",
-        "forbigaaende iskemisk anfall uspesifisert"
+        "forbigående iskemisk anfall uspesifisert"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -179,7 +179,7 @@
       "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
       "relevans": "middels",
       "synonyms": [
-        "lakunaert syndrom motorisk"
+        "lakunært syndrom motorisk"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -192,7 +192,7 @@
       "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
       "relevans": "middels",
       "synonyms": [
-        "lakunaert syndrom sensorisk"
+        "lakunært syndrom sensorisk"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -205,7 +205,7 @@
       "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
       "relevans": "middels",
       "synonyms": [
-        "annet lakunaert syndrom"
+        "annet lakunært syndrom"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -259,7 +259,7 @@
       "code": "I63.2",
       "term_no": "Hjerneinfarkt forårsaket av uspesifisert okklusjon eller stenose i precerebral arterie",
       "gruppe": "I63 Hjerneinfarkt",
-      "relevans": "middels",
+      "relevans": "hoy",
       "synonyms": [
         "hjerneslag pga carotisstenose",
         "iskemisk slag precerebral okklusjon uspesifisert",
@@ -275,12 +275,7 @@
         "hjerneinfarkt",
         "carotisstenose"
       ],
-      "bidiagnose_forslag": [
-        {
-          "kode": "I65.2",
-          "styrke": "ved symptomgivende carotisstenose"
-        }
-      ]
+      "bidiagnose_forslag": []
     },
     {
       "code": "I63.3",
@@ -481,7 +476,7 @@
       "gruppe": "I70 Aterosklerose",
       "relevans": "middels",
       "synonyms": [
-        "aortaskleross",
+        "aortasklerose",
         "aterosklerotisk aorta"
       ],
       "verifisert_mot_offisiell_liste": true,
@@ -495,7 +490,7 @@
       "gruppe": "I70 Aterosklerose",
       "relevans": "middels",
       "synonyms": [
-        "aortaskleross",
+        "aortasklerose",
         "aterosklerotisk aorta"
       ],
       "verifisert_mot_offisiell_liste": true,
@@ -509,7 +504,7 @@
       "gruppe": "I70 Aterosklerose",
       "relevans": "middels",
       "synonyms": [
-        "aortaskleross",
+        "aortasklerose",
         "aterosklerotisk aorta"
       ],
       "verifisert_mot_offisiell_liste": true,
@@ -568,23 +563,21 @@
       "gruppe": "I70 Aterosklerose",
       "relevans": "hoy",
       "synonyms": [
-        "PAD",
-        "perifer arteriell sykdom",
         "claudicatio",
-        "claudicatio intermittens",
+        "PAD",
+        "PAOD",
+        "perifer arteriell sykdom",
         "royekebein",
         "kald fot",
         "beinarterier tette",
-        "PAOD",
-        "arteriosklerose bein",
-        "kritisk iskemi",
-        "CLI",
-        "CLTI",
-        "gangren fot",
-        "koldbrann",
         "hvilesmerter",
         "rest pain",
-        "svart taa"
+        "kritisk iskemi",
+        "gangren fot",
+        "koldbrann",
+        "svart tå",
+        "arterielt sår",
+        "endarteritis deformans eller obliterans"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -597,23 +590,18 @@
       "gruppe": "I70 Aterosklerose",
       "relevans": "hoy",
       "synonyms": [
-        "PAD",
-        "perifer arteriell sykdom",
         "claudicatio",
+        "klaudikatio",
+        "klaudikasjon",
         "claudicatio intermittens",
+        "PAD",
+        "PAOD",
+        "perifer arteriell sykdom",
         "royekebein",
         "kald fot",
         "beinarterier tette",
-        "PAOD",
-        "arteriosklerose bein",
-        "kritisk iskemi",
-        "CLI",
-        "CLTI",
-        "gangren fot",
-        "koldbrann",
         "hvilesmerter",
-        "rest pain",
-        "svart taa"
+        "rest pain"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -626,23 +614,13 @@
       "gruppe": "I70 Aterosklerose",
       "relevans": "hoy",
       "synonyms": [
-        "PAD",
-        "perifer arteriell sykdom",
-        "claudicatio",
-        "claudicatio intermittens",
-        "royekebein",
-        "kald fot",
-        "beinarterier tette",
-        "PAOD",
-        "arteriosklerose bein",
         "kritisk iskemi",
         "CLI",
         "CLTI",
         "gangren fot",
         "koldbrann",
-        "hvilesmerter",
-        "rest pain",
-        "svart taa"
+        "svart tå",
+        "arterielt sår"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -748,7 +726,8 @@
       "synonyms": [
         "rumpert thorakalt aortaaneurisme",
         "rumpert TAA",
-        "aortaruptur thorax"
+        "aortaruptur thorax",
+        "aneurisme"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -783,7 +762,8 @@
         "AAA ruptur",
         "rumpert bukaortaaneurisme",
         "aortaruptur",
-        "hemodynamisk ustabil AAA"
+        "hemodynamisk ustabil AAA",
+        "aneurisme"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -831,7 +811,8 @@
       "synonyms": [
         "TAAA",
         "thoracoabdominalt aortaaneurisme",
-        "Crawford klassifikasjon"
+        "Crawford klassifikasjon",
+        "aneurisme"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -843,7 +824,9 @@
       "term_no": "Aortaaneurisme med uspesifisert lokalisasjon, med ruptur",
       "gruppe": "I71 Aortaaneurisme og -disseksjon",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "aneurisme"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -855,7 +838,8 @@
       "gruppe": "I71 Aortaaneurisme og -disseksjon",
       "relevans": "lav",
       "synonyms": [
-        "aortaaneurisme uspesifisert"
+        "aortaaneurisme uspesifisert",
+        "aneurisme"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -883,8 +867,14 @@
       "relevans": "lav",
       "synonyms": [
         "subclaviaaneurisme",
-        "aneurisme a. subclavia",
-        "aksillaraneurisme"
+        "subclavia",
+        "aksillaraneurisme",
+        "brachialisaneurisme",
+        "brachialis",
+        "radialisaneurisme",
+        "radialis",
+        "ulnarisaneurisme",
+        "ulnaris"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -912,7 +902,12 @@
       "relevans": "hoy",
       "synonyms": [
         "iliacaaneurisme",
-        "aneurisme bekkenarterie"
+        "bekkenarterie",
+        "bekkenaneurisme",
+        "iliaca interna",
+        "iliaca eksterna",
+        "iliaca communis",
+        "bekkenkar"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -926,9 +921,17 @@
       "relevans": "hoy",
       "synonyms": [
         "popliteaaneurisme",
-        "aneurisme a. poplitea",
-        "aneurisme lyskearterien",
-        "femoralisaneurisme"
+        "poplitea",
+        "lyskearterien",
+        "femoralisaneurisme",
+        "femoralis",
+        "AFC",
+        "AFS",
+        "profunda",
+        "truncus tibiofibularis",
+        "tibialis posterior",
+        "tibialis anterior",
+        "fibularis"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -952,7 +955,10 @@
       "gruppe": "I72 Annet aneurisme",
       "relevans": "lav",
       "synonyms": [
-        "vertebralisaneurisme"
+        "vertebralisaneurisme",
+        "vertebralis aneurisme",
+        "vertebralisdisseksjon",
+        "disseksjon a. vertebralis"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -965,10 +971,20 @@
       "gruppe": "I72 Annet aneurisme",
       "relevans": "middels",
       "synonyms": [
-        "visceral aneurisme",
+        "visceral",
         "milt-arterieaneurisme",
-        "a. lienalis aneurisme",
-        "mesenterialaneurisme"
+        "lienalis",
+        "mesenterialaneurisme",
+        "gastroduodenale",
+        "AMS",
+        "SMA",
+        "AMI",
+        "IMA",
+        "mesenterica superior",
+        "mesenterica inferior",
+        "ileocolica",
+        "gastrica",
+        "hepatica"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -995,7 +1011,8 @@
         "Raynaud",
         "Raynauds fenomen",
         "kalde fingre attakk",
-        "vasospasme fingre"
+        "vasospasme fingre",
+        "likfingre"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1049,7 +1066,9 @@
       "relevans": "hoy",
       "synonyms": [
         "aortatrombose",
-        "saddle embolus aorta"
+        "saddle embolus aorta",
+        "okklusjon",
+        "okkludert"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1115,7 +1134,8 @@
       "relevans": "hoy",
       "synonyms": [
         "iliacaokklusjon akutt",
-        "trombose bekkenarterie"
+        "trombose bekkenarterie",
+        "bekkenkar"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1150,8 +1170,7 @@
       "gruppe": "I77 Andre sykdommer i arterier og arterioler",
       "relevans": "middels",
       "synonyms": [
-        "AV-fistel ervervet",
-        "traumatisk AV-fistel"
+        "AV-fistel ervervet"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1165,7 +1184,6 @@
       "relevans": "middels",
       "synonyms": [
         "carotis kinking",
-        "carotis coiling",
         "arteriell striktur"
       ],
       "verifisert_mot_offisiell_liste": true,
@@ -1179,8 +1197,7 @@
       "gruppe": "I77 Andre sykdommer i arterier og arterioler",
       "relevans": "middels",
       "synonyms": [
-        "arterieruptur",
-        "traumatisk karskade"
+        "arterieruptur"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1208,7 +1225,8 @@
       "relevans": "lav",
       "synonyms": [
         "median arcuate ligament syndrom",
-        "MALS"
+        "MALS",
+        "truncus coeliacus"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1232,9 +1250,7 @@
       "gruppe": "I77 Andre sykdommer i arterier og arterioler",
       "relevans": "middels",
       "synonyms": [
-        "Takayasu arteritt",
-        "aortitt",
-        "storkarsvaskulitt"
+        "aortitt"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1249,7 +1265,8 @@
       "synonyms": [
         "carotisdisseksjon",
         "karotisdisseksjon",
-        "spontan carotisdisseksjon"
+        "spontan carotisdisseksjon",
+        "ulcus"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1274,7 +1291,8 @@
       "relevans": "lav",
       "synonyms": [
         "Osler-Weber-Rendu",
-        "HHT"
+        "HHT",
+        "oslers"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1286,7 +1304,10 @@
       "term_no": "Telangiektasi",
       "gruppe": "I78 Sykdommer i kapillarer",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "spider naevi",
+        "spider nevus"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1384,9 +1405,11 @@
       "gruppe": "I80 Flebitt og tromboflebitt",
       "relevans": "hoy",
       "synonyms": [
-        "DVT laarvene",
+        "DVT lårvene",
         "femoralisvenetrombose",
-        "laarvenetrombose"
+        "lårvenetrombose",
+        "trombose v. femoralis",
+        "DVT v. femoralis"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1401,7 +1424,7 @@
       "synonyms": [
         "DVT",
         "dyp venetrombose",
-        "dyp venoes trombose",
+        "dyp venøs trombose",
         "leggtrombose",
         "bekkenvenetrombose"
       ],
@@ -1540,8 +1563,8 @@
       "gruppe": "I83 Aareknuter i underekstremitet",
       "relevans": "middels",
       "synonyms": [
-        "varicer med saar",
-        "venoest leggsaar varicer"
+        "varicer med sår",
+        "venøst leggsår varicer"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1555,7 +1578,8 @@
       "relevans": "middels",
       "synonyms": [
         "overfladisk tromboflebitt",
-        "varicoflebitt"
+        "varicoflebitt",
+        "stasedermatitt"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1567,7 +1591,13 @@
       "term_no": "Åreknuter med både ulcus og betennelse i underekstremitet",
       "gruppe": "I83 Aareknuter i underekstremitet",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "overfladisk tromboflebitt",
+        "varicoflebitt",
+        "stasedermatitt",
+        "varicer med sår",
+        "venøst leggsår varicer"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1580,7 +1610,7 @@
       "relevans": "hoy",
       "synonyms": [
         "varicer",
-        "aareknuter",
+        "åreknuter",
         "varicose veins",
         "vene insuffisiens overfladisk"
       ],
@@ -1595,7 +1625,7 @@
       "gruppe": "I85 Oesofagusvaricer",
       "relevans": "lav",
       "synonyms": [
-        "blodende oesofagusvaricer"
+        "blødende øsofagusvaricer"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1655,7 +1685,10 @@
       "term_no": "Åreknuter i ytre kvinnelige kjønnsorganer",
       "gruppe": "I86 Aareknuter i andre lokalisasjoner",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "vulvavaricer",
+        "vulva"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1693,7 +1726,7 @@
       "synonyms": [
         "posttrombotisk syndrom",
         "PTS",
-        "kronisk venoes insuffisiens etter DVT"
+        "kronisk venøs insuffisiens etter DVT"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1707,7 +1740,8 @@
       "relevans": "middels",
       "synonyms": [
         "May-Thurner syndrom",
-        "iliacakompresjon"
+        "iliacakompresjon",
+        "vena cava syndrom"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1720,10 +1754,10 @@
       "gruppe": "I87 Andre sykdommer i vener",
       "relevans": "hoy",
       "synonyms": [
-        "kronisk venoes insuffisiens",
+        "kronisk venøs insuffisiens",
         "KVI",
-        "venoes stase",
-        "venoes hypertensjon bein"
+        "venøs stase",
+        "venøs hypertensjon bein"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1802,8 +1836,8 @@
       "gruppe": "I89 Andre ikke-infektioese sykdommer i lymfekar/lymfeknuter",
       "relevans": "middels",
       "synonyms": [
-        "lymfoedem",
-        "kronisk lymfoedem bein"
+        "lymfødem",
+        "kronisk lymfødem bein"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1836,6 +1870,126 @@
       "code": "I89.9",
       "term_no": "Uspesifisert ikke-infeksiøs forstyrrelse i lymfekar eller lymfeknuter",
       "gruppe": "I89 Andre ikke-infektioese sykdommer i lymfekar/lymfeknuter",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "M31.0",
+      "term_no": "Hypersensitivitetsangiitt",
+      "gruppe": "M31 Nekrotiserende vaskulopatier",
+      "relevans": "lav",
+      "synonyms": [
+        "hypersensitivitetsvaskulitt"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "M31.1",
+      "term_no": "Trombotisk trombocytopen purpura",
+      "gruppe": "M31 Nekrotiserende vaskulopatier",
+      "relevans": "lav",
+      "synonyms": [
+        "TTP",
+        "trombotisk mikroangiopati"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "M31.3",
+      "term_no": "Granulomatose med polyangiitt",
+      "gruppe": "M31 Nekrotiserende vaskulopatier",
+      "relevans": "lav",
+      "synonyms": [
+        "Wegeners granulomatose",
+        "GPA"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "M31.4",
+      "term_no": "Aortabuesyndrom",
+      "gruppe": "M31 Nekrotiserende vaskulopatier",
+      "relevans": "hoy",
+      "synonyms": [
+        "Takayasu arteritt",
+        "Takayasu"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "M31.5",
+      "term_no": "Kjempecellearteritt med polymyalgia rheumatica",
+      "gruppe": "M31 Nekrotiserende vaskulopatier",
+      "relevans": "hoy",
+      "synonyms": [
+        "kjempecellearteritt",
+        "temporalisarteritt",
+        "GCA",
+        "arteritis temporalis"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "M31.6",
+      "term_no": "Annen kjempecellearteritt",
+      "gruppe": "M31 Nekrotiserende vaskulopatier",
+      "relevans": "hoy",
+      "synonyms": [
+        "kjempecellearteritt",
+        "kjempecellearteritt uten polymyalgi"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "M31.7",
+      "term_no": "Mikroskopisk polyangiitt",
+      "gruppe": "M31 Nekrotiserende vaskulopatier",
+      "relevans": "lav",
+      "synonyms": [
+        "MPA"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "M31.8",
+      "term_no": "Annen spesifisert nekrotiserende vaskulitt",
+      "gruppe": "M31 Nekrotiserende vaskulopatier",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "M31.9",
+      "term_no": "Uspesifisert nekrotiserende vaskulitt",
+      "gruppe": "M31 Nekrotiserende vaskulopatier",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1955,9 +2109,8 @@
       "gruppe": "T81 Komplikasjoner til prosedyrer, ikke klassifisert annet sted",
       "relevans": "hoy",
       "synonyms": [
-        "postoperativ blodning kar",
-        "lyskehematom",
-        "pseudoaneurisme lyske"
+        "postoperativ blødning",
+        "lyskehematom"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1995,7 +2148,7 @@
       "gruppe": "T81 Komplikasjoner til prosedyrer, ikke klassifisert annet sted",
       "relevans": "middels",
       "synonyms": [
-        "saarruptur",
+        "sårruptur",
         "dehiscens"
       ],
       "verifisert_mot_offisiell_liste": true,
@@ -2009,7 +2162,7 @@
       "gruppe": "T81 Komplikasjoner til prosedyrer, ikke klassifisert annet sted",
       "relevans": "middels",
       "synonyms": [
-        "postoperativ saarinfeksjon",
+        "postoperativ sårinfeksjon",
         "graftinfeksjon (generell)"
       ],
       "verifisert_mot_offisiell_liste": true,
@@ -2047,7 +2200,9 @@
       "synonyms": [
         "postoperativ arteriell trombose",
         "iatrogen dissekjon",
-        "postoperativ okklusjon graft"
+        "postoperativ okklusjon graft",
+        "pseudoaneurisme",
+        "pseudoaneurisme lyske"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -2191,8 +2346,12 @@
       "code": "T82.8",
       "term_no": "Annen spesifisert komplikasjon ved protese, implantat eller transplantat i hjerte eller blodkar",
       "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
-      "relevans": "middels",
-      "synonyms": [],
+      "relevans": "hoy",
+      "synonyms": [
+        "pseudoaneurisme",
+        "pseudoaneurisme etter graft",
+        "anastomose-pseudoaneurisme"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -2316,7 +2475,7 @@
       "gruppe": "T84 Komplikasjoner av ortopediske proteser, implantater og transplantater",
       "relevans": "lav",
       "synonyms": [
-        "proteseloesning hofte/kne"
+        "proteseløsning hofte/kne"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -2555,7 +2714,7 @@
       "gruppe": "T86 Komplikasjoner av transplanterte organer og vev",
       "relevans": "middels",
       "synonyms": [
-        "nyretransplantatavstoetning",
+        "nyretransplantatavstøtning",
         "transplantatnyre komplikasjon"
       ],
       "verifisert_mot_offisiell_liste": true,
@@ -2672,7 +2831,7 @@
       "relevans": "hoy",
       "synonyms": [
         "stumpinfeksjon",
-        "infisert amputasjonssaar"
+        "infisert amputasjonssår"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -2700,7 +2859,7 @@
       "relevans": "hoy",
       "synonyms": [
         "stumpproblem",
-        "daarlig tilhelet amputasjonsstump",
+        "dårlig tilhelet amputasjonsstump",
         "reamputasjon"
       ],
       "verifisert_mot_offisiell_liste": true,
@@ -2809,8 +2968,33 @@
     }
   ],
   "tilstotende_koder_readme": "Koder utenfor hovedintervallene, klinisk relevante for karkirurgi. Verifisert mot samme offisielle kodeliste. Traumekodene (S15/S25/S35/S45/S55/S65/S75/S85/S95) er nå fylt ut med alle offisielle underkoder (blodåre/type) fra Helsedirektoratet.",
-  "count_tilstotende": 84,
+  "count_tilstotende": 87,
   "tilstotende_koder": [
+    {
+      "code": "E10.5",
+      "term_no": "Diabetes mellitus type 1 med perifer sirkulasjonsforstyrrelse",
+      "gruppe": "Diabetisk angiopati",
+      "relevans": "middels",
+      "synonyms": [
+        "diabetisk fot type 1",
+        "diabetisk angiopati type 1"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E10.7",
+      "term_no": "Diabetes mellitus type 1 med flere komplikasjoner",
+      "gruppe": "Diabetisk angiopati",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
     {
       "code": "E11.5",
       "term_no": "Diabetes mellitus type 2 med perifer sirkulasjonsforstyrrelse",
@@ -2822,6 +3006,17 @@
         "diabetisk angiopati",
         "diabetisk perifer karsykdom"
       ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.7",
+      "term_no": "Diabetes mellitus type 2 med flere komplikasjoner",
+      "gruppe": "Diabetisk angiopati",
+      "relevans": "lav",
+      "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -2908,12 +3103,12 @@
       "gruppe": "Leggsaar",
       "relevans": "hoy",
       "synonyms": [
-        "leggsaar",
-        "arterielt saar",
-        "iskemisk saar",
-        "venoest leggsaar",
+        "leggsår",
+        "arterielt sår",
+        "iskemisk sår",
+        "venøst leggsår",
         "ulcus cruris",
-        "kronisk saar bein"
+        "kronisk sår bein"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -3000,7 +3195,7 @@
       "synonyms": [
         "coarctatio aorta",
         "aortaisthmusstenose",
-        "medfoedt aortabue-anomali"
+        "medfødt aortabue-anomali"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -3626,7 +3821,7 @@
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
-        "laarkarskade"
+        "lårkarskade"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -3640,7 +3835,7 @@
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
-        "laarkarskade"
+        "lårkarskade"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -3654,7 +3849,7 @@
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
-        "laarkarskade"
+        "lårkarskade"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -3668,7 +3863,7 @@
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
-        "laarkarskade"
+        "lårkarskade"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -3682,7 +3877,7 @@
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
-        "laarkarskade"
+        "lårkarskade"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -3696,7 +3891,7 @@
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
-        "laarkarskade"
+        "lårkarskade"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -3912,7 +4107,7 @@
       "bidiagnose_forslag": []
     }
   ],
-  "count_totalt": 297,
+  "count_totalt": 309,
   "nye_koder_uten_egne_synonymer_main": [
     "I7000",
     "I7001",
@@ -4005,6 +4200,174 @@
         "thromb"
       ],
       "kommentar": "Gjelder alle forekomster av \"tromb\"/\"thromb\" som delstreng - dekker trombose/thrombose, men ogsaa tromboflebitt/thromboflebitt, trombektomi/thrombektomi, tromboemboli/thromboemboli osv. Anbefalt implementasjon: normaliser BAADE indeksert tekst og brukerens soekestreng ved aa erstatte \"thromb\" -> \"tromb\" (case-insensitivt) foer matching, i stedet for aa liste opp par manuelt per kode."
+    },
+    {
+      "type": "ordsynonym_global",
+      "par": [
+        "aterosklerose",
+        "arteriosklerose"
+      ],
+      "kommentar": "Arteriosklerose og aterosklerose skal behandles som synonymer overalt i programmet (gjelder alle I70.x-koder og andre steder ordet forekommer, f.eks. ogsaa i sammensetninger som \"aterosklerotisk\"/\"arteriosklerotisk\"). Anbefalt implementasjon: samme mekanisme som tromb/thromb-regelen - normaliser til ett av ordene (f.eks. \"aterosklerose\") baade i indeksert tekst og i brukerens soek foer matching."
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "claudicatio",
+        "klaudikatio",
+        "klaudikasjon"
+      ],
+      "kommentar": "Alle tre skrivemaatene skal behandles som samme ord overalt i programmet (gjelder bl.a. I70.20 - claudicatio intermittens - og andre koder hvor \"claudicatio\" er brukt som synonym). Merk: dette feltet (\"termer\") kan ha flere enn to likeverdige varianter, i motsetning til \"par\" i de andre reglene som kun har to."
+    },
+    {
+      "type": "ordsynonym_global",
+      "par": [
+        "rumpert",
+        "ruptur"
+      ],
+      "kommentar": "Gjelder overalt, f.eks. \"rumpert AAA\" og \"AAA ruptur\" skal begge treffe samme koder."
+    },
+    {
+      "type": "frasesynonym_global",
+      "par": [
+        "abdominalt aortaaneurisme",
+        "AAA"
+      ],
+      "kommentar": "Fullstendig frase likestilt med forkortelsen AAA overalt i programmet."
+    },
+    {
+      "type": "frasesynonym_global",
+      "termer": [
+        "AAA",
+        "infrarenalt aortaaneurisme",
+        "juxtarenalt aortaaneurisme",
+        "pararenalt aortaaneurisme",
+        "suprarenalt aortaaneurisme"
+      ],
+      "kommentar": "AAA likestilt med disse fire anatomiske undertypene. NB: klinisk er disse undertyper av AAA, ikke helt synonymt begrep - men behandles som likeverdige soekeord her per Simens instruksjon, for aa sikre at alle varianter gir treff paa samme kode(r)."
+    },
+    {
+      "type": "frasesynonym_global",
+      "par": [
+        "arm",
+        "overekstremitet"
+      ],
+      "kommentar": "Dekker hverdagsspraak vs. medisinsk fagord, f.eks. for I72.1."
+    },
+    {
+      "type": "frasesynonym_global",
+      "termer": [
+        "bein",
+        "legg",
+        "underekstremitet"
+      ],
+      "kommentar": "Dekker hverdagsspraak vs. medisinsk fagord, f.eks. for I72.4/I70.2-gruppen."
+    },
+    {
+      "type": "ordsynonym_global",
+      "par": [
+        "eksterna",
+        "externa"
+      ],
+      "kommentar": "Gjelder overalt, f.eks. \"a. iliaca eksterna\"/\"a. iliaca externa\"."
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "mesenterial",
+        "mesenteriell",
+        "mesenterielt",
+        "visceral"
+      ],
+      "kommentar": null
+    },
+    {
+      "type": "ordsynonym_global",
+      "par": [
+        "iskemi",
+        "iskjemi"
+      ],
+      "kommentar": null
+    },
+    {
+      "type": "frasesynonym_global",
+      "par": [
+        "AAA",
+        "abdominal aorta"
+      ],
+      "kommentar": null
+    },
+    {
+      "type": "ordsynonym_global",
+      "par": [
+        "vene",
+        "vena"
+      ],
+      "kommentar": null
+    },
+    {
+      "type": "frasesynonym_global",
+      "par": [
+        "DVT",
+        "venetrombose"
+      ],
+      "kommentar": null
+    },
+    {
+      "type": "stavevariant_tegn",
+      "par": [
+        "æ",
+        "ae"
+      ],
+      "kommentar": "Gjelder overalt - fanger opp at flere synonymer i fila feilaktig er skrevet med \"ae\" i stedet for ekte \"æ\"."
+    },
+    {
+      "type": "stavevariant_tegn",
+      "par": [
+        "ø",
+        "oe"
+      ],
+      "kommentar": "Gjelder overalt - fanger opp at flere synonymer i fila feilaktig er skrevet med \"oe\" i stedet for ekte \"ø\"."
+    },
+    {
+      "type": "stavevariant_tegn",
+      "par": [
+        "å",
+        "aa"
+      ],
+      "kommentar": "Gjelder overalt - fanger opp at flere synonymer i fila feilaktig er skrevet med \"aa\" i stedet for ekte \"å\"."
+    },
+    {
+      "type": "frasesynonym_global",
+      "termer": [
+        "åreknuter",
+        "varicer",
+        "overfladisk venøs insuffisiens"
+      ],
+      "kommentar": null
+    },
+    {
+      "type": "stavevariant_understreng",
+      "par": [
+        "torak",
+        "thorac"
+      ],
+      "kommentar": "Del av thorax/torakal-gruppen - kanoniserer til stammen \"torak\" slik at ogsaa sammensatte ord som \"torakoabdominalt\" fanges opp."
+    },
+    {
+      "type": "stavevariant_understreng",
+      "par": [
+        "torak",
+        "torac"
+      ],
+      "kommentar": "Del av thorax/torakal-gruppen - kanoniserer til stammen \"torak\" slik at ogsaa sammensatte ord som \"torakoabdominalt\" fanges opp."
+    },
+    {
+      "type": "stavevariant_understreng",
+      "par": [
+        "torak",
+        "thorax"
+      ],
+      "kommentar": "Del av thorax/torakal-gruppen - kanoniserer til stammen \"torak\" slik at ogsaa sammensatte ord som \"torakoabdominalt\" fanges opp."
     }
   ],
   "termgrupper": [
@@ -4047,6 +4410,25 @@
       "kanonisk": "amaurosis fugax",
       "synonymer": [
         "amaurosis"
+      ],
+      "kommentar": null
+    },
+    {
+      "id": "claudicatio",
+      "kanonisk": "claudicatio",
+      "synonymer": [
+        "klaudikatio",
+        "klaudikasjon",
+        "claudicatio intermittens"
+      ],
+      "kommentar": null
+    },
+    {
+      "id": "kritisk_iskemi",
+      "kanonisk": "kritisk iskemi",
+      "synonymer": [
+        "CLI",
+        "CLTI"
       ],
       "kommentar": null
     }
@@ -4153,7 +4535,79 @@
           "vekt": 3
         }
       ]
+    },
+    {
+      "id": "claudicatio_rangering",
+      "beskrivelse": "Ved soek paa claudicatio/klaudikatio/klaudikasjon skal I70.2 vises foerst, deretter I70.20",
+      "trigger_termgruppe": "claudicatio",
+      "krever_modifier_ord": [],
+      "resultat": [
+        {
+          "kode": "I70.2",
+          "bidiagnose": null,
+          "vekt": 1
+        },
+        {
+          "kode": "I70.20",
+          "bidiagnose": null,
+          "vekt": 2
+        }
+      ]
+    },
+    {
+      "id": "kritisk_iskemi_rangering",
+      "beskrivelse": "Ved soek paa kritisk iskemi/CLI/CLTI skal I70.2 vises foerst, deretter I70.21",
+      "trigger_termgruppe": "kritisk_iskemi",
+      "krever_modifier_ord": [],
+      "resultat": [
+        {
+          "kode": "I70.2",
+          "bidiagnose": null,
+          "vekt": 1
+        },
+        {
+          "kode": "I70.21",
+          "bidiagnose": null,
+          "vekt": 2
+        }
+      ]
     }
   ],
-  "sokeregler_readme": "Feltet \"vekt\" angir rangering naar et soek gir flere treff samtidig - lavest tall vises oeverst/tyngst. Flere koder kan dele samme vekt (vises da i vilkaarlig eller alfabetisk rekkefolge seg imellom). Feltet \"forrang_lavere_enn\" (kun paa regler som kan overlappe) angir at denne regelen kun skal brukes hvis ingen av de nevnte reglene med hoyere forrang trigges foerst (f.eks. hvis brukeren skriver \"symptomatisk\" skal ikke det noytrale 4-treffs-svaret vises i tillegg). Dette prinsippet - flere rangerte treff for samme soekeord - er tenkt gjenbrukt for andre soekeord (f.eks. \"aortaaneurisme\") naar Simen spesifiserer vekting/kombinasjoner for disse."
+  "sokeregler_readme": "Feltet \"vekt\" angir rangering naar et soek gir flere treff samtidig - lavest tall vises oeverst/tyngst. Flere koder kan dele samme vekt (vises da i vilkaarlig eller alfabetisk rekkefolge seg imellom). Feltet \"forrang_lavere_enn\" (kun paa regler som kan overlappe) angir at denne regelen kun skal brukes hvis ingen av de nevnte reglene med hoyere forrang trigges foerst (f.eks. hvis brukeren skriver \"symptomatisk\" skal ikke det noytrale 4-treffs-svaret vises i tillegg). Dette prinsippet - flere rangerte treff for samme soekeord - er tenkt gjenbrukt for andre soekeord (f.eks. \"aortaaneurisme\") naar Simen spesifiserer vekting/kombinasjoner for disse.",
+  "standard_sortering": "Naar flere koder gir treff paa samme soekeord, og det IKKE finnes en egen \"sokeregel\" med definert \"vekt\" for akkurat det soeket, skal treffene vises i stigende kodenummer-rekkefolge (samme rekkefolge som i den offisielle Helsedirektoratet-lista). Dette er en midlertidig standardregel inntil Simen definerer spesifikk vekting for flere soekeord (f.eks. aortaaneurisme-gruppen).",
+  "sokelogikk_flerordssok": "HYBRID OG/ELLER-logikk (revidert etter diskusjon med Simen): naar brukeren skriver flere ord, proev foerst streng OG-logikk (krev at ALLE ordene finnes for en kode - se tidligere eksempel med \"disseksjon a. radialis\" -> kun I72.1). HVIS DETTE GIR NULL TREFF, fall automatisk tilbake til ELLER-logikk: vis koder som treffer paa MINST ETT av ordene, rangert etter hvor mange av ordene som faktisk matcher (flest matchende ord = hoyest opp). Dette sikrer presise treff naar vi har tenkt paa riktig synonym, uten aa noensinne gi \"ingen treff\" naar brukeren bruker et ord vi ikke har forutsett. De eksplisitte \"sokeregler\" (som carotisstenose-logikken) er fortsatt unntak, styrt av sin egen logikk.",
+  "normaliseringsregler_readme_tillegg": "Siden OG-logikken (se sokelogikk_flerordssok) sjekker paa tvers av HELE kodens tekst (kodetekst + alle synonymer samlet, ikke bare innad i en enkelt synonym-streng), holder det aa liste kar-navn/lokasjoner som egne, korte synonymer naar ordet \"aneurisme\"/\"disseksjon\" allerede finnes i kodeteksten (gjelder alle I72.x-koder). Kombinerte fraser som \"aneurisme X\" er derfor unngaatt fra og med denne opprydningen - MED UNNTAK av sammensatte norske ett-ords-varianter (f.eks. \"radialisaneurisme\"), som fortsatt legges inn separat siden de er ett eget soekbart ord.",
+  "prioriteringsregler": [
+    {
+      "id": "aorta_prioritet",
+      "beskrivelse": "Ved soek paa aorta/AAA skal I71.4 (AAA uten ruptur) og I71.3 (AAA med ruptur) vises oeverst, uten aa skjule andre aorta-relaterte treff",
+      "trigger_ord": [
+        "aorta",
+        "AAA"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "I71.4",
+          "vekt": 1
+        },
+        {
+          "kode": "I71.3",
+          "vekt": 2
+        }
+      ]
+    },
+    {
+      "id": "leggsaar_prioritet",
+      "beskrivelse": "Ved soek paa leggsaar skal L97 vises oeverst",
+      "trigger_ord": [
+        "leggsår"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "L97",
+          "vekt": 1
+        }
+      ]
+    }
+  ]
 }
