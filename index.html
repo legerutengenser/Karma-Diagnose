@@ -13,227 +13,259 @@
 <meta name="apple-mobile-web-app-title" content="Karma Diagnose">
 <style>
   :root {
+    /* Fargene er beholdt fra Karma Diagnose (grønn/teal); oppsettet følger Karma Kode. */
     --bg: #F0F4F3;
-    --surface: #FFFFFF;
-    --border: #DCE6E3;
-    --text: #16211E;
-    --text-soft: #5B6E68;
+    --panel: #FFFFFF;
+    --ink: #16211E;
+    --ink-soft: #5B6E68;
+    --line: #DCE6E3;
     --accent: #0F6B63;
     --accent-dark: #0A4F49;
     --accent-soft: #E4F0EE;
     --bidiag: #A9660A;
     --bidiag-soft: #FBF0E0;
+    --head-bg: #F6F9F8;
     --i-code: #0F6B63;
     --t-code: #4A5A8A;
     --g-code: #7A5A8A;
     --m-code: #8A5A5A;
     --other-code: #5B6E68;
-    --radius: 14px;
-    --radius-sm: 9px;
+    --mono: 'IBM Plex Mono', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+    --serif: 'Source Serif Pro', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
 
   * { box-sizing: border-box; }
 
-  html, body {
+  body {
     margin: 0;
-    padding: 0;
+    font-family: var(--sans);
     background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
     -webkit-font-smoothing: antialiased;
   }
 
-  .mono {
-    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  .app { max-width: 1280px; margin: 0 auto; padding: 28px 24px 60px; }
+
+  header.top {
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 14px; margin-bottom: 22px; flex-wrap: wrap; gap: 8px;
+  }
+  header.top h1 { font-family: var(--serif); font-size: 28px; font-weight: 600; margin: 0; letter-spacing: -0.01em; }
+  header.top h1 span { color: var(--accent); font-style: italic; }
+  header.top .sub {
+    font-size: 12.5px; color: var(--ink-soft); font-family: var(--mono);
+    text-transform: uppercase; letter-spacing: 0.06em;
   }
 
-  #app {
-    max-width: 640px;
-    margin: 0 auto;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  .search-wrap { position: relative; margin-bottom: 18px; }
+  .search-wrap input {
+    width: 100%; font-size: 19px; font-family: var(--sans);
+    padding: 16px 48px 16px 18px;
+    border: 2px solid var(--ink); border-radius: 4px;
+    background: var(--panel); color: var(--ink); outline: none;
   }
-
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 5;
-    background: var(--bg);
-    padding: 18px 16px 12px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .brand {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-
-  .brand-mark {
-    font-weight: 800;
-    font-size: 17px;
-    letter-spacing: -0.01em;
-    color: var(--accent-dark);
-  }
-
-  .brand-sub {
-    font-size: 12.5px;
-    color: var(--text-soft);
-  }
-
-  .search-wrap {
-    position: relative;
-  }
-
-  #q {
-    width: 100%;
-    font-size: 16.5px;
-    padding: 13px 42px 13px 16px;
-    border-radius: var(--radius);
-    border: 1.5px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
-    outline: none;
-    transition: border-color .15s ease;
-  }
-
-  #q:focus {
-    border-color: var(--accent);
-  }
-
+  .search-wrap input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
   #clear-btn {
-    position: absolute;
-    right: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    border: none;
-    background: transparent;
-    color: var(--text-soft);
-    font-size: 20px;
-    cursor: pointer;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    width: 32px; height: 32px; border: none; background: transparent;
+    color: var(--ink-soft); font-size: 20px; cursor: pointer;
+    display: none; align-items: center; justify-content: center; border-radius: 50%;
   }
-  #clear-btn:hover { background: var(--border); }
+  #clear-btn:hover { background: var(--line); }
 
-  main {
-    flex: 1;
-    padding: 14px 16px 40px;
+  .layout { display: grid; grid-template-columns: 1fr 380px; gap: 22px; align-items: start; }
+  @media (max-width: 920px) { .layout { grid-template-columns: 1fr; } }
+
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  .panel-head {
+    font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-soft); padding: 10px 16px; border-bottom: 1px solid var(--line);
+    background: var(--head-bg); display: flex; justify-content: space-between; align-items: center;
   }
 
-  .hint {
-    color: var(--text-soft);
-    font-size: 14px;
-    line-height: 1.5;
-    padding: 34px 8px;
-    text-align: center;
+  .results { max-height: 640px; overflow-y: auto; }
+  .result-row {
+    display: flex; align-items: center; gap: 10px; padding: 8px 14px;
+    border-bottom: 1px solid var(--line); cursor: pointer; transition: background 0.12s;
   }
+  .result-row:last-child { border-bottom: none; }
+  .result-row:hover { background: var(--accent-soft); }
+  .result-row.selected { background: var(--accent-soft); outline: 2px solid var(--accent); outline-offset: -2px; }
 
-  .hint b { color: var(--text); }
+  .r-code {
+    font-family: var(--mono); font-size: 13px; font-weight: 600;
+    background: var(--other-code); color: #fff;
+    padding: 3px 7px; border-radius: 3px; flex-shrink: 0; min-width: 64px; text-align: center;
+  }
+  .r-code.i { background: var(--i-code); }
+  .r-code.t { background: var(--t-code); }
+  .r-code.g { background: var(--g-code); }
+  .r-code.m { background: var(--m-code); }
+
+  .r-text { flex: 1; min-width: 0; }
+  .r-text .main { font-size: 14.5px; line-height: 1.3; }
+  .r-text .meta {
+    font-size: 11px; color: var(--ink-soft); font-family: var(--mono); margin-top: 3px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .r-badges { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; flex-shrink: 0; }
+  .badge { font-family: var(--mono); font-size: 10px; padding: 2px 6px; border-radius: 3px; white-space: nowrap; }
+  .badge.bidiag { background: var(--bidiag-soft); color: var(--bidiag); }
 
   .fallback-note {
-    font-size: 12.5px;
-    color: var(--bidiag);
-    background: var(--bidiag-soft);
-    border-radius: var(--radius-sm);
-    padding: 8px 12px;
-    margin-bottom: 10px;
+    font-size: 12.5px; color: var(--bidiag); background: var(--bidiag-soft);
+    padding: 9px 14px; border-bottom: 1px solid var(--line);
+  }
+  .empty-state { padding: 40px 20px; text-align: center; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
+  .empty-state .big { font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--ink); margin-bottom: 6px; }
+  .more-btn {
+    display: block; width: calc(100% - 24px); margin: 10px 12px; padding: 10px 12px;
+    border: 1px solid var(--line); border-radius: 6px; background: transparent;
+    color: inherit; font: inherit; cursor: pointer;
+  }
+  .more-btn:hover { background: var(--accent-soft); }
+
+  /* Detaljboks */
+  .detail-box { padding: 16px; border-bottom: 1px solid var(--line); background: var(--panel); }
+  .detail-box .d-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .detail-box .dgruppe { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
+  .detail-box .dtext { font-size: 15px; line-height: 1.4; margin-bottom: 10px; }
+  .detail-box .dsyn { font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; margin-bottom: 10px; }
+  .detail-box .dsyn b { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+  .dbidiag {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    font-size: 12.5px; color: var(--bidiag); background: var(--bidiag-soft);
+    padding: 7px 10px; border-radius: 4px; margin-bottom: 10px;
+  }
+  .chip-link {
+    font-family: var(--mono); font-size: 12px; font-weight: 600; color: #fff; background: var(--bidiag);
+    border: none; border-radius: 3px; padding: 3px 7px; cursor: pointer;
+  }
+  .chip-link:hover { background: #8a5208; }
+  .show-in-tree {
+    display: none; font-family: var(--mono); font-size: 11.5px; background: var(--ink); color: #fff;
+    border: none; padding: 8px 12px; border-radius: 3px; cursor: pointer;
+  }
+  .show-in-tree:hover { background: var(--accent); }
+
+  /* Trevisning */
+  .tree { max-height: 720px; overflow-y: auto; font-size: 13px; padding: 6px 0; }
+  .tree-group { border-bottom: 1px solid var(--line); }
+  .tree-group:last-child { border-bottom: none; }
+  .tree-group-head {
+    padding: 9px 14px; font-weight: 600; font-size: 12.5px; cursor: pointer;
+    display: flex; align-items: center; gap: 8px; background: var(--head-bg); user-select: none;
+  }
+  .tree-group-head:hover { background: var(--accent-soft); }
+  .chev {
+    font-family: var(--mono); font-size: 10px; color: var(--ink-soft); width: 14px;
+    flex-shrink: 0; transition: transform 0.15s; text-align: center;
+  }
+  .tree-group.open > .tree-group-head .chev,
+  .tree-sub.open > .tree-sub-head .chev { transform: rotate(90deg); }
+  .tree-group-name { flex: 1; }
+  .tree-group-count { font-family: var(--mono); font-size: 10px; color: var(--ink-soft); font-weight: 400; }
+  .tree-children, .tree-codes { display: none; }
+  .tree-group.open > .tree-children, .tree-sub.open > .tree-codes { display: block; }
+
+  .tree-sub-head, .tree-code-row {
+    padding: 6px 14px; display: flex; gap: 8px; align-items: baseline;
+    font-size: 12px; border-top: 1px solid #EDF2F0; cursor: pointer; user-select: none;
+  }
+  .tree-sub-head:hover, .tree-code-row:hover { background: var(--accent-soft); }
+  .tcode { font-family: var(--mono); font-weight: 600; flex-shrink: 0; min-width: 52px; }
+  .ttext { color: var(--ink-soft); line-height: 1.3; flex: 1; min-width: 0; }
+  .tree-sub-head .ttext { color: var(--ink); }
+  .highlight { background: #D9EFEA; animation: pulse 1.6s ease-out 2; }
+  .highlight .tcode { color: var(--accent); }
+  @keyframes pulse { 0%, 100% { background: #D9EFEA; } 50% { background: #B9DFD7; } }
+
+  .legend {
+    padding: 10px 16px; font-size: 11px; color: var(--ink-soft); display: flex; gap: 14px;
+    flex-wrap: wrap; border-top: 1px solid var(--line); font-family: var(--mono);
+  }
+  .legend span { display: flex; align-items: center; gap: 5px; }
+  .legend .dot { display: inline-block; width: 9px; height: 9px; border-radius: 2px; }
+  .dot.i { background: var(--i-code); } .dot.t { background: var(--t-code); }
+  .dot.g { background: var(--g-code); } .dot.m { background: var(--m-code); }
+  .dot.other { background: var(--other-code); }
+
+  footer.note {
+    margin-top: 22px; font-size: 11.5px; color: var(--ink-soft);
+    font-family: var(--mono); text-align: center; line-height: 1.5;
   }
 
-  .result-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  /* Mobil */
+  @media (max-width: 640px) {
+    .app { padding: 14px 12px 40px; }
+    header.top { padding-bottom: 10px; margin-bottom: 14px; }
+    header.top h1 { font-size: 22px; }
+    header.top .sub { font-size: 10.5px; }
+    .search-wrap input { font-size: 17px; padding: 14px 44px 14px 16px; }
+    .layout { gap: 14px; }
+    .panel-head { padding: 9px 12px; font-size: 10.5px; }
+    .results { max-height: 50vh; }
+    .result-row { padding: 9px 12px; }
+    .r-code { font-size: 12px; min-width: 56px; padding: 4px 6px; }
+    .r-text .main { font-size: 15px; }
+    .detail-box { padding: 13px 12px; }
+    .show-in-tree { display: inline-block; width: 100%; padding: 10px 12px; }
+    .tree { max-height: 60vh; }
+    .tree-group-head { padding-top: 12px; padding-bottom: 12px; }
+    .tree-sub-head, .tree-code-row { padding-top: 9px; padding-bottom: 9px; flex-wrap: wrap; }
+    .tcode { min-width: 0; }
+    .legend { padding: 10px 12px; gap: 10px; }
+    footer.note { font-size: 10.5px; padding: 0 8px; }
   }
-
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 12px 14px;
-  }
-
-  .card-top {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 4px;
-  }
-
-  .code-chip {
-    font-weight: 700;
-    font-size: 13.5px;
-    padding: 2px 8px;
-    border-radius: 6px;
-    letter-spacing: 0.01em;
-  }
-  .code-chip.i { color: var(--i-code); background: var(--accent-soft); }
-  .code-chip.t { color: var(--t-code); background: #ECEFF9; }
-  .code-chip.g { color: var(--g-code); background: #F3ECF6; }
-  .code-chip.m { color: var(--m-code); background: #F6ECEC; }
-  .code-chip.other { color: var(--other-code); background: #EEF2F1; }
-
-  .gruppe-label {
-    font-size: 11.5px;
-    color: var(--text-soft);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .term {
-    font-size: 15.5px;
-    line-height: 1.35;
-    font-weight: 500;
-  }
-
-  .bidiag-row {
-    margin-top: 7px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12.5px;
-    color: var(--bidiag);
-    background: var(--bidiag-soft);
-    padding: 3px 9px;
-    border-radius: 999px;
-  }
-
-  footer {
-    text-align: center;
-    padding: 10px 16px 26px;
-    font-size: 11.5px;
-    color: var(--text-soft);
-  }
-
-  @media (min-width: 480px) {
-    .term { font-size: 16px; }
+  @media (hover: none) {
+    .result-row:hover, .tree-group-head:hover, .tree-sub-head:hover, .tree-code-row:hover { background: inherit; }
   }
 </style>
 </head>
 <body>
-<div id="app">
-  <header>
-    <div class="brand">
-      <span class="brand-mark">Karma Diagnose</span>
-      <span class="brand-sub">ICD-10 søk · karkirurgi</span>
-    </div>
-    <div class="search-wrap">
-      <input id="q" type="text" inputmode="search" autocomplete="off" autocorrect="off"
-             spellcheck="false" placeholder="Skriv diagnose, symptom eller kode …" autofocus>
-      <button id="clear-btn" aria-label="Tøm søk">✕</button>
-    </div>
+<div class="app">
+  <header class="top">
+    <h1>Karma <span>Diagnose</span></h1>
+    <div class="sub">Karkirurgi · ICD-10 · 2026</div>
   </header>
-  <main>
-    <div id="results"></div>
-  </main>
-  <footer>Karma Diagnose · under utvikling · ikke offisiell kilde, bekreft mot Helsedirektoratets kodeverk</footer>
+
+  <div class="search-wrap">
+    <input id="q" type="text" inputmode="search" autocomplete="off" autocorrect="off" spellcheck="false"
+           placeholder="Søk: diagnose, symptom, forkortelse eller kode … (f.eks. «claudicatio», «AAA», «I70.2»)" autofocus>
+    <button id="clear-btn" aria-label="Tøm søk">✕</button>
+  </div>
+
+  <div class="layout">
+    <div class="panel">
+      <div class="panel-head">
+        <span>Treff</span>
+        <span id="panelHeadInfo"></span>
+      </div>
+      <div id="detailBox"></div>
+      <div class="results" id="results"></div>
+    </div>
+
+    <div class="panel" id="treePanel">
+      <div class="panel-head">
+        <span>Trevisning – ICD-10</span>
+        <span id="treeInfo"></span>
+      </div>
+      <div class="tree" id="tree"></div>
+      <div class="legend">
+        <span><span class="dot i"></span> I Sirkulasjon</span>
+        <span><span class="dot t"></span> T Komplikasjon</span>
+        <span><span class="dot g"></span> G Nevrologi</span>
+        <span><span class="dot m"></span> M Vaskulitt</span>
+        <span><span class="dot other"></span> Annet</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="note">
+    Karma Diagnose · under utvikling · ikke offisiell kilde, bekreft mot Helsedirektoratets kodeverk
+  </footer>
 </div>
 
 <script>
@@ -505,7 +537,7 @@ function buildEngine(data) {
     {
       "code": "G45.0",
       "term_no": "Arteria vertebralis-basilaris-syndrom",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "middels",
       "synonyms": [
         "vertebrobasilar-syndrom",
@@ -519,7 +551,7 @@ function buildEngine(data) {
     {
       "code": "G45.1",
       "term_no": "Carotissyndrom",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "hoy",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -537,7 +569,7 @@ function buildEngine(data) {
     {
       "code": "G45.2",
       "term_no": "Syndrom med opphav i flere eller dobbeltsidige precerebrale arterier",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "middels",
       "synonyms": [
         "bilateralt precerebralt syndrom"
@@ -550,7 +582,7 @@ function buildEngine(data) {
     {
       "code": "G45.3",
       "term_no": "Amaurosis fugax",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "hoy",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -568,7 +600,7 @@ function buildEngine(data) {
     {
       "code": "G45.4",
       "term_no": "Forbigående global amnesi",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "middels",
       "synonyms": [
         "TGA",
@@ -582,7 +614,7 @@ function buildEngine(data) {
     {
       "code": "G45.8",
       "term_no": "Annet spesifisert forbigående cerebralt iskemisk anfall eller beslektet syndrom",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "middels",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -593,7 +625,7 @@ function buildEngine(data) {
     {
       "code": "G45.9",
       "term_no": "Uspesifisert forbigående cerebralt iskemisk anfall",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "middels",
       "synonyms": [
         "TIA uspesifisert",
@@ -607,7 +639,7 @@ function buildEngine(data) {
     {
       "code": "G46.0",
       "term_no": "Arteria cerebri media-syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "MCA-syndrom",
@@ -621,7 +653,7 @@ function buildEngine(data) {
     {
       "code": "G46.1",
       "term_no": "Arteria cerebri anterior-syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "ACA-syndrom",
@@ -635,7 +667,7 @@ function buildEngine(data) {
     {
       "code": "G46.2",
       "term_no": "Arteria cerebri posterior-syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "PCA-syndrom",
@@ -649,7 +681,7 @@ function buildEngine(data) {
     {
       "code": "G46.3",
       "term_no": "Syndrom som skyldes hjernestammeslag",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "hjernestammeslag",
@@ -663,7 +695,7 @@ function buildEngine(data) {
     {
       "code": "G46.4",
       "term_no": "Syndrom som skyldes cerebellart slag",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "cerebellart slag syndrom"
@@ -676,7 +708,7 @@ function buildEngine(data) {
     {
       "code": "G46.5",
       "term_no": "Rent motorisk lakunært syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "lakunært syndrom motorisk"
@@ -689,7 +721,7 @@ function buildEngine(data) {
     {
       "code": "G46.6",
       "term_no": "Rent sensorisk lakunært syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "lakunært syndrom sensorisk"
@@ -702,7 +734,7 @@ function buildEngine(data) {
     {
       "code": "G46.7",
       "term_no": "Annet lakunært syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "annet lakunært syndrom"
@@ -715,7 +747,7 @@ function buildEngine(data) {
     {
       "code": "G46.8",
       "term_no": "Annet spesifisert syndrom som skyldes hjernekarsykdom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1787,7 +1819,7 @@ function buildEngine(data) {
     {
       "code": "I78.0",
       "term_no": "Arvelig hemoragisk teleangiektasi",
-      "gruppe": "I78 Sykdommer i kapillarer",
+      "gruppe": "I78 Sykdommer i kapillærer",
       "relevans": "lav",
       "synonyms": [
         "Osler-Weber-Rendu",
@@ -1802,7 +1834,7 @@ function buildEngine(data) {
     {
       "code": "I78.1",
       "term_no": "Telangiektasi",
-      "gruppe": "I78 Sykdommer i kapillarer",
+      "gruppe": "I78 Sykdommer i kapillærer",
       "relevans": "lav",
       "synonyms": [
         "spider naevi",
@@ -1816,7 +1848,7 @@ function buildEngine(data) {
     {
       "code": "I78.8",
       "term_no": "Annen spesifisert sykdom i kapillærer",
-      "gruppe": "I78 Sykdommer i kapillarer",
+      "gruppe": "I78 Sykdommer i kapillærer",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1827,7 +1859,7 @@ function buildEngine(data) {
     {
       "code": "I78.9",
       "term_no": "Uspesifisert sykdom i kapillærer",
-      "gruppe": "I78 Sykdommer i kapillarer",
+      "gruppe": "I78 Sykdommer i kapillærer",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1985,7 +2017,7 @@ function buildEngine(data) {
     {
       "code": "I82.0",
       "term_no": "Budd-Chiaris syndrom",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "lav",
       "synonyms": [
         "Budd-Chiari"
@@ -1998,7 +2030,7 @@ function buildEngine(data) {
     {
       "code": "I82.1",
       "term_no": "Thrombophlebitis migrans",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2009,7 +2041,7 @@ function buildEngine(data) {
     {
       "code": "I82.2",
       "term_no": "Emboli eller trombose i vena cava",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "middels",
       "synonyms": [
         "cavatrombose",
@@ -2023,7 +2055,7 @@ function buildEngine(data) {
     {
       "code": "I82.3",
       "term_no": "Emboli eller trombose i vena renalis",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "lav",
       "synonyms": [
         "nyrevenetrombose"
@@ -2036,7 +2068,7 @@ function buildEngine(data) {
     {
       "code": "I82.8",
       "term_no": "Emboli eller trombose i annen spesifisert vene",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2047,7 +2079,7 @@ function buildEngine(data) {
     {
       "code": "I82.9",
       "term_no": "Emboli eller trombose i uspesifisert vene",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "middels",
       "synonyms": [
         "venetrombose uspesifisert lokalisasjon"
@@ -2060,7 +2092,7 @@ function buildEngine(data) {
     {
       "code": "I83.0",
       "term_no": "Åreknuter med ulcus i underekstremitet",
-      "gruppe": "I83 Aareknuter i underekstremitet",
+      "gruppe": "I83 Åreknuter i underekstremitet",
       "relevans": "middels",
       "synonyms": [
         "varicer med sår",
@@ -2074,7 +2106,7 @@ function buildEngine(data) {
     {
       "code": "I83.1",
       "term_no": "Åreknuter med betennelse i underekstremitet",
-      "gruppe": "I83 Aareknuter i underekstremitet",
+      "gruppe": "I83 Åreknuter i underekstremitet",
       "relevans": "middels",
       "synonyms": [
         "overfladisk tromboflebitt",
@@ -2089,7 +2121,7 @@ function buildEngine(data) {
     {
       "code": "I83.2",
       "term_no": "Åreknuter med både ulcus og betennelse i underekstremitet",
-      "gruppe": "I83 Aareknuter i underekstremitet",
+      "gruppe": "I83 Åreknuter i underekstremitet",
       "relevans": "lav",
       "synonyms": [
         "overfladisk tromboflebitt",
@@ -2106,7 +2138,7 @@ function buildEngine(data) {
     {
       "code": "I83.9",
       "term_no": "Åreknuter uten ulcus eller betennelse i underekstremitet",
-      "gruppe": "I83 Aareknuter i underekstremitet",
+      "gruppe": "I83 Åreknuter i underekstremitet",
       "relevans": "hoy",
       "synonyms": [
         "varicer",
@@ -2122,7 +2154,7 @@ function buildEngine(data) {
     {
       "code": "I85.0",
       "term_no": "Øsofagusvaricer med blødning",
-      "gruppe": "I85 Oesofagusvaricer",
+      "gruppe": "I85 Øsofagusvaricer",
       "relevans": "lav",
       "synonyms": [
         "blødende øsofagusvaricer"
@@ -2135,7 +2167,7 @@ function buildEngine(data) {
     {
       "code": "I85.9",
       "term_no": "Øsofagusvaricer uten blødning",
-      "gruppe": "I85 Oesofagusvaricer",
+      "gruppe": "I85 Øsofagusvaricer",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2146,7 +2178,7 @@ function buildEngine(data) {
     {
       "code": "I86.0",
       "term_no": "Åreknuter under tungen",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2157,7 +2189,7 @@ function buildEngine(data) {
     {
       "code": "I86.1",
       "term_no": "Åreknuter i pungen",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [
         "varikocele"
@@ -2170,7 +2202,7 @@ function buildEngine(data) {
     {
       "code": "I86.2",
       "term_no": "Åreknuter i bekken",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [
         "pelvic congestion syndrom"
@@ -2183,7 +2215,7 @@ function buildEngine(data) {
     {
       "code": "I86.3",
       "term_no": "Åreknuter i ytre kvinnelige kjønnsorganer",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [
         "vulvavaricer",
@@ -2197,7 +2229,7 @@ function buildEngine(data) {
     {
       "code": "I86.4",
       "term_no": "Åreknuter i magesekk",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [
         "gastriske varicer"
@@ -2210,7 +2242,7 @@ function buildEngine(data) {
     {
       "code": "I86.8",
       "term_no": "Åreknuter med annen spesifisert lokalisasjon",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2333,7 +2365,7 @@ function buildEngine(data) {
     {
       "code": "I89.0",
       "term_no": "Lymfødem ikke klassifisert annet sted",
-      "gruppe": "I89 Andre ikke-infektioese sykdommer i lymfekar/lymfeknuter",
+      "gruppe": "I89 Andre ikke-infeksiøse sykdommer i lymfekar/lymfeknuter",
       "relevans": "middels",
       "synonyms": [
         "lymfødem",
@@ -2347,7 +2379,7 @@ function buildEngine(data) {
     {
       "code": "I89.1",
       "term_no": "Lymfangitt",
-      "gruppe": "I89 Andre ikke-infektioese sykdommer i lymfekar/lymfeknuter",
+      "gruppe": "I89 Andre ikke-infeksiøse sykdommer i lymfekar/lymfeknuter",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2358,7 +2390,7 @@ function buildEngine(data) {
     {
       "code": "I89.8",
       "term_no": "Annen spesifisert ikke-infeksiøs forstyrrelse i lymfekar eller lymfeknuter",
-      "gruppe": "I89 Andre ikke-infektioese sykdommer i lymfekar/lymfeknuter",
+      "gruppe": "I89 Andre ikke-infeksiøse sykdommer i lymfekar/lymfeknuter",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2369,7 +2401,7 @@ function buildEngine(data) {
     {
       "code": "I89.9",
       "term_no": "Uspesifisert ikke-infeksiøs forstyrrelse i lymfekar eller lymfeknuter",
-      "gruppe": "I89 Andre ikke-infektioese sykdommer i lymfekar/lymfeknuter",
+      "gruppe": "I89 Andre ikke-infeksiøse sykdommer i lymfekar/lymfeknuter",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2734,7 +2766,7 @@ function buildEngine(data) {
     {
       "code": "T82.0",
       "term_no": "Mekanisk komplikasjon ved hjerteklaffprotese",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2745,7 +2777,7 @@ function buildEngine(data) {
     {
       "code": "T82.1",
       "term_no": "Mekanisk komplikasjon av elektronisk hjertestimulator",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "lav",
       "synonyms": [
         "pacemakerkomplikasjon"
@@ -2758,7 +2790,7 @@ function buildEngine(data) {
     {
       "code": "T82.2",
       "term_no": "Mekanisk komplikasjon ved koronararteriebypass eller klaffebærende transplantat",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2769,7 +2801,7 @@ function buildEngine(data) {
     {
       "code": "T82.3",
       "term_no": "Mekanisk komplikasjon ved annnet kartransplantat",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "hoy",
       "synonyms": [
         "graftdysfunksjon",
@@ -2786,7 +2818,7 @@ function buildEngine(data) {
     {
       "code": "T82.4",
       "term_no": "Mekanisk komplikasjon ved dialysekateter i blodkar",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "hoy",
       "synonyms": [
         "dialysekateter komplikasjon",
@@ -2801,7 +2833,7 @@ function buildEngine(data) {
     {
       "code": "T82.5",
       "term_no": "Mekanisk komplikasjon ved annen innretning eller implantat i hjerte eller blodkar",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "hoy",
       "synonyms": [
         "AV-fistel komplikasjon",
@@ -2819,7 +2851,7 @@ function buildEngine(data) {
     {
       "code": "T82.6",
       "term_no": "Infeksjon eller betennelsesreaksjon som skyldes hjerteklaffprotese",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2830,7 +2862,7 @@ function buildEngine(data) {
     {
       "code": "T82.7",
       "term_no": "Infeksjon eller betennelsesreaksjon som skyldes andre innretning, implantat eller transplantat i hjerte eller blodkar",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "hoy",
       "synonyms": [
         "graftinfeksjon",
@@ -2845,7 +2877,7 @@ function buildEngine(data) {
     {
       "code": "T82.8",
       "term_no": "Annen spesifisert komplikasjon ved protese, implantat eller transplantat i hjerte eller blodkar",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "hoy",
       "synonyms": [
         "pseudoaneurisme",
@@ -2860,7 +2892,7 @@ function buildEngine(data) {
     {
       "code": "T82.9",
       "term_no": "Uspesifisert komplikasjon ved protese, implantat eller transplantat i hjerte og blodkar",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "middels",
       "synonyms": [
         "graftkomplikasjon uspesifisert"
@@ -3600,7 +3632,7 @@ function buildEngine(data) {
     {
       "code": "L97",
       "term_no": "Sår på underekstremitet, ikke klassifisert annet sted",
-      "gruppe": "Leggsaar",
+      "gruppe": "Leggsår",
       "relevans": "hoy",
       "synonyms": [
         "leggsår",
@@ -3690,7 +3722,7 @@ function buildEngine(data) {
     {
       "code": "Q25.4",
       "term_no": "Annen medfødt misdannelse av aorta",
-      "gruppe": "Medfoedte karmisdannelser",
+      "gruppe": "Medfødte karmisdannelser",
       "relevans": "middels",
       "synonyms": [
         "coarctatio aorta",
@@ -3705,7 +3737,7 @@ function buildEngine(data) {
     {
       "code": "S15.0",
       "term_no": "Skade på arteria carotis",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "hoy",
       "synonyms": [
         "carotisskade",
@@ -3720,7 +3752,7 @@ function buildEngine(data) {
     {
       "code": "S15.1",
       "term_no": "Skade på arteria vertebralis",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "middels",
       "synonyms": [
         "vertebralisskade hals"
@@ -3733,7 +3765,7 @@ function buildEngine(data) {
     {
       "code": "S15.2",
       "term_no": "Skade på vena jugularis externa",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3744,7 +3776,7 @@ function buildEngine(data) {
     {
       "code": "S15.3",
       "term_no": "Skade på vena jugularis interna",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3755,7 +3787,7 @@ function buildEngine(data) {
     {
       "code": "S15.7",
       "term_no": "Skade på flere blodkar i halsregion",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3766,7 +3798,7 @@ function buildEngine(data) {
     {
       "code": "S15.8",
       "term_no": "Skade på andre spesifiserte blodkar i halsregion",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3777,7 +3809,7 @@ function buildEngine(data) {
     {
       "code": "S15.9",
       "term_no": "Skade på uspesifisert blodkar i halsregion",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "middels",
       "synonyms": [
         "halskarskade uspesifisert"
@@ -3790,7 +3822,7 @@ function buildEngine(data) {
     {
       "code": "S25.0",
       "term_no": "Skade på torakaldel av aorta",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "traumatisk aortaruptur",
@@ -3805,7 +3837,7 @@ function buildEngine(data) {
     {
       "code": "S25.1",
       "term_no": "Skade på truncus brachiocephalicus eller arteria subclavia",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3819,7 +3851,7 @@ function buildEngine(data) {
     {
       "code": "S25.2",
       "term_no": "Skade på vena cava superior",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3833,7 +3865,7 @@ function buildEngine(data) {
     {
       "code": "S25.3",
       "term_no": "Skade på vena brachiocephalica eller vena subclavia",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3847,7 +3879,7 @@ function buildEngine(data) {
     {
       "code": "S25.4",
       "term_no": "Skade på lungekar",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3861,7 +3893,7 @@ function buildEngine(data) {
     {
       "code": "S25.5",
       "term_no": "Skade på interkostalkar",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3875,7 +3907,7 @@ function buildEngine(data) {
     {
       "code": "S25.7",
       "term_no": "Skade på flere blodkar i brystkasse",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3889,7 +3921,7 @@ function buildEngine(data) {
     {
       "code": "S25.8",
       "term_no": "Skade på annet spesifisert blodkar i brystkasse",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3903,7 +3935,7 @@ function buildEngine(data) {
     {
       "code": "S25.9",
       "term_no": "Skade på uspesifisert blodkar i brystkasse",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3917,7 +3949,7 @@ function buildEngine(data) {
     {
       "code": "S35.0",
       "term_no": "Skade på abdominaldel av aorta",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "traumatisk skade bukaorta"
@@ -3930,7 +3962,7 @@ function buildEngine(data) {
     {
       "code": "S35.1",
       "term_no": "Skade på vena cava inferior",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3944,7 +3976,7 @@ function buildEngine(data) {
     {
       "code": "S35.2",
       "term_no": "Skade på arteria coeliaca eller arteria mesenterica",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3958,7 +3990,7 @@ function buildEngine(data) {
     {
       "code": "S35.3",
       "term_no": "Skade på vena portae eller vena lienalis",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3972,7 +4004,7 @@ function buildEngine(data) {
     {
       "code": "S35.4",
       "term_no": "Skade på nyrekar",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3986,7 +4018,7 @@ function buildEngine(data) {
     {
       "code": "S35.5",
       "term_no": "Skade på bekkenkar",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -4000,7 +4032,7 @@ function buildEngine(data) {
     {
       "code": "S35.7",
       "term_no": "Skade på flere blodkar i bukregion, nedre del rygg eller bekkenregion",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -4014,7 +4046,7 @@ function buildEngine(data) {
     {
       "code": "S35.8",
       "term_no": "Skade på annet spesifisert blodkar i bukregion, nedre del rygg eller bekkenregion",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -4028,7 +4060,7 @@ function buildEngine(data) {
     {
       "code": "S35.9",
       "term_no": "Skade på uspesifisert blodkar i bukregion, nedre del rygg eller bekkenregion",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -4042,7 +4074,7 @@ function buildEngine(data) {
     {
       "code": "S45.0",
       "term_no": "Skade på arteria axillaris",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -4056,7 +4088,7 @@ function buildEngine(data) {
     {
       "code": "S45.1",
       "term_no": "Skade på arteria brachialis",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -4070,7 +4102,7 @@ function buildEngine(data) {
     {
       "code": "S45.2",
       "term_no": "Skade på vena axillaris eller vena brachialis",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -4084,7 +4116,7 @@ function buildEngine(data) {
     {
       "code": "S45.3",
       "term_no": "Skade på overfladisk vene i skulder- eller overarmsregion",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -4098,7 +4130,7 @@ function buildEngine(data) {
     {
       "code": "S45.7",
       "term_no": "Skade på flere blodkar i skulder- eller overarmsregion",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -4112,7 +4144,7 @@ function buildEngine(data) {
     {
       "code": "S45.8",
       "term_no": "Skade på annet spesifisert blodkar i skulder- eller overarmsregion",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -4126,7 +4158,7 @@ function buildEngine(data) {
     {
       "code": "S45.9",
       "term_no": "Skade på uspesifisert blodkar i skulder- eller overarmsregion",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -4140,7 +4172,7 @@ function buildEngine(data) {
     {
       "code": "S55.0",
       "term_no": "Skade på arteria ulnaris i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -4153,7 +4185,7 @@ function buildEngine(data) {
     {
       "code": "S55.1",
       "term_no": "Skade på arteria radialis i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -4166,7 +4198,7 @@ function buildEngine(data) {
     {
       "code": "S55.2",
       "term_no": "Skade på vene i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -4179,7 +4211,7 @@ function buildEngine(data) {
     {
       "code": "S55.7",
       "term_no": "Skade på flere blodkar i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -4192,7 +4224,7 @@ function buildEngine(data) {
     {
       "code": "S55.8",
       "term_no": "Skade på annet spesifisert blodkar i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -4205,7 +4237,7 @@ function buildEngine(data) {
     {
       "code": "S55.9",
       "term_no": "Skade på uspesifisert blodkar i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -4218,7 +4250,7 @@ function buildEngine(data) {
     {
       "code": "S65.0",
       "term_no": "Skade på arteria ulnaris i håndledds- eller håndregion",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4229,7 +4261,7 @@ function buildEngine(data) {
     {
       "code": "S65.1",
       "term_no": "Skade på arteria radialis i håndledds- eller håndregion",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4240,7 +4272,7 @@ function buildEngine(data) {
     {
       "code": "S65.2",
       "term_no": "Skade på overfladisk arteriebue i håndflate",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4251,7 +4283,7 @@ function buildEngine(data) {
     {
       "code": "S65.3",
       "term_no": "Skade på dyp arteriebue i håndflate",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4262,7 +4294,7 @@ function buildEngine(data) {
     {
       "code": "S65.4",
       "term_no": "Skade på blodkar i tommel",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4273,7 +4305,7 @@ function buildEngine(data) {
     {
       "code": "S65.5",
       "term_no": "Skade på blodkar i en annen finger enn tommel",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4284,7 +4316,7 @@ function buildEngine(data) {
     {
       "code": "S65.7",
       "term_no": "Skade på flere blodkar i håndledds- eller håndregion",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4295,7 +4327,7 @@ function buildEngine(data) {
     {
       "code": "S65.8",
       "term_no": "Skade på annet spesifisert blodkar i håndledds- eller håndregion",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4306,7 +4338,7 @@ function buildEngine(data) {
     {
       "code": "S65.9",
       "term_no": "Skade på uspesifisert blodkar i håndledds- eller håndregion",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4317,7 +4349,7 @@ function buildEngine(data) {
     {
       "code": "S75.0",
       "term_no": "Skade på arteria femoralis",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -4331,7 +4363,7 @@ function buildEngine(data) {
     {
       "code": "S75.1",
       "term_no": "Skade på vena femoralis i hofte- eller lårregion",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -4345,7 +4377,7 @@ function buildEngine(data) {
     {
       "code": "S75.2",
       "term_no": "Skade på vena saphena magna i hofte- eller lårregion",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -4359,7 +4391,7 @@ function buildEngine(data) {
     {
       "code": "S75.7",
       "term_no": "Skade på flere blodkar i hofte- eller lårregion",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -4373,7 +4405,7 @@ function buildEngine(data) {
     {
       "code": "S75.8",
       "term_no": "Skade på annet spesifisert blodkar i hofte- eller lårregion",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -4387,7 +4419,7 @@ function buildEngine(data) {
     {
       "code": "S75.9",
       "term_no": "Skade på uspesifisert blodkar i hofte- eller lårregion",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -4401,7 +4433,7 @@ function buildEngine(data) {
     {
       "code": "S85.0",
       "term_no": "Skade på arteria poplitea",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -4415,7 +4447,7 @@ function buildEngine(data) {
     {
       "code": "S85.1",
       "term_no": "Skade på arteria tibialis anterior eller posterior",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -4429,7 +4461,7 @@ function buildEngine(data) {
     {
       "code": "S85.2",
       "term_no": "Skade på arteria fibularis",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -4443,7 +4475,7 @@ function buildEngine(data) {
     {
       "code": "S85.3",
       "term_no": "Skade på vena saphena magna i legg",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -4457,7 +4489,7 @@ function buildEngine(data) {
     {
       "code": "S85.4",
       "term_no": "Skade på vena saphena parva i legg",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -4471,7 +4503,7 @@ function buildEngine(data) {
     {
       "code": "S85.5",
       "term_no": "Skade på vena poplitea",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -4485,7 +4517,7 @@ function buildEngine(data) {
     {
       "code": "S85.7",
       "term_no": "Skade på flere blodkar i legg",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -4499,7 +4531,7 @@ function buildEngine(data) {
     {
       "code": "S85.8",
       "term_no": "Skade på annet spesifisert blodkar i legg",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -4513,7 +4545,7 @@ function buildEngine(data) {
     {
       "code": "S85.9",
       "term_no": "Skade på uspesifisert blodkar i legg",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -4527,7 +4559,7 @@ function buildEngine(data) {
     {
       "code": "S95.0",
       "term_no": "Skade på arteria dorsalis pedis",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4538,7 +4570,7 @@ function buildEngine(data) {
     {
       "code": "S95.1",
       "term_no": "Skade på arteria plantaris",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4549,7 +4581,7 @@ function buildEngine(data) {
     {
       "code": "S95.2",
       "term_no": "Skade på vene på fotrygg",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4560,7 +4592,7 @@ function buildEngine(data) {
     {
       "code": "S95.7",
       "term_no": "Skade på flere blodkar i ankel eller fot",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4571,7 +4603,7 @@ function buildEngine(data) {
     {
       "code": "S95.8",
       "term_no": "Skade på annet spesifisert blodkar i ankel eller fot",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4582,7 +4614,7 @@ function buildEngine(data) {
     {
       "code": "S95.9",
       "term_no": "Skade på uspesifisert blodkar i ankel eller fot",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -5117,74 +5149,244 @@ function buildEngine(data) {
   const data = JSON.parse(document.getElementById('karma-data').textContent);
   const engine = buildEngine(data);
 
+  const ALL = data.codes.concat(data.tilstotende_koder);
+  const BY_CODE = new Map(ALL.map(c => [c.code, c]));
+
   const qInput = document.getElementById('q');
-  const resultsEl = document.getElementById('results');
   const clearBtn = document.getElementById('clear-btn');
+  const resultsEl = document.getElementById('results');
+  const detailEl = document.getElementById('detailBox');
+  const headInfoEl = document.getElementById('panelHeadInfo');
+  const treeEl = document.getElementById('tree');
+  const treeInfoEl = document.getElementById('treeInfo');
+
+  const PAGE = 40;
+  let shown = PAGE;
+  let currentQuery = '';
+  let currentHits = [];
+  let selectedCode = null;
 
   function chipClass(code) {
-    if (code.startsWith('I')) return 'i';
-    if (code.startsWith('T')) return 't';
-    if (code.startsWith('G')) return 'g';
-    if (code.startsWith('M')) return 'm';
+    const c = code.charAt(0);
+    if (c === 'I') return 'i';
+    if (c === 'T') return 't';
+    if (c === 'G') return 'g';
+    if (c === 'M') return 'm';
     return 'other';
   }
-
   function escapeHtml(s) {
-    return (s || '').replace(/[&<>"']/g, c => ({
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     }[c]));
   }
 
-  function render(query) {
-    const trimmed = query.trim();
+  // ---------------------------------------------------------------------
+  // Treff
+  // ---------------------------------------------------------------------
+  function renderResults() {
+    const trimmed = currentQuery.trim();
     clearBtn.style.display = trimmed.length > 0 ? 'flex' : 'none';
 
     if (trimmed.length < 2) {
-      resultsEl.innerHTML = '<div class="hint">Skriv <b>minst 2 tegn</b> for å starte søket — f.eks. «claudicatio», «AAA», «carotisstenose».</div>';
+      currentHits = [];
+      headInfoEl.textContent = '';
+      resultsEl.innerHTML = '<div class="empty-state"><div class="big">Hva leter du etter?</div>' +
+        'Skriv <b>minst 2 tegn</b> — f.eks. «claudicatio», «AAA», «carotisstenose».<br>' +
+        'Eller velg en diagnose i trevisningen.</div>';
       return;
     }
 
-    const hits = engine.search(trimmed);
+    currentHits = engine.search(trimmed);
 
-    if (hits.length === 0) {
-      resultsEl.innerHTML = '<div class="hint">Ingen treff på «' + escapeHtml(trimmed) + '». Prøv et annet ord, en forkortelse, eller sjekk stavemåten.</div>';
+    if (currentHits.length === 0) {
+      headInfoEl.textContent = '0 treff';
+      resultsEl.innerHTML = '<div class="empty-state"><div class="big">Ingen treff</div>' +
+        'Ingen treff på «' + escapeHtml(trimmed) + '». Prøv et annet ord, en forkortelse, eller sjekk stavemåten.</div>';
       return;
     }
 
-    const usedFallback = hits.length > 0 && hits[0].kilde === 'eller-fallback';
+    headInfoEl.textContent = currentHits.length + (currentHits.length === 1 ? ' treff' : ' treff');
+    const usedFallback = currentHits[0].kilde === 'eller-fallback';
     let html = '';
     if (usedFallback) {
       html += '<div class="fallback-note">Ingen eksakte treff på alle ord — viser nærmeste treff, rangert etter antall matchende ord.</div>';
     }
-
-    html += '<div class="result-list">';
-    for (const h of hits) {
-      const cls = chipClass(h.code);
-      html += '<div class="card">';
-      html += '  <div class="card-top">';
-      html += '    <span class="code-chip ' + cls + ' mono">' + escapeHtml(h.code) + '</span>';
-      if (h.entry.gruppe) {
-        html += '    <span class="gruppe-label">' + escapeHtml(h.entry.gruppe) + '</span>';
-      }
-      html += '  </div>';
-      html += '  <div class="term">' + escapeHtml(h.entry.term_no) + '</div>';
-      if (h.bidiagnose) {
-        html += '  <div class="bidiag-row">+ bidiagnose <span class="mono">' + escapeHtml(h.bidiagnose) + '</span></div>';
-      }
-      html += '</div>';
+    const visible = currentHits.slice(0, shown);
+    for (const h of visible) {
+      html += '<div class="result-row' + (h.code === selectedCode ? ' selected' : '') + '" data-code="' + escapeHtml(h.code) +
+              '" role="button" tabindex="0">' +
+        '<span class="r-code ' + chipClass(h.code) + '">' + escapeHtml(h.code) + '</span>' +
+        '<div class="r-text"><div class="main">' + escapeHtml(h.entry.term_no) + '</div>' +
+        (h.entry.gruppe ? '<div class="meta">' + escapeHtml(h.entry.gruppe) + '</div>' : '') + '</div>' +
+        (h.bidiagnose ? '<div class="r-badges"><span class="badge bidiag">+ ' + escapeHtml(h.bidiagnose) + '</span></div>' : '') +
+        '</div>';
     }
-    html += '</div>';
+    if (currentHits.length > shown) {
+      html += '<button type="button" class="more-btn" id="moreBtn">Vis flere (' + (currentHits.length - shown) + ' igjen)</button>';
+    }
     resultsEl.innerHTML = html;
   }
 
-  qInput.addEventListener('input', () => render(qInput.value));
-  clearBtn.addEventListener('click', () => {
-    qInput.value = '';
-    qInput.focus();
-    render('');
+  function markSelectedResult() {
+    resultsEl.querySelectorAll('.result-row').forEach(r =>
+      r.classList.toggle('selected', r.getAttribute('data-code') === selectedCode));
+  }
+
+  // ---------------------------------------------------------------------
+  // Detaljboks
+  // ---------------------------------------------------------------------
+  function renderDetail(code) {
+    const e = BY_CODE.get(code);
+    if (!e) { detailEl.innerHTML = ''; return; }
+    let html = '<div class="detail-box">' +
+      '<div class="d-top"><span class="r-code ' + chipClass(code) + '">' + escapeHtml(code) + '</span>' +
+      (e.gruppe ? '<span class="dgruppe">' + escapeHtml(e.gruppe) + '</span>' : '') + '</div>' +
+      '<div class="dtext">' + escapeHtml(e.term_no) + '</div>';
+    if (e.synonyms && e.synonyms.length) {
+      html += '<div class="dsyn"><b>Søkeord:</b> ' + e.synonyms.map(escapeHtml).join(' · ') + '</div>';
+    }
+    const bi = (e.bidiagnose_forslag || []).filter(b => b && b.kode);
+    for (const b of bi) {
+      const be = BY_CODE.get(b.kode);
+      html += '<div class="dbidiag"><span>Foreslått bidiagnose</span>' +
+        '<button type="button" class="chip-link" data-code="' + escapeHtml(b.kode) + '">' + escapeHtml(b.kode) + '</button>' +
+        (be ? '<span>' + escapeHtml(be.term_no) + '</span>' : '') +
+        (b.styrke ? '<span>(' + escapeHtml(b.styrke) + ')</span>' : '') + '</div>';
+    }
+    html += '<button type="button" class="show-in-tree" id="showInTree">Vis i trevisning ↓</button></div>';
+    detailEl.innerHTML = html;
+  }
+
+  // ---------------------------------------------------------------------
+  // Trevisning (bygges fra kodelisten: gruppe → kode → undergruppe)
+  // ---------------------------------------------------------------------
+  function splitGroup(g) {
+    const m = (g || '').match(/^([A-Z]\d{2})\s+(.*)$/);
+    return m ? { key: m[1], name: m[2] } : { key: '', name: g || 'Andre' };
+  }
+
+  function buildTree() {
+    const groups = new Map();
+    for (const c of ALL) {
+      if (!groups.has(c.gruppe)) groups.set(c.gruppe, []);
+      groups.get(c.gruppe).push(c);
+    }
+    const list = Array.from(groups.entries()).map(([g, codes]) => {
+      codes.sort((a, b) => (a.code < b.code ? -1 : a.code > b.code ? 1 : 0));
+      return { gruppe: g, codes };
+    });
+    list.sort((a, b) => (a.codes[0].code < b.codes[0].code ? -1 : 1));
+
+    function nest(codes) {
+      const roots = [], stack = [];
+      for (const c of codes) {
+        const node = { c, kids: [] };
+        while (stack.length && !c.code.startsWith(stack[stack.length - 1].c.code)) stack.pop();
+        (stack.length ? stack[stack.length - 1].kids : roots).push(node);
+        stack.push(node);
+      }
+      return roots;
+    }
+    function countNodes(n) { return 1 + n.kids.reduce((s, k) => s + countNodes(k), 0); }
+    function nodeHtml(n, depth) {
+      const pad = 14 + depth * 16;
+      const code = escapeHtml(n.c.code);
+      const inner = '<span class="tcode">' + code + '</span><span class="ttext">' + escapeHtml(n.c.term_no) + '</span>';
+      if (!n.kids.length) {
+        return '<div class="tree-code-row" data-code="' + code + '" role="button" tabindex="0" style="padding-left:' + (pad + 14) + 'px">' + inner + '</div>';
+      }
+      const cnt = n.kids.reduce((s, k) => s + countNodes(k), 0);
+      return '<div class="tree-sub">' +
+        '<div class="tree-sub-head" data-code="' + code + '" role="button" tabindex="0" style="padding-left:' + pad + 'px">' +
+        '<span class="chev">▶</span>' + inner + '<span class="tree-group-count">' + cnt + '</span></div>' +
+        '<div class="tree-codes">' + n.kids.map(k => nodeHtml(k, depth + 1)).join('') + '</div></div>';
+    }
+
+    let html = '';
+    for (const g of list) {
+      const sg = splitGroup(g.gruppe);
+      const first = g.codes[0].code, last = g.codes[g.codes.length - 1].code;
+      const label = sg.key ? sg.key + ' — ' + sg.name
+        : (first.slice(0, 3) === last.slice(0, 3) ? first.slice(0, 3) : first.slice(0, 3) + '–' + last.slice(0, 3)) + ' — ' + sg.name;
+      html += '<div class="tree-group"><div class="tree-group-head" role="button" tabindex="0">' +
+        '<span class="chev">▶</span><span class="tree-group-name">' + escapeHtml(label) + '</span>' +
+        '<span class="tree-group-count">' + g.codes.length + '</span></div>' +
+        '<div class="tree-children">' + nest(g.codes).map(n => nodeHtml(n, 0)).join('') + '</div></div>';
+    }
+    treeEl.innerHTML = html;
+    treeInfoEl.textContent = ALL.length + ' koder';
+  }
+
+  function revealInTree(code, scrollTree) {
+    const el = treeEl.querySelector('[data-code="' + code + '"]');
+    if (!el) return;
+    let p = el.parentElement;
+    while (p && p !== treeEl) {
+      if (p.classList.contains('tree-group') || p.classList.contains('tree-sub')) p.classList.add('open');
+      p = p.parentElement;
+    }
+    treeEl.querySelectorAll('.highlight').forEach(r => r.classList.remove('highlight'));
+    el.classList.add('highlight');
+    if (scrollTree) {
+      const cr = treeEl.getBoundingClientRect(), rr = el.getBoundingClientRect();
+      treeEl.scrollTo({ top: treeEl.scrollTop + (rr.top - cr.top) - cr.height / 2 + rr.height / 2, behavior: 'smooth' });
+    }
+  }
+
+  // ---------------------------------------------------------------------
+  // Valg av diagnose (fra treff, tre eller bidiagnose)
+  // ---------------------------------------------------------------------
+  function selectCode(code) {
+    if (!BY_CODE.has(code)) return;
+    selectedCode = code;
+    renderDetail(code);
+    markSelectedResult();
+    revealInTree(code, true);
+  }
+
+  resultsEl.addEventListener('click', ev => {
+    if (ev.target.closest('#moreBtn')) { shown += PAGE; renderResults(); return; }
+    const row = ev.target.closest('.result-row');
+    if (row) selectCode(row.getAttribute('data-code'));
+  });
+  detailEl.addEventListener('click', ev => {
+    const chip = ev.target.closest('.chip-link');
+    if (chip) { selectCode(chip.getAttribute('data-code')); return; }
+    if (ev.target.closest('#showInTree')) {
+      document.getElementById('treePanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+  treeEl.addEventListener('click', ev => {
+    const chev = ev.target.closest('.chev');
+    const gh = ev.target.closest('.tree-group-head');
+    if (gh) { gh.parentElement.classList.toggle('open'); return; }
+    const sh = ev.target.closest('.tree-sub-head');
+    if (sh) {
+      if (chev) { sh.parentElement.classList.toggle('open'); return; }
+      sh.parentElement.classList.add('open');
+      selectCode(sh.getAttribute('data-code'));
+      return;
+    }
+    const row = ev.target.closest('.tree-code-row');
+    if (row) selectCode(row.getAttribute('data-code'));
+  });
+  document.addEventListener('keydown', ev => {
+    if (ev.key !== 'Enter' && ev.key !== ' ') return;
+    const t = ev.target;
+    if (t && t.getAttribute && t.getAttribute('role') === 'button' && t.tagName === 'DIV') {
+      ev.preventDefault(); t.click();
+    }
   });
 
-  render('');
+  qInput.addEventListener('input', () => {
+    currentQuery = qInput.value; shown = PAGE; renderResults();
+  });
+  clearBtn.addEventListener('click', () => {
+    qInput.value = ''; currentQuery = ''; shown = PAGE; qInput.focus(); renderResults();
+  });
+
+  buildTree();
+  renderResults();
 })();
 </script>
 <script>

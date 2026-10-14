@@ -1,11 +1,12 @@
 // Karma Diagnose - service worker
+// index-hash: 62e9f37ccf
 // Bump CACHE_VERSION every time index.html (or this file) changes.
 // build.py does this automatically.
 //
 // Strategy: network-first. Always try the network first so updates take effect
 // on the next reload; fall back to the cache only when offline.
 
-const CACHE_VERSION = "v2";
+const CACHE_VERSION = "v4";
 const CACHE_NAME = "karma-diagnose-" + CACHE_VERSION;
 
 const ASSETS = [
