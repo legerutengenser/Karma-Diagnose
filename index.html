@@ -5401,17 +5401,22 @@ function buildEngine(data) {
 
   // «Forslag»-knappen åpner Google Forms. Skjemaet settes opp en gang:
   //  - formId: id-en fra skjemaets lenke (docs.google.com/forms/d/<formId>/viewform)
-  //  - queryField / codeField (valgfritt): «entry.123456789» for felt som skal forhåndsutfylles
-  //    med gjeldende søk og valgt kode. Hentes fra «Få forhåndsutfylt lenke» i Google Forms.
-  // Er formId tom, vises ikke knappen.
-  const FEEDBACK = { formId: '', queryField: '', codeField: '' };
+  //  - queryField / codeField (valgfritt): «entry.123456789» for feltene «Søkeord» og
+  //    «Ønsket resultat/diagnosekode». Fylles ut med gjeldende søk og valgt kode.
+  //  - choiceField + choiceValue (valgfritt): flervalgsspørsmålet «Hvordan vil du gi forslaget?» og
+  //    teksten på alternativet «Søkeord og ønsket diagnosekode». Forhåndsvelges bare når brukeren
+  //    har søkt eller valgt en kode, ellers velger brukeren selv (f.eks. fritekst).
+  // Er formId tom, vises ikke knappen. Hentes fra «Få forhåndsutfylt lenke» i Google Forms.
+  const FEEDBACK = { formId: '', queryField: '', codeField: '', choiceField: '', choiceValue: '' };
   const feedbackBtn = document.getElementById('feedbackBtn');
   if (feedbackBtn && FEEDBACK.formId) {
     feedbackBtn.hidden = false;
     feedbackBtn.addEventListener('click', () => {
       const params = new URLSearchParams();
-      if (FEEDBACK.queryField && currentQuery.trim()) params.set(FEEDBACK.queryField, currentQuery.trim());
+      const q = currentQuery.trim();
+      if (FEEDBACK.queryField && q) params.set(FEEDBACK.queryField, q);
       if (FEEDBACK.codeField && selectedCode) params.set(FEEDBACK.codeField, selectedCode);
+      if (FEEDBACK.choiceField && FEEDBACK.choiceValue && (q || selectedCode)) params.set(FEEDBACK.choiceField, FEEDBACK.choiceValue);
       const qs = params.toString();
       const url = 'https://docs.google.com/forms/d/' + FEEDBACK.formId + '/viewform' + (qs ? '?usp=pp_url&' + qs : '');
       window.open(url, '_blank', 'noopener');
