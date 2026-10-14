@@ -59,6 +59,15 @@
     text-transform: uppercase; letter-spacing: 0.06em;
   }
 
+  .header-right { display: flex; align-items: center; gap: 14px; }
+  .feedback-btn {
+    font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--ink); border: 1px solid var(--ink); border-radius: 3px; padding: 5px 10px;
+    text-decoration: none; white-space: nowrap; background: transparent; cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+  }
+  .feedback-btn:hover { background: var(--ink); color: #fff; }
+
   .search-wrap { position: relative; margin-bottom: 18px; }
   .search-wrap input {
     width: 100%; font-size: 19px; font-family: var(--sans);
@@ -203,6 +212,8 @@
     header.top { padding-bottom: 10px; margin-bottom: 14px; }
     header.top h1 { font-size: 22px; }
     header.top .sub { font-size: 10.5px; }
+    .header-right { gap: 8px; flex-wrap: wrap; }
+    .feedback-btn { padding: 6px 10px; }
     .search-wrap input { font-size: 17px; padding: 14px 44px 14px 16px; }
     .layout { gap: 14px; }
     .panel-head { padding: 9px 12px; font-size: 10.5px; }
@@ -228,7 +239,10 @@
 <div class="app">
   <header class="top">
     <h1>Karma <span>Diagnose</span></h1>
-    <div class="sub">Karkirurgi · ICD-10 · 2026</div>
+    <div class="header-right">
+      <div class="sub">Karkirurgi · ICD-10 · 2026</div>
+      <button type="button" class="feedback-btn" id="feedbackBtn" hidden>Forslag</button>
+    </div>
   </header>
 
   <div class="search-wrap">
@@ -5384,6 +5398,25 @@ function buildEngine(data) {
   clearBtn.addEventListener('click', () => {
     qInput.value = ''; currentQuery = ''; shown = PAGE; qInput.focus(); renderResults();
   });
+
+  // «Forslag»-knappen åpner Google Forms. Skjemaet settes opp en gang:
+  //  - formId: id-en fra skjemaets lenke (docs.google.com/forms/d/<formId>/viewform)
+  //  - queryField / codeField (valgfritt): «entry.123456789» for felt som skal forhåndsutfylles
+  //    med gjeldende søk og valgt kode. Hentes fra «Få forhåndsutfylt lenke» i Google Forms.
+  // Er formId tom, vises ikke knappen.
+  const FEEDBACK = { formId: '', queryField: '', codeField: '' };
+  const feedbackBtn = document.getElementById('feedbackBtn');
+  if (feedbackBtn && FEEDBACK.formId) {
+    feedbackBtn.hidden = false;
+    feedbackBtn.addEventListener('click', () => {
+      const params = new URLSearchParams();
+      if (FEEDBACK.queryField && currentQuery.trim()) params.set(FEEDBACK.queryField, currentQuery.trim());
+      if (FEEDBACK.codeField && selectedCode) params.set(FEEDBACK.codeField, selectedCode);
+      const qs = params.toString();
+      const url = 'https://docs.google.com/forms/d/' + FEEDBACK.formId + '/viewform' + (qs ? '?usp=pp_url&' + qs : '');
+      window.open(url, '_blank', 'noopener');
+    });
+  }
 
   buildTree();
   renderResults();
