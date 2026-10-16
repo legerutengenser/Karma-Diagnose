@@ -5,7 +5,7 @@
     {
       "code": "G45.0",
       "term_no": "Arteria vertebralis-basilaris-syndrom",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "middels",
       "synonyms": [
         "vertebrobasilar-syndrom",
@@ -19,9 +19,17 @@
     {
       "code": "G45.1",
       "term_no": "Carotissyndrom",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "hoy",
-      "synonyms": [],
+      "synonyms": [
+        "TIA",
+        "forbigående lammelse",
+        "forbigående afasi",
+        "forbigående talevansker",
+        "forbigående hemiparese",
+        "drypp",
+        "symptomatisk carotisstenose"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [
@@ -37,7 +45,7 @@
     {
       "code": "G45.2",
       "term_no": "Syndrom med opphav i flere eller dobbeltsidige precerebrale arterier",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "middels",
       "synonyms": [
         "bilateralt precerebralt syndrom"
@@ -50,9 +58,16 @@
     {
       "code": "G45.3",
       "term_no": "Amaurosis fugax",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "hoy",
-      "synonyms": [],
+      "synonyms": [
+        "forbigående blindhet",
+        "synstap forbigående",
+        "gardin foran øyet",
+        "monokulær blindhet",
+        "retinal TIA",
+        "symptomatisk carotisstenose"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [
@@ -68,7 +83,7 @@
     {
       "code": "G45.4",
       "term_no": "Forbigående global amnesi",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "middels",
       "synonyms": [
         "TGA",
@@ -82,7 +97,7 @@
     {
       "code": "G45.8",
       "term_no": "Annet spesifisert forbigående cerebralt iskemisk anfall eller beslektet syndrom",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "middels",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -93,7 +108,7 @@
     {
       "code": "G45.9",
       "term_no": "Uspesifisert forbigående cerebralt iskemisk anfall",
-      "gruppe": "G45 Forbigaaende cerebrale iskemiske anfall",
+      "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "middels",
       "synonyms": [
         "TIA uspesifisert",
@@ -107,7 +122,7 @@
     {
       "code": "G46.0",
       "term_no": "Arteria cerebri media-syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "MCA-syndrom",
@@ -121,7 +136,7 @@
     {
       "code": "G46.1",
       "term_no": "Arteria cerebri anterior-syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "ACA-syndrom",
@@ -135,7 +150,7 @@
     {
       "code": "G46.2",
       "term_no": "Arteria cerebri posterior-syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "PCA-syndrom",
@@ -149,7 +164,7 @@
     {
       "code": "G46.3",
       "term_no": "Syndrom som skyldes hjernestammeslag",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "hjernestammeslag",
@@ -163,7 +178,7 @@
     {
       "code": "G46.4",
       "term_no": "Syndrom som skyldes cerebellart slag",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "cerebellart slag syndrom"
@@ -176,7 +191,7 @@
     {
       "code": "G46.5",
       "term_no": "Rent motorisk lakunært syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "lakunært syndrom motorisk"
@@ -189,7 +204,7 @@
     {
       "code": "G46.6",
       "term_no": "Rent sensorisk lakunært syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "lakunært syndrom sensorisk"
@@ -202,7 +217,7 @@
     {
       "code": "G46.7",
       "term_no": "Annet lakunært syndrom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [
         "annet lakunært syndrom"
@@ -215,7 +230,7 @@
     {
       "code": "G46.8",
       "term_no": "Annet spesifisert syndrom som skyldes hjernekarsykdom",
-      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulaer sykdom",
+      "gruppe": "G46 Cerebrale karsyndromer ved cerebrovaskulær sykdom",
       "relevans": "middels",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -230,7 +245,8 @@
       "relevans": "middels",
       "synonyms": [
         "hjerneinfarkt pga precerebral trombose",
-        "trombotisk hjerneinfarkt precerebral"
+        "trombotisk hjerneinfarkt precerebral",
+        "slag precerebral okklusjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -246,7 +262,8 @@
       "relevans": "middels",
       "synonyms": [
         "hjerneinfarkt pga precerebral emboli",
-        "embolisk hjerneinfarkt precerebral"
+        "embolisk hjerneinfarkt precerebral",
+        "slag precerebral emboli"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -261,12 +278,12 @@
       "gruppe": "I63 Hjerneinfarkt",
       "relevans": "hoy",
       "synonyms": [
-        "hjerneslag pga carotisstenose",
+        "hjerneslag carotisstenose",
+        "symptomatisk carotisstenose",
         "iskemisk slag precerebral okklusjon uspesifisert",
         "precerebralt hjerneslag",
         "hjerneslag",
         "corticalt embolisk infarkt",
-        "hjerneslag carotisstenose",
         "corticalt infarkt"
       ],
       "verifisert_mot_offisiell_liste": true,
@@ -346,7 +363,9 @@
       "term_no": "Annet spesifisert hjerneinfarkt",
       "gruppe": "I63 Hjerneinfarkt",
       "relevans": "middels",
-      "synonyms": [],
+      "synonyms": [
+        "Hjerneinfarkt spesifisert"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [
@@ -477,7 +496,12 @@
       "relevans": "middels",
       "synonyms": [
         "aortasklerose",
-        "aterosklerotisk aorta"
+        "aterosklerotisk aorta",
+        "aortaskleross",
+        "forkalket aorta",
+        "kalk i aorta",
+        "aortaplakk",
+        "arteriosklerose aorta"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -491,7 +515,11 @@
       "relevans": "middels",
       "synonyms": [
         "aortasklerose",
-        "aterosklerotisk aorta"
+        "aterosklerotisk aorta",
+        "aortaskleross",
+        "forkalket aorta",
+        "kalk i aorta",
+        "aortaplakk"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -505,7 +533,11 @@
       "relevans": "middels",
       "synonyms": [
         "aortasklerose",
-        "aterosklerotisk aorta"
+        "aterosklerotisk aorta",
+        "aortaskleross",
+        "forkalket aorta",
+        "kalk i aorta",
+        "aortaplakk"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -520,7 +552,10 @@
       "synonyms": [
         "nyrearteriestenose",
         "renal arteriestenose",
-        "RAS"
+        "RAS",
+        "renovaskulær hypertensjon",
+        "stenose nyrearterie",
+        "nyrearterieaterosklerose"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -535,7 +570,10 @@
       "synonyms": [
         "nyrearteriestenose",
         "renal arteriestenose",
-        "RAS"
+        "RAS",
+        "renovaskulær hypertensjon",
+        "stenose nyrearterie",
+        "nyrearterieaterosklerose"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -550,7 +588,10 @@
       "synonyms": [
         "nyrearteriestenose",
         "renal arteriestenose",
-        "RAS"
+        "RAS",
+        "renovaskulær hypertensjon",
+        "stenose nyrearterie",
+        "nyrearterieaterosklerose"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -577,7 +618,10 @@
         "koldbrann",
         "svart tå",
         "arterielt sår",
-        "endarteritis deformans eller obliterans"
+        "endarteritis deformans eller obliterans",
+        "PAVK",
+        "perifer arteriell karsykdom",
+        "aterosklerose bein"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -598,10 +642,19 @@
         "PAOD",
         "perifer arteriell sykdom",
         "royekebein",
-        "kald fot",
-        "beinarterier tette",
         "hvilesmerter",
-        "rest pain"
+        "rest pain",
+        "stenose AFC",
+        "stenose AFS",
+        "okklusjon AFS",
+        "stenose profunda",
+        "stenose poplitea",
+        "okklusjon poplitea",
+        "iliacaokklusjon",
+        "iliacastenose",
+        "kritisk iskemi",
+        "CLI",
+        "CLTI"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -620,7 +673,13 @@
         "gangren fot",
         "koldbrann",
         "svart tå",
-        "arterielt sår"
+        "arterielt sår",
+        "iskemisk fotsår",
+        "tørr gangren",
+        "våt gangren",
+        "nekrose tå",
+        "nekrose fot",
+        "iskemisk sår"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -632,7 +691,14 @@
       "term_no": "Aterosklerose i annen spesifisert arterie",
       "gruppe": "I70 Aterosklerose",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "mesenteriell aterosklerose",
+        "stenose a. mesenterica",
+        "stenose truncus coeliacus",
+        "visceral aterosklerose",
+        "visceral astenose",
+        "angina abdominalis"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -643,7 +709,13 @@
       "term_no": "Aterosklerose i annen spesifisert arterie, uten gangren",
       "gruppe": "I70 Aterosklerose",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "mesenterial aterosklerose",
+        "stenose a. mesenterica",
+        "stenose truncus coeliacus",
+        "visceral aterosklerose",
+        "angina abdominalis"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
       "termgruppe_referanser": [],
@@ -666,7 +738,8 @@
       "gruppe": "I70 Aterosklerose",
       "relevans": "lav",
       "synonyms": [
-        "generell aterosklerose"
+        "generell aterosklerose",
+        "generalisert arteriosklerose"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -727,7 +800,7 @@
         "rumpert thorakalt aortaaneurisme",
         "rumpert TAA",
         "aortaruptur thorax",
-        "aneurisme"
+        "aneurisme ruptur"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -762,8 +835,18 @@
         "AAA ruptur",
         "rumpert bukaortaaneurisme",
         "aortaruptur",
-        "hemodynamisk ustabil AAA",
-        "aneurisme"
+        "AAA",
+        "bukaortaaneurisme",
+        "aneurisme bukaorta",
+        "infrarenalt aneurisme",
+        "juxtarenalt aneurisme",
+        "juxtarenalt AAA",
+        "pararenalt AAA",
+        "pararenalt aneurisme",
+        "suprarenalt AAA",
+        "AAA rumpert",
+        "rumpert aortaaneurisme",
+        "ruptur bukaortaaneurisme"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -782,7 +865,10 @@
         "asymptomatisk AAA",
         "infrarenalt aneurisme",
         "juxtarenalt aneurisme",
-        "screening AAA"
+        "juxtarenalt AAA",
+        "pararenalt AAA",
+        "pararenalt aneurisme",
+        "suprarenalt AAA"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -811,8 +897,7 @@
       "synonyms": [
         "TAAA",
         "thoracoabdominalt aortaaneurisme",
-        "Crawford klassifikasjon",
-        "aneurisme"
+        "Crawford klassifikasjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -825,7 +910,7 @@
       "gruppe": "I71 Aortaaneurisme og -disseksjon",
       "relevans": "lav",
       "synonyms": [
-        "aneurisme"
+        "aneurisme uspesifisert ruptur"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -853,7 +938,11 @@
       "relevans": "middels",
       "synonyms": [
         "carotisaneurisme",
-        "aneurisme a. carotis"
+        "aneurisme a. carotis",
+        "disseksjon a. carotis",
+        "carotisdisseksjon",
+        "karotisdisseksjon",
+        "spontan carotisdisseksjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -874,7 +963,9 @@
         "radialisaneurisme",
         "radialis",
         "ulnarisaneurisme",
-        "ulnaris"
+        "ulnaris",
+        "axillaris",
+        "armarterie"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -888,7 +979,9 @@
       "relevans": "lav",
       "synonyms": [
         "nyrearterieaneurisme",
-        "aneurisme a. renalis"
+        "aneurisme a. renalis",
+        "disseksjon a. Renalis",
+        "nyrearterie disseksjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -907,7 +1000,8 @@
         "iliaca interna",
         "iliaca eksterna",
         "iliaca communis",
-        "bekkenkar"
+        "bekkenkar",
+        "iliaca"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -921,17 +1015,16 @@
       "relevans": "hoy",
       "synonyms": [
         "popliteaaneurisme",
-        "poplitea",
-        "lyskearterien",
+        "aneurisme poplitea",
+        "aneurisme underekstremitet",
         "femoralisaneurisme",
-        "femoralis",
-        "AFC",
-        "AFS",
-        "profunda",
-        "truncus tibiofibularis",
-        "tibialis posterior",
-        "tibialis anterior",
-        "fibularis"
+        "aneurisme AFC",
+        "aneurisme AFS",
+        "aneurisme profunda",
+        "aneurisme truncus tibiofibularis",
+        "aneurisme tibialis posterior",
+        "aneurisme tibialis anterior",
+        "aneurisme fibularis"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -943,7 +1036,13 @@
       "term_no": "Aneurisme eller disseksjon i annen precerebral arterie",
       "gruppe": "I72 Annet aneurisme",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "Aneurisme a. Brachoocephalica",
+        "disseksjon a. Brachoocephalica",
+        "a. brachiocephalica",
+        "aneurisme a. brachiocephalica",
+        "disseksjon a. brachiocephalica"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -971,20 +1070,36 @@
       "gruppe": "I72 Annet aneurisme",
       "relevans": "middels",
       "synonyms": [
-        "visceral",
-        "milt-arterieaneurisme",
-        "lienalis",
+        "visceral disseksjon",
+        "viscerale aneurisme",
+        "mesenteriell disseksjon",
+        "mesenterielt aneurisme",
+        "miltarterieaneurisme",
+        "lienalisaneurisme",
+        "miltarteriedisseksjon",
+        "lienalisdisseksjon",
         "mesenterialaneurisme",
-        "gastroduodenale",
-        "AMS",
-        "SMA",
-        "AMI",
-        "IMA",
-        "mesenterica superior",
+        "aneurisme gastroduodenale",
+        "disseksjon gastroduodenale",
+        "aneurisme AMS",
+        "disseksjon AMS",
+        "aneurisme SMA",
+        "disseksjon SMA",
+        "aneurisme AMI",
+        "disseksjon AMI",
+        "aneurisme IMA",
+        "disseksjon IMA",
+        "aneurisme mesenterica superior",
+        "disseksjon mesenterica superior",
         "mesenterica inferior",
         "ileocolica",
         "gastrica",
-        "hepatica"
+        "hepatica",
+        "a. lienalis",
+        "miltarterie",
+        "a. mesenterica",
+        "a. hepatica",
+        "a. coeliaca"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1040,7 +1155,9 @@
       "term_no": "Annen spesifisert sykdom i perifere kar",
       "gruppe": "I73 Andre perifere karsykdommer",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "erytromelalgi"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1067,8 +1184,9 @@
       "synonyms": [
         "aortatrombose",
         "saddle embolus aorta",
-        "okklusjon",
-        "okkludert"
+        "aortaokklusjon",
+        "okkludert aorta",
+        "emboli aorta"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1080,7 +1198,17 @@
       "term_no": "Emboli eller trombose i annen eller uspesifisert del av aorta",
       "gruppe": "I74 Arteriell emboli og trombose",
       "relevans": "middels",
-      "synonyms": [],
+      "synonyms": [
+        "aortaemboli",
+        "thorakal aortatrombose",
+        "aortatrombose",
+        "saddle embolus aorta",
+        "aortaokklusjon",
+        "okkludert aorta",
+        "emboli aorta",
+        "uspesifisert aorta",
+        "aorta uspesifisert"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1093,7 +1221,11 @@
       "relevans": "middels",
       "synonyms": [
         "akutt iskemi arm",
-        "embolisk okklusjon overekstremitet"
+        "emboli overekstremitet",
+        "akutt trombosering overekstremitet",
+        "emboli arm",
+        "akutt trombose arm",
+        "emboli a. axillaris"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1106,10 +1238,11 @@
       "gruppe": "I74 Arteriell emboli og trombose",
       "relevans": "hoy",
       "synonyms": [
-        "akutt iskemi bein",
+        "akutt iskemi underekstremitet",
         "akutt arteriell okklusjon",
+        "emboli underekstremitet",
         "embolisk okklusjon underekstremitet",
-        "hvitt ben"
+        "akutt klaudikasjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1121,7 +1254,21 @@
       "term_no": "Emboli eller trombose i uspesifisert ekstremitetsarterie",
       "gruppe": "I74 Arteriell emboli og trombose",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "akutt ekstremitetsiskemi",
+        "embolus ekstremitet",
+        "akutt iskemi arm",
+        "emboli overekstremitet",
+        "akutt trombosering overekstremitet",
+        "emboli arm",
+        "akutt trombose arm",
+        "emboli a. axillaris",
+        "akutt iskemi underekstremitet",
+        "akutt arteriell okklusjon",
+        "emboli underekstremitet",
+        "embolisk okklusjon underekstremitet",
+        "uspesifisert ekstremitet"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1135,7 +1282,9 @@
       "synonyms": [
         "iliacaokklusjon akutt",
         "trombose bekkenarterie",
-        "bekkenkar"
+        "akutt iskemi underekstremitet",
+        "emboli iliaca",
+        "akutt trombose iliaca"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1147,7 +1296,16 @@
       "term_no": "Emboli eller trombose i annen spesifisert arterie",
       "gruppe": "I74 Arteriell emboli og trombose",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "Emboli AMS",
+        "akutt trombose AMS",
+        "emboli truncus cøliacus",
+        "akutt trombose truncus cøliacus",
+        "akutt mesenteriell iskemi",
+        "visceral emboli",
+        "akutt trombose a. subclavia",
+        "emboli a. Subclavia"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1158,7 +1316,11 @@
       "term_no": "Emboli eller trombose i uspesifisert arterie",
       "gruppe": "I74 Arteriell emboli og trombose",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "arteriell emboli",
+        "arteriell trombose",
+        "embolus"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1184,7 +1346,8 @@
       "relevans": "middels",
       "synonyms": [
         "carotis kinking",
-        "arteriell striktur"
+        "arteriell striktur",
+        "striktur arterie"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1226,7 +1389,7 @@
       "synonyms": [
         "median arcuate ligament syndrom",
         "MALS",
-        "truncus coeliacus"
+        "truncus coeliacus kompresjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1250,7 +1413,8 @@
       "gruppe": "I77 Andre sykdommer i arterier og arterioler",
       "relevans": "middels",
       "synonyms": [
-        "aortitt"
+        "aortitt",
+        "storkarsvaskulitt"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1263,10 +1427,7 @@
       "gruppe": "I77 Andre sykdommer i arterier og arterioler",
       "relevans": "lav",
       "synonyms": [
-        "carotisdisseksjon",
-        "karotisdisseksjon",
-        "spontan carotisdisseksjon",
-        "ulcus"
+        "ulcus arterie"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1287,7 +1448,7 @@
     {
       "code": "I78.0",
       "term_no": "Arvelig hemoragisk teleangiektasi",
-      "gruppe": "I78 Sykdommer i kapillarer",
+      "gruppe": "I78 Sykdommer i kapillærer",
       "relevans": "lav",
       "synonyms": [
         "Osler-Weber-Rendu",
@@ -1302,7 +1463,7 @@
     {
       "code": "I78.1",
       "term_no": "Telangiektasi",
-      "gruppe": "I78 Sykdommer i kapillarer",
+      "gruppe": "I78 Sykdommer i kapillærer",
       "relevans": "lav",
       "synonyms": [
         "spider naevi",
@@ -1316,7 +1477,7 @@
     {
       "code": "I78.8",
       "term_no": "Annen spesifisert sykdom i kapillærer",
-      "gruppe": "I78 Sykdommer i kapillarer",
+      "gruppe": "I78 Sykdommer i kapillærer",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1327,7 +1488,7 @@
     {
       "code": "I78.9",
       "term_no": "Uspesifisert sykdom i kapillærer",
-      "gruppe": "I78 Sykdommer i kapillarer",
+      "gruppe": "I78 Sykdommer i kapillærer",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1485,7 +1646,7 @@
     {
       "code": "I82.0",
       "term_no": "Budd-Chiaris syndrom",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "lav",
       "synonyms": [
         "Budd-Chiari"
@@ -1498,7 +1659,7 @@
     {
       "code": "I82.1",
       "term_no": "Thrombophlebitis migrans",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1509,7 +1670,7 @@
     {
       "code": "I82.2",
       "term_no": "Emboli eller trombose i vena cava",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "middels",
       "synonyms": [
         "cavatrombose",
@@ -1523,7 +1684,7 @@
     {
       "code": "I82.3",
       "term_no": "Emboli eller trombose i vena renalis",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "lav",
       "synonyms": [
         "nyrevenetrombose"
@@ -1536,7 +1697,7 @@
     {
       "code": "I82.8",
       "term_no": "Emboli eller trombose i annen spesifisert vene",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1547,7 +1708,7 @@
     {
       "code": "I82.9",
       "term_no": "Emboli eller trombose i uspesifisert vene",
-      "gruppe": "I82 Annen venoes emboli og trombose",
+      "gruppe": "I82 Annen venøs emboli og trombose",
       "relevans": "middels",
       "synonyms": [
         "venetrombose uspesifisert lokalisasjon"
@@ -1560,7 +1721,7 @@
     {
       "code": "I83.0",
       "term_no": "Åreknuter med ulcus i underekstremitet",
-      "gruppe": "I83 Aareknuter i underekstremitet",
+      "gruppe": "I83 Åreknuter i underekstremitet",
       "relevans": "middels",
       "synonyms": [
         "varicer med sår",
@@ -1574,7 +1735,7 @@
     {
       "code": "I83.1",
       "term_no": "Åreknuter med betennelse i underekstremitet",
-      "gruppe": "I83 Aareknuter i underekstremitet",
+      "gruppe": "I83 Åreknuter i underekstremitet",
       "relevans": "middels",
       "synonyms": [
         "overfladisk tromboflebitt",
@@ -1589,7 +1750,7 @@
     {
       "code": "I83.2",
       "term_no": "Åreknuter med både ulcus og betennelse i underekstremitet",
-      "gruppe": "I83 Aareknuter i underekstremitet",
+      "gruppe": "I83 Åreknuter i underekstremitet",
       "relevans": "lav",
       "synonyms": [
         "overfladisk tromboflebitt",
@@ -1606,7 +1767,7 @@
     {
       "code": "I83.9",
       "term_no": "Åreknuter uten ulcus eller betennelse i underekstremitet",
-      "gruppe": "I83 Aareknuter i underekstremitet",
+      "gruppe": "I83 Åreknuter i underekstremitet",
       "relevans": "hoy",
       "synonyms": [
         "varicer",
@@ -1622,7 +1783,7 @@
     {
       "code": "I85.0",
       "term_no": "Øsofagusvaricer med blødning",
-      "gruppe": "I85 Oesofagusvaricer",
+      "gruppe": "I85 Øsofagusvaricer",
       "relevans": "lav",
       "synonyms": [
         "blødende øsofagusvaricer"
@@ -1635,7 +1796,7 @@
     {
       "code": "I85.9",
       "term_no": "Øsofagusvaricer uten blødning",
-      "gruppe": "I85 Oesofagusvaricer",
+      "gruppe": "I85 Øsofagusvaricer",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1646,7 +1807,7 @@
     {
       "code": "I86.0",
       "term_no": "Åreknuter under tungen",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1657,7 +1818,7 @@
     {
       "code": "I86.1",
       "term_no": "Åreknuter i pungen",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [
         "varikocele"
@@ -1670,7 +1831,7 @@
     {
       "code": "I86.2",
       "term_no": "Åreknuter i bekken",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [
         "pelvic congestion syndrom"
@@ -1683,7 +1844,7 @@
     {
       "code": "I86.3",
       "term_no": "Åreknuter i ytre kvinnelige kjønnsorganer",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [
         "vulvavaricer",
@@ -1697,7 +1858,7 @@
     {
       "code": "I86.4",
       "term_no": "Åreknuter i magesekk",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [
         "gastriske varicer"
@@ -1710,7 +1871,7 @@
     {
       "code": "I86.8",
       "term_no": "Åreknuter med annen spesifisert lokalisasjon",
-      "gruppe": "I86 Aareknuter i andre lokalisasjoner",
+      "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1833,7 +1994,7 @@
     {
       "code": "I89.0",
       "term_no": "Lymfødem ikke klassifisert annet sted",
-      "gruppe": "I89 Andre ikke-infektioese sykdommer i lymfekar/lymfeknuter",
+      "gruppe": "I89 Andre ikke-infeksiøse sykdommer i lymfekar/lymfeknuter",
       "relevans": "middels",
       "synonyms": [
         "lymfødem",
@@ -1847,7 +2008,7 @@
     {
       "code": "I89.1",
       "term_no": "Lymfangitt",
-      "gruppe": "I89 Andre ikke-infektioese sykdommer i lymfekar/lymfeknuter",
+      "gruppe": "I89 Andre ikke-infeksiøse sykdommer i lymfekar/lymfeknuter",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1858,7 +2019,7 @@
     {
       "code": "I89.8",
       "term_no": "Annen spesifisert ikke-infeksiøs forstyrrelse i lymfekar eller lymfeknuter",
-      "gruppe": "I89 Andre ikke-infektioese sykdommer i lymfekar/lymfeknuter",
+      "gruppe": "I89 Andre ikke-infeksiøse sykdommer i lymfekar/lymfeknuter",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -1869,7 +2030,7 @@
     {
       "code": "I89.9",
       "term_no": "Uspesifisert ikke-infeksiøs forstyrrelse i lymfekar eller lymfeknuter",
-      "gruppe": "I89 Andre ikke-infektioese sykdommer i lymfekar/lymfeknuter",
+      "gruppe": "I89 Andre ikke-infeksiøse sykdommer i lymfekar/lymfeknuter",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2234,7 +2395,7 @@
     {
       "code": "T82.0",
       "term_no": "Mekanisk komplikasjon ved hjerteklaffprotese",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2245,7 +2406,7 @@
     {
       "code": "T82.1",
       "term_no": "Mekanisk komplikasjon av elektronisk hjertestimulator",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "lav",
       "synonyms": [
         "pacemakerkomplikasjon"
@@ -2258,7 +2419,7 @@
     {
       "code": "T82.2",
       "term_no": "Mekanisk komplikasjon ved koronararteriebypass eller klaffebærende transplantat",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2269,7 +2430,7 @@
     {
       "code": "T82.3",
       "term_no": "Mekanisk komplikasjon ved annnet kartransplantat",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "hoy",
       "synonyms": [
         "graftdysfunksjon",
@@ -2286,7 +2447,7 @@
     {
       "code": "T82.4",
       "term_no": "Mekanisk komplikasjon ved dialysekateter i blodkar",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "hoy",
       "synonyms": [
         "dialysekateter komplikasjon",
@@ -2301,7 +2462,7 @@
     {
       "code": "T82.5",
       "term_no": "Mekanisk komplikasjon ved annen innretning eller implantat i hjerte eller blodkar",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "hoy",
       "synonyms": [
         "AV-fistel komplikasjon",
@@ -2319,7 +2480,7 @@
     {
       "code": "T82.6",
       "term_no": "Infeksjon eller betennelsesreaksjon som skyldes hjerteklaffprotese",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -2330,7 +2491,7 @@
     {
       "code": "T82.7",
       "term_no": "Infeksjon eller betennelsesreaksjon som skyldes andre innretning, implantat eller transplantat i hjerte eller blodkar",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "hoy",
       "synonyms": [
         "graftinfeksjon",
@@ -2345,7 +2506,7 @@
     {
       "code": "T82.8",
       "term_no": "Annen spesifisert komplikasjon ved protese, implantat eller transplantat i hjerte eller blodkar",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "hoy",
       "synonyms": [
         "pseudoaneurisme",
@@ -2360,7 +2521,7 @@
     {
       "code": "T82.9",
       "term_no": "Uspesifisert komplikasjon ved protese, implantat eller transplantat i hjerte og blodkar",
-      "gruppe": "T82 Komplikasjoner av kardielle og vaskulere proteser, implantater og transplantater",
+      "gruppe": "T82 Komplikasjoner av kardielle og vaskulære proteser, implantater og transplantater",
       "relevans": "middels",
       "synonyms": [
         "graftkomplikasjon uspesifisert"
@@ -3100,7 +3261,7 @@
     {
       "code": "L97",
       "term_no": "Sår på underekstremitet, ikke klassifisert annet sted",
-      "gruppe": "Leggsaar",
+      "gruppe": "Leggsår",
       "relevans": "hoy",
       "synonyms": [
         "leggsår",
@@ -3190,7 +3351,7 @@
     {
       "code": "Q25.4",
       "term_no": "Annen medfødt misdannelse av aorta",
-      "gruppe": "Medfoedte karmisdannelser",
+      "gruppe": "Medfødte karmisdannelser",
       "relevans": "middels",
       "synonyms": [
         "coarctatio aorta",
@@ -3205,7 +3366,7 @@
     {
       "code": "S15.0",
       "term_no": "Skade på arteria carotis",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "hoy",
       "synonyms": [
         "carotisskade",
@@ -3220,7 +3381,7 @@
     {
       "code": "S15.1",
       "term_no": "Skade på arteria vertebralis",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "middels",
       "synonyms": [
         "vertebralisskade hals"
@@ -3233,7 +3394,7 @@
     {
       "code": "S15.2",
       "term_no": "Skade på vena jugularis externa",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3244,7 +3405,7 @@
     {
       "code": "S15.3",
       "term_no": "Skade på vena jugularis interna",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3255,7 +3416,7 @@
     {
       "code": "S15.7",
       "term_no": "Skade på flere blodkar i halsregion",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3266,7 +3427,7 @@
     {
       "code": "S15.8",
       "term_no": "Skade på andre spesifiserte blodkar i halsregion",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3277,7 +3438,7 @@
     {
       "code": "S15.9",
       "term_no": "Skade på uspesifisert blodkar i halsregion",
-      "gruppe": "Karskader (traume) - hals",
+      "gruppe": "Karskader (traume) – hals",
       "relevans": "middels",
       "synonyms": [
         "halskarskade uspesifisert"
@@ -3290,7 +3451,7 @@
     {
       "code": "S25.0",
       "term_no": "Skade på torakaldel av aorta",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "traumatisk aortaruptur",
@@ -3305,7 +3466,7 @@
     {
       "code": "S25.1",
       "term_no": "Skade på truncus brachiocephalicus eller arteria subclavia",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3319,7 +3480,7 @@
     {
       "code": "S25.2",
       "term_no": "Skade på vena cava superior",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3333,7 +3494,7 @@
     {
       "code": "S25.3",
       "term_no": "Skade på vena brachiocephalica eller vena subclavia",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3347,7 +3508,7 @@
     {
       "code": "S25.4",
       "term_no": "Skade på lungekar",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3361,7 +3522,7 @@
     {
       "code": "S25.5",
       "term_no": "Skade på interkostalkar",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3375,7 +3536,7 @@
     {
       "code": "S25.7",
       "term_no": "Skade på flere blodkar i brystkasse",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3389,7 +3550,7 @@
     {
       "code": "S25.8",
       "term_no": "Skade på annet spesifisert blodkar i brystkasse",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3403,7 +3564,7 @@
     {
       "code": "S25.9",
       "term_no": "Skade på uspesifisert blodkar i brystkasse",
-      "gruppe": "Karskader (traume) - thorax",
+      "gruppe": "Karskader (traume) – thorax",
       "relevans": "hoy",
       "synonyms": [
         "thorakal karskade",
@@ -3417,7 +3578,7 @@
     {
       "code": "S35.0",
       "term_no": "Skade på abdominaldel av aorta",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "traumatisk skade bukaorta"
@@ -3430,7 +3591,7 @@
     {
       "code": "S35.1",
       "term_no": "Skade på vena cava inferior",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3444,7 +3605,7 @@
     {
       "code": "S35.2",
       "term_no": "Skade på arteria coeliaca eller arteria mesenterica",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3458,7 +3619,7 @@
     {
       "code": "S35.3",
       "term_no": "Skade på vena portae eller vena lienalis",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3472,7 +3633,7 @@
     {
       "code": "S35.4",
       "term_no": "Skade på nyrekar",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3486,7 +3647,7 @@
     {
       "code": "S35.5",
       "term_no": "Skade på bekkenkar",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3500,7 +3661,7 @@
     {
       "code": "S35.7",
       "term_no": "Skade på flere blodkar i bukregion, nedre del rygg eller bekkenregion",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3514,7 +3675,7 @@
     {
       "code": "S35.8",
       "term_no": "Skade på annet spesifisert blodkar i bukregion, nedre del rygg eller bekkenregion",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3528,7 +3689,7 @@
     {
       "code": "S35.9",
       "term_no": "Skade på uspesifisert blodkar i bukregion, nedre del rygg eller bekkenregion",
-      "gruppe": "Karskader (traume) - buk/bekken",
+      "gruppe": "Karskader (traume) – buk/bekken",
       "relevans": "hoy",
       "synonyms": [
         "abdominal karskade",
@@ -3542,7 +3703,7 @@
     {
       "code": "S45.0",
       "term_no": "Skade på arteria axillaris",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -3556,7 +3717,7 @@
     {
       "code": "S45.1",
       "term_no": "Skade på arteria brachialis",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -3570,7 +3731,7 @@
     {
       "code": "S45.2",
       "term_no": "Skade på vena axillaris eller vena brachialis",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -3584,7 +3745,7 @@
     {
       "code": "S45.3",
       "term_no": "Skade på overfladisk vene i skulder- eller overarmsregion",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -3598,7 +3759,7 @@
     {
       "code": "S45.7",
       "term_no": "Skade på flere blodkar i skulder- eller overarmsregion",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -3612,7 +3773,7 @@
     {
       "code": "S45.8",
       "term_no": "Skade på annet spesifisert blodkar i skulder- eller overarmsregion",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -3626,7 +3787,7 @@
     {
       "code": "S45.9",
       "term_no": "Skade på uspesifisert blodkar i skulder- eller overarmsregion",
-      "gruppe": "Karskader (traume) - skulder/overarm",
+      "gruppe": "Karskader (traume) – skulder/overarm",
       "relevans": "middels",
       "synonyms": [
         "subclaviaskade",
@@ -3640,7 +3801,7 @@
     {
       "code": "S55.0",
       "term_no": "Skade på arteria ulnaris i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -3653,7 +3814,7 @@
     {
       "code": "S55.1",
       "term_no": "Skade på arteria radialis i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -3666,7 +3827,7 @@
     {
       "code": "S55.2",
       "term_no": "Skade på vene i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -3679,7 +3840,7 @@
     {
       "code": "S55.7",
       "term_no": "Skade på flere blodkar i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -3692,7 +3853,7 @@
     {
       "code": "S55.8",
       "term_no": "Skade på annet spesifisert blodkar i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -3705,7 +3866,7 @@
     {
       "code": "S55.9",
       "term_no": "Skade på uspesifisert blodkar i underarmsregion",
-      "gruppe": "Karskader (traume) - underarm",
+      "gruppe": "Karskader (traume) – underarm",
       "relevans": "middels",
       "synonyms": [
         "radialis-/ulnarisskade traume"
@@ -3718,7 +3879,7 @@
     {
       "code": "S65.0",
       "term_no": "Skade på arteria ulnaris i håndledds- eller håndregion",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3729,7 +3890,7 @@
     {
       "code": "S65.1",
       "term_no": "Skade på arteria radialis i håndledds- eller håndregion",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3740,7 +3901,7 @@
     {
       "code": "S65.2",
       "term_no": "Skade på overfladisk arteriebue i håndflate",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3751,7 +3912,7 @@
     {
       "code": "S65.3",
       "term_no": "Skade på dyp arteriebue i håndflate",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3762,7 +3923,7 @@
     {
       "code": "S65.4",
       "term_no": "Skade på blodkar i tommel",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3773,7 +3934,7 @@
     {
       "code": "S65.5",
       "term_no": "Skade på blodkar i en annen finger enn tommel",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3784,7 +3945,7 @@
     {
       "code": "S65.7",
       "term_no": "Skade på flere blodkar i håndledds- eller håndregion",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3795,7 +3956,7 @@
     {
       "code": "S65.8",
       "term_no": "Skade på annet spesifisert blodkar i håndledds- eller håndregion",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3806,7 +3967,7 @@
     {
       "code": "S65.9",
       "term_no": "Skade på uspesifisert blodkar i håndledds- eller håndregion",
-      "gruppe": "Karskader (traume) - haandledd/haand",
+      "gruppe": "Karskader (traume) – håndledd/hånd",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3817,7 +3978,7 @@
     {
       "code": "S75.0",
       "term_no": "Skade på arteria femoralis",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -3831,7 +3992,7 @@
     {
       "code": "S75.1",
       "term_no": "Skade på vena femoralis i hofte- eller lårregion",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -3845,7 +4006,7 @@
     {
       "code": "S75.2",
       "term_no": "Skade på vena saphena magna i hofte- eller lårregion",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -3859,7 +4020,7 @@
     {
       "code": "S75.7",
       "term_no": "Skade på flere blodkar i hofte- eller lårregion",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -3873,7 +4034,7 @@
     {
       "code": "S75.8",
       "term_no": "Skade på annet spesifisert blodkar i hofte- eller lårregion",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -3887,7 +4048,7 @@
     {
       "code": "S75.9",
       "term_no": "Skade på uspesifisert blodkar i hofte- eller lårregion",
-      "gruppe": "Karskader (traume) - hofte/laar",
+      "gruppe": "Karskader (traume) – hofte/lår",
       "relevans": "hoy",
       "synonyms": [
         "femoralisskade traume",
@@ -3901,7 +4062,7 @@
     {
       "code": "S85.0",
       "term_no": "Skade på arteria poplitea",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -3915,7 +4076,7 @@
     {
       "code": "S85.1",
       "term_no": "Skade på arteria tibialis anterior eller posterior",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -3929,7 +4090,7 @@
     {
       "code": "S85.2",
       "term_no": "Skade på arteria fibularis",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -3943,7 +4104,7 @@
     {
       "code": "S85.3",
       "term_no": "Skade på vena saphena magna i legg",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -3957,7 +4118,7 @@
     {
       "code": "S85.4",
       "term_no": "Skade på vena saphena parva i legg",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -3971,7 +4132,7 @@
     {
       "code": "S85.5",
       "term_no": "Skade på vena poplitea",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -3985,7 +4146,7 @@
     {
       "code": "S85.7",
       "term_no": "Skade på flere blodkar i legg",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -3999,7 +4160,7 @@
     {
       "code": "S85.8",
       "term_no": "Skade på annet spesifisert blodkar i legg",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -4013,7 +4174,7 @@
     {
       "code": "S85.9",
       "term_no": "Skade på uspesifisert blodkar i legg",
-      "gruppe": "Karskader (traume) - legg",
+      "gruppe": "Karskader (traume) – legg",
       "relevans": "middels",
       "synonyms": [
         "popliteaskade traume",
@@ -4027,7 +4188,7 @@
     {
       "code": "S95.0",
       "term_no": "Skade på arteria dorsalis pedis",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4038,7 +4199,7 @@
     {
       "code": "S95.1",
       "term_no": "Skade på arteria plantaris",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4049,7 +4210,7 @@
     {
       "code": "S95.2",
       "term_no": "Skade på vene på fotrygg",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4060,7 +4221,7 @@
     {
       "code": "S95.7",
       "term_no": "Skade på flere blodkar i ankel eller fot",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4071,7 +4232,7 @@
     {
       "code": "S95.8",
       "term_no": "Skade på annet spesifisert blodkar i ankel eller fot",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4082,7 +4243,7 @@
     {
       "code": "S95.9",
       "term_no": "Skade på uspesifisert blodkar i ankel eller fot",
-      "gruppe": "Karskader (traume) - ankel/fot",
+      "gruppe": "Karskader (traume) – ankel/fot",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4368,6 +4529,14 @@
         "thorax"
       ],
       "kommentar": "Del av thorax/torakal-gruppen - kanoniserer til stammen \"torak\" slik at ogsaa sammensatte ord som \"torakoabdominalt\" fanges opp."
+    },
+    {
+      "type": "stavevariant_understreng",
+      "par": [
+        "aneurism",
+        "aneurysm"
+      ],
+      "kommentar": "aneurisme og aneurysme (også i sammensetninger som aortaaneurysme, popliteaaneurysme) skal behandles som samme ord. Samme mekanisme som tromb/thromb: normaliserer både indeksert tekst og brukerens søk."
     }
   ],
   "termgrupper": [
@@ -4537,6 +4706,31 @@
       ]
     },
     {
+      "id": "akutt_claudicatio",
+      "beskrivelse": "Klaudikasjon sammen med ordet 'akutt' gjør også I74.3 aktuell, men I70.2-kodene prioriteres fortsatt høyest",
+      "trigger_termgruppe": "claudicatio",
+      "krever_modifier_ord": [
+        "akutt"
+      ],
+      "resultat": [
+        {
+          "kode": "I70.2",
+          "bidiagnose": null,
+          "vekt": 1
+        },
+        {
+          "kode": "I70.20",
+          "bidiagnose": null,
+          "vekt": 2
+        },
+        {
+          "kode": "I74.3",
+          "bidiagnose": null,
+          "vekt": 3
+        }
+      ]
+    },
+    {
       "id": "claudicatio_rangering",
       "beskrivelse": "Ved soek paa claudicatio/klaudikatio/klaudikasjon skal I70.2 vises foerst, deretter I70.20",
       "trigger_termgruppe": "claudicatio",
@@ -4579,6 +4773,31 @@
   "normaliseringsregler_readme_tillegg": "Siden OG-logikken (se sokelogikk_flerordssok) sjekker paa tvers av HELE kodens tekst (kodetekst + alle synonymer samlet, ikke bare innad i en enkelt synonym-streng), holder det aa liste kar-navn/lokasjoner som egne, korte synonymer naar ordet \"aneurisme\"/\"disseksjon\" allerede finnes i kodeteksten (gjelder alle I72.x-koder). Kombinerte fraser som \"aneurisme X\" er derfor unngaatt fra og med denne opprydningen - MED UNNTAK av sammensatte norske ett-ords-varianter (f.eks. \"radialisaneurisme\"), som fortsatt legges inn separat siden de er ett eget soekbart ord.",
   "prioriteringsregler": [
     {
+      "id": "aorta_ruptur",
+      "beskrivelse": "AAA/aorta sammen med ruptur/rumpert: I71.3 øverst, så I71.4",
+      "trigger_ord": [
+        "aorta",
+        "AAA",
+        "bukaortaaneurisme"
+      ],
+      "krever_ogsa_ord": [
+        "ruptur",
+        "rumpert",
+        "rumpet",
+        "rupturert"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "I71.3",
+          "vekt": 0
+        },
+        {
+          "kode": "I71.4",
+          "vekt": 1
+        }
+      ]
+    },
+    {
       "id": "aorta_prioritet",
       "beskrivelse": "Ved soek paa aorta/AAA skal I71.4 (AAA uten ruptur) og I71.3 (AAA med ruptur) vises oeverst, uten aa skjule andre aorta-relaterte treff",
       "trigger_ord": [
@@ -4606,6 +4825,90 @@
         {
           "kode": "L97",
           "vekt": 1
+        }
+      ]
+    },
+    {
+      "id": "aorta_emboli_uspes",
+      "beskrivelse": "Aorta-emboli/trombose med 'uspesifisert': I74.1 først",
+      "trigger_ord": [
+        "aorta"
+      ],
+      "krever_ogsa_ord": [
+        "uspesifisert"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "I74.1",
+          "vekt": 5
+        },
+        {
+          "kode": "I74.0",
+          "vekt": 6
+        }
+      ]
+    },
+    {
+      "id": "aorta_emboli",
+      "beskrivelse": "Aorta-emboli/trombose: I74.0 før I74.1 (I74.1 først hvis 'uspesifisert' skrives)",
+      "trigger_ord": [
+        "aorta"
+      ],
+      "ikke_hvis_ord": [
+        "uspesifisert"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "I74.0",
+          "vekt": 10
+        },
+        {
+          "kode": "I74.1",
+          "vekt": 11
+        }
+      ]
+    },
+    {
+      "id": "ekstremitet_uspes",
+      "beskrivelse": "I74.4 vektes høyt kun når 'uspesifisert' skrives",
+      "trigger_ord": [
+        "emboli",
+        "embolus",
+        "trombose",
+        "trombosering",
+        "okklusjon",
+        "iskemi",
+        "ekstremitet"
+      ],
+      "krever_ogsa_ord": [
+        "uspesifisert"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "I74.4",
+          "vekt": 1
+        }
+      ]
+    },
+    {
+      "id": "ekstremitet_emboli_lav",
+      "beskrivelse": "I74.4 vektes lavt med mindre 'uspesifisert' skrives",
+      "trigger_ord": [
+        "emboli",
+        "embolus",
+        "trombose",
+        "trombosering",
+        "okklusjon",
+        "iskemi",
+        "ekstremitet"
+      ],
+      "ikke_hvis_ord": [
+        "uspesifisert"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "I74.4",
+          "vekt": 150
         }
       ]
     }

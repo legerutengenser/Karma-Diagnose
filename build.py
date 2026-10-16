@@ -28,14 +28,23 @@ changed = new_html != html
 if changed:
     html_path.write_text(new_html, encoding="utf8")
 
-# Bump service worker cache version when index.html changed
+# Bump service worker cache version when index.html changed (data OR layout/code).
+# We compare a hash of index.html with the hash stored in sw.js.
 sw = sw_path.read_text(encoding="utf8")
-m = re.search(r'const CACHE_VERSION = "v(\d+)";', sw)
-if changed and m:
-    sw = sw.replace(m.group(0), f'const CACHE_VERSION = "v{int(m.group(1)) + 1}";')
+cur_hash = hashlib.sha1(html_path.read_bytes()).hexdigest()[:10]
+hm = re.search(r"// index-hash: (\w+)", sw)
+vm = re.search(r'const CACHE_VERSION = "v(\d+)";', sw)
+bumped = None
+if vm and (not hm or hm.group(1) != cur_hash):
+    bumped = int(vm.group(1)) + 1
+    sw = sw.replace(vm.group(0), f'const CACHE_VERSION = "v{bumped}";')
+    if hm:
+        sw = sw.replace(hm.group(0), f"// index-hash: {cur_hash}")
+    else:
+        sw = sw.replace("// Karma Diagnose - service worker", f"// Karma Diagnose - service worker\n// index-hash: {cur_hash}", 1)
     sw_path.write_text(sw, encoding="utf8")
 
 n_main, n_adj = len(data["codes"]), len(data["tilstotende_koder"])
 print(f"{'Oppdatert' if changed else 'Uendret'}: index.html  ({n_main} hovedkoder + {n_adj} tilstøtende)")
-if changed and m:
-    print(f"sw.js CACHE_VERSION -> v{int(m.group(1)) + 1}")
+if bumped:
+    print(f"sw.js CACHE_VERSION -> v{bumped}")
