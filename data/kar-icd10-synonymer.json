@@ -21,7 +21,15 @@
       "term_no": "Carotissyndrom",
       "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "hoy",
-      "synonyms": [],
+      "synonyms": [
+        "TIA",
+        "forbigående lammelse",
+        "forbigående afasi",
+        "forbigående talevansker",
+        "forbigående hemiparese",
+        "drypp",
+        "symptomatisk carotisstenose"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [
@@ -52,7 +60,14 @@
       "term_no": "Amaurosis fugax",
       "gruppe": "G45 Forbigående cerebrale iskemiske anfall",
       "relevans": "hoy",
-      "synonyms": [],
+      "synonyms": [
+        "forbigående blindhet",
+        "synstap forbigående",
+        "gardin foran øyet",
+        "monokulær blindhet",
+        "retinal TIA",
+        "symptomatisk carotisstenose"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [
@@ -230,7 +245,8 @@
       "relevans": "middels",
       "synonyms": [
         "hjerneinfarkt pga precerebral trombose",
-        "trombotisk hjerneinfarkt precerebral"
+        "trombotisk hjerneinfarkt precerebral",
+        "slag precerebral okklusjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -246,7 +262,8 @@
       "relevans": "middels",
       "synonyms": [
         "hjerneinfarkt pga precerebral emboli",
-        "embolisk hjerneinfarkt precerebral"
+        "embolisk hjerneinfarkt precerebral",
+        "slag precerebral emboli"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -261,12 +278,12 @@
       "gruppe": "I63 Hjerneinfarkt",
       "relevans": "hoy",
       "synonyms": [
-        "hjerneslag pga carotisstenose",
+        "hjerneslag carotisstenose",
+        "symptomatisk carotisstenose",
         "iskemisk slag precerebral okklusjon uspesifisert",
         "precerebralt hjerneslag",
         "hjerneslag",
         "corticalt embolisk infarkt",
-        "hjerneslag carotisstenose",
         "corticalt infarkt"
       ],
       "verifisert_mot_offisiell_liste": true,
@@ -346,7 +363,9 @@
       "term_no": "Annet spesifisert hjerneinfarkt",
       "gruppe": "I63 Hjerneinfarkt",
       "relevans": "middels",
-      "synonyms": [],
+      "synonyms": [
+        "Hjerneinfarkt spesifisert"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [
@@ -477,7 +496,12 @@
       "relevans": "middels",
       "synonyms": [
         "aortasklerose",
-        "aterosklerotisk aorta"
+        "aterosklerotisk aorta",
+        "aortaskleross",
+        "forkalket aorta",
+        "kalk i aorta",
+        "aortaplakk",
+        "arteriosklerose aorta"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -491,7 +515,11 @@
       "relevans": "middels",
       "synonyms": [
         "aortasklerose",
-        "aterosklerotisk aorta"
+        "aterosklerotisk aorta",
+        "aortaskleross",
+        "forkalket aorta",
+        "kalk i aorta",
+        "aortaplakk"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -505,7 +533,11 @@
       "relevans": "middels",
       "synonyms": [
         "aortasklerose",
-        "aterosklerotisk aorta"
+        "aterosklerotisk aorta",
+        "aortaskleross",
+        "forkalket aorta",
+        "kalk i aorta",
+        "aortaplakk"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -520,7 +552,10 @@
       "synonyms": [
         "nyrearteriestenose",
         "renal arteriestenose",
-        "RAS"
+        "RAS",
+        "renovaskulær hypertensjon",
+        "stenose nyrearterie",
+        "nyrearterieaterosklerose"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -535,7 +570,10 @@
       "synonyms": [
         "nyrearteriestenose",
         "renal arteriestenose",
-        "RAS"
+        "RAS",
+        "renovaskulær hypertensjon",
+        "stenose nyrearterie",
+        "nyrearterieaterosklerose"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -550,7 +588,10 @@
       "synonyms": [
         "nyrearteriestenose",
         "renal arteriestenose",
-        "RAS"
+        "RAS",
+        "renovaskulær hypertensjon",
+        "stenose nyrearterie",
+        "nyrearterieaterosklerose"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -577,7 +618,10 @@
         "koldbrann",
         "svart tå",
         "arterielt sår",
-        "endarteritis deformans eller obliterans"
+        "endarteritis deformans eller obliterans",
+        "PAVK",
+        "perifer arteriell karsykdom",
+        "aterosklerose bein"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -598,10 +642,19 @@
         "PAOD",
         "perifer arteriell sykdom",
         "royekebein",
-        "kald fot",
-        "beinarterier tette",
         "hvilesmerter",
-        "rest pain"
+        "rest pain",
+        "stenose AFC",
+        "stenose AFS",
+        "okklusjon AFS",
+        "stenose profunda",
+        "stenose poplitea",
+        "okklusjon poplitea",
+        "iliacaokklusjon",
+        "iliacastenose",
+        "kritisk iskemi",
+        "CLI",
+        "CLTI"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -620,7 +673,13 @@
         "gangren fot",
         "koldbrann",
         "svart tå",
-        "arterielt sår"
+        "arterielt sår",
+        "iskemisk fotsår",
+        "tørr gangren",
+        "våt gangren",
+        "nekrose tå",
+        "nekrose fot",
+        "iskemisk sår"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
@@ -632,7 +691,14 @@
       "term_no": "Aterosklerose i annen spesifisert arterie",
       "gruppe": "I70 Aterosklerose",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "mesenteriell aterosklerose",
+        "stenose a. mesenterica",
+        "stenose truncus coeliacus",
+        "visceral aterosklerose",
+        "visceral astenose",
+        "angina abdominalis"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -643,7 +709,13 @@
       "term_no": "Aterosklerose i annen spesifisert arterie, uten gangren",
       "gruppe": "I70 Aterosklerose",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "mesenterial aterosklerose",
+        "stenose a. mesenterica",
+        "stenose truncus coeliacus",
+        "visceral aterosklerose",
+        "angina abdominalis"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
       "termgruppe_referanser": [],
@@ -666,7 +738,8 @@
       "gruppe": "I70 Aterosklerose",
       "relevans": "lav",
       "synonyms": [
-        "generell aterosklerose"
+        "generell aterosklerose",
+        "generalisert arteriosklerose"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -727,7 +800,7 @@
         "rumpert thorakalt aortaaneurisme",
         "rumpert TAA",
         "aortaruptur thorax",
-        "aneurisme"
+        "aneurisme ruptur"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -762,8 +835,18 @@
         "AAA ruptur",
         "rumpert bukaortaaneurisme",
         "aortaruptur",
-        "hemodynamisk ustabil AAA",
-        "aneurisme"
+        "AAA",
+        "bukaortaaneurisme",
+        "aneurisme bukaorta",
+        "infrarenalt aneurisme",
+        "juxtarenalt aneurisme",
+        "juxtarenalt AAA",
+        "pararenalt AAA",
+        "pararenalt aneurisme",
+        "suprarenalt AAA",
+        "AAA rumpert",
+        "rumpert aortaaneurisme",
+        "ruptur bukaortaaneurisme"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -782,7 +865,10 @@
         "asymptomatisk AAA",
         "infrarenalt aneurisme",
         "juxtarenalt aneurisme",
-        "screening AAA"
+        "juxtarenalt AAA",
+        "pararenalt AAA",
+        "pararenalt aneurisme",
+        "suprarenalt AAA"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -811,8 +897,7 @@
       "synonyms": [
         "TAAA",
         "thoracoabdominalt aortaaneurisme",
-        "Crawford klassifikasjon",
-        "aneurisme"
+        "Crawford klassifikasjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -825,7 +910,7 @@
       "gruppe": "I71 Aortaaneurisme og -disseksjon",
       "relevans": "lav",
       "synonyms": [
-        "aneurisme"
+        "aneurisme uspesifisert ruptur"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -853,7 +938,11 @@
       "relevans": "middels",
       "synonyms": [
         "carotisaneurisme",
-        "aneurisme a. carotis"
+        "aneurisme a. carotis",
+        "disseksjon a. carotis",
+        "carotisdisseksjon",
+        "karotisdisseksjon",
+        "spontan carotisdisseksjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -874,7 +963,9 @@
         "radialisaneurisme",
         "radialis",
         "ulnarisaneurisme",
-        "ulnaris"
+        "ulnaris",
+        "axillaris",
+        "armarterie"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -888,7 +979,9 @@
       "relevans": "lav",
       "synonyms": [
         "nyrearterieaneurisme",
-        "aneurisme a. renalis"
+        "aneurisme a. renalis",
+        "disseksjon a. Renalis",
+        "nyrearterie disseksjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -907,7 +1000,8 @@
         "iliaca interna",
         "iliaca eksterna",
         "iliaca communis",
-        "bekkenkar"
+        "bekkenkar",
+        "iliaca"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -921,17 +1015,16 @@
       "relevans": "hoy",
       "synonyms": [
         "popliteaaneurisme",
-        "poplitea",
-        "lyskearterien",
+        "aneurisme poplitea",
+        "aneurisme underekstremitet",
         "femoralisaneurisme",
-        "femoralis",
-        "AFC",
-        "AFS",
-        "profunda",
-        "truncus tibiofibularis",
-        "tibialis posterior",
-        "tibialis anterior",
-        "fibularis"
+        "aneurisme AFC",
+        "aneurisme AFS",
+        "aneurisme profunda",
+        "aneurisme truncus tibiofibularis",
+        "aneurisme tibialis posterior",
+        "aneurisme tibialis anterior",
+        "aneurisme fibularis"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -943,7 +1036,13 @@
       "term_no": "Aneurisme eller disseksjon i annen precerebral arterie",
       "gruppe": "I72 Annet aneurisme",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "Aneurisme a. Brachoocephalica",
+        "disseksjon a. Brachoocephalica",
+        "a. brachiocephalica",
+        "aneurisme a. brachiocephalica",
+        "disseksjon a. brachiocephalica"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -971,20 +1070,36 @@
       "gruppe": "I72 Annet aneurisme",
       "relevans": "middels",
       "synonyms": [
-        "visceral",
-        "milt-arterieaneurisme",
-        "lienalis",
+        "visceral disseksjon",
+        "viscerale aneurisme",
+        "mesenteriell disseksjon",
+        "mesenterielt aneurisme",
+        "miltarterieaneurisme",
+        "lienalisaneurisme",
+        "miltarteriedisseksjon",
+        "lienalisdisseksjon",
         "mesenterialaneurisme",
-        "gastroduodenale",
-        "AMS",
-        "SMA",
-        "AMI",
-        "IMA",
-        "mesenterica superior",
+        "aneurisme gastroduodenale",
+        "disseksjon gastroduodenale",
+        "aneurisme AMS",
+        "disseksjon AMS",
+        "aneurisme SMA",
+        "disseksjon SMA",
+        "aneurisme AMI",
+        "disseksjon AMI",
+        "aneurisme IMA",
+        "disseksjon IMA",
+        "aneurisme mesenterica superior",
+        "disseksjon mesenterica superior",
         "mesenterica inferior",
         "ileocolica",
         "gastrica",
-        "hepatica"
+        "hepatica",
+        "a. lienalis",
+        "miltarterie",
+        "a. mesenterica",
+        "a. hepatica",
+        "a. coeliaca"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1040,7 +1155,9 @@
       "term_no": "Annen spesifisert sykdom i perifere kar",
       "gruppe": "I73 Andre perifere karsykdommer",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "erytromelalgi"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1067,8 +1184,9 @@
       "synonyms": [
         "aortatrombose",
         "saddle embolus aorta",
-        "okklusjon",
-        "okkludert"
+        "aortaokklusjon",
+        "okkludert aorta",
+        "emboli aorta"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1080,7 +1198,17 @@
       "term_no": "Emboli eller trombose i annen eller uspesifisert del av aorta",
       "gruppe": "I74 Arteriell emboli og trombose",
       "relevans": "middels",
-      "synonyms": [],
+      "synonyms": [
+        "aortaemboli",
+        "thorakal aortatrombose",
+        "aortatrombose",
+        "saddle embolus aorta",
+        "aortaokklusjon",
+        "okkludert aorta",
+        "emboli aorta",
+        "uspesifisert aorta",
+        "aorta uspesifisert"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1093,7 +1221,11 @@
       "relevans": "middels",
       "synonyms": [
         "akutt iskemi arm",
-        "embolisk okklusjon overekstremitet"
+        "emboli overekstremitet",
+        "akutt trombosering overekstremitet",
+        "emboli arm",
+        "akutt trombose arm",
+        "emboli a. axillaris"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1106,10 +1238,11 @@
       "gruppe": "I74 Arteriell emboli og trombose",
       "relevans": "hoy",
       "synonyms": [
-        "akutt iskemi bein",
+        "akutt iskemi underekstremitet",
         "akutt arteriell okklusjon",
+        "emboli underekstremitet",
         "embolisk okklusjon underekstremitet",
-        "hvitt ben"
+        "akutt klaudikasjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1121,7 +1254,21 @@
       "term_no": "Emboli eller trombose i uspesifisert ekstremitetsarterie",
       "gruppe": "I74 Arteriell emboli og trombose",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "akutt ekstremitetsiskemi",
+        "embolus ekstremitet",
+        "akutt iskemi arm",
+        "emboli overekstremitet",
+        "akutt trombosering overekstremitet",
+        "emboli arm",
+        "akutt trombose arm",
+        "emboli a. axillaris",
+        "akutt iskemi underekstremitet",
+        "akutt arteriell okklusjon",
+        "emboli underekstremitet",
+        "embolisk okklusjon underekstremitet",
+        "uspesifisert ekstremitet"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1135,7 +1282,9 @@
       "synonyms": [
         "iliacaokklusjon akutt",
         "trombose bekkenarterie",
-        "bekkenkar"
+        "akutt iskemi underekstremitet",
+        "emboli iliaca",
+        "akutt trombose iliaca"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1147,7 +1296,16 @@
       "term_no": "Emboli eller trombose i annen spesifisert arterie",
       "gruppe": "I74 Arteriell emboli og trombose",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "Emboli AMS",
+        "akutt trombose AMS",
+        "emboli truncus cøliacus",
+        "akutt trombose truncus cøliacus",
+        "akutt mesenteriell iskemi",
+        "visceral emboli",
+        "akutt trombose a. subclavia",
+        "emboli a. Subclavia"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1158,7 +1316,11 @@
       "term_no": "Emboli eller trombose i uspesifisert arterie",
       "gruppe": "I74 Arteriell emboli og trombose",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "arteriell emboli",
+        "arteriell trombose",
+        "embolus"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
@@ -1184,7 +1346,8 @@
       "relevans": "middels",
       "synonyms": [
         "carotis kinking",
-        "arteriell striktur"
+        "arteriell striktur",
+        "striktur arterie"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1226,7 +1389,7 @@
       "synonyms": [
         "median arcuate ligament syndrom",
         "MALS",
-        "truncus coeliacus"
+        "truncus coeliacus kompresjon"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1250,7 +1413,8 @@
       "gruppe": "I77 Andre sykdommer i arterier og arterioler",
       "relevans": "middels",
       "synonyms": [
-        "aortitt"
+        "aortitt",
+        "storkarsvaskulitt"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -1263,10 +1427,7 @@
       "gruppe": "I77 Andre sykdommer i arterier og arterioler",
       "relevans": "lav",
       "synonyms": [
-        "carotisdisseksjon",
-        "karotisdisseksjon",
-        "spontan carotisdisseksjon",
-        "ulcus"
+        "ulcus arterie"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -4545,6 +4706,31 @@
       ]
     },
     {
+      "id": "akutt_claudicatio",
+      "beskrivelse": "Klaudikasjon sammen med ordet 'akutt' gjør også I74.3 aktuell, men I70.2-kodene prioriteres fortsatt høyest",
+      "trigger_termgruppe": "claudicatio",
+      "krever_modifier_ord": [
+        "akutt"
+      ],
+      "resultat": [
+        {
+          "kode": "I70.2",
+          "bidiagnose": null,
+          "vekt": 1
+        },
+        {
+          "kode": "I70.20",
+          "bidiagnose": null,
+          "vekt": 2
+        },
+        {
+          "kode": "I74.3",
+          "bidiagnose": null,
+          "vekt": 3
+        }
+      ]
+    },
+    {
       "id": "claudicatio_rangering",
       "beskrivelse": "Ved soek paa claudicatio/klaudikatio/klaudikasjon skal I70.2 vises foerst, deretter I70.20",
       "trigger_termgruppe": "claudicatio",
@@ -4587,6 +4773,31 @@
   "normaliseringsregler_readme_tillegg": "Siden OG-logikken (se sokelogikk_flerordssok) sjekker paa tvers av HELE kodens tekst (kodetekst + alle synonymer samlet, ikke bare innad i en enkelt synonym-streng), holder det aa liste kar-navn/lokasjoner som egne, korte synonymer naar ordet \"aneurisme\"/\"disseksjon\" allerede finnes i kodeteksten (gjelder alle I72.x-koder). Kombinerte fraser som \"aneurisme X\" er derfor unngaatt fra og med denne opprydningen - MED UNNTAK av sammensatte norske ett-ords-varianter (f.eks. \"radialisaneurisme\"), som fortsatt legges inn separat siden de er ett eget soekbart ord.",
   "prioriteringsregler": [
     {
+      "id": "aorta_ruptur",
+      "beskrivelse": "AAA/aorta sammen med ruptur/rumpert: I71.3 øverst, så I71.4",
+      "trigger_ord": [
+        "aorta",
+        "AAA",
+        "bukaortaaneurisme"
+      ],
+      "krever_ogsa_ord": [
+        "ruptur",
+        "rumpert",
+        "rumpet",
+        "rupturert"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "I71.3",
+          "vekt": 0
+        },
+        {
+          "kode": "I71.4",
+          "vekt": 1
+        }
+      ]
+    },
+    {
       "id": "aorta_prioritet",
       "beskrivelse": "Ved soek paa aorta/AAA skal I71.4 (AAA uten ruptur) og I71.3 (AAA med ruptur) vises oeverst, uten aa skjule andre aorta-relaterte treff",
       "trigger_ord": [
@@ -4614,6 +4825,90 @@
         {
           "kode": "L97",
           "vekt": 1
+        }
+      ]
+    },
+    {
+      "id": "aorta_emboli_uspes",
+      "beskrivelse": "Aorta-emboli/trombose med 'uspesifisert': I74.1 først",
+      "trigger_ord": [
+        "aorta"
+      ],
+      "krever_ogsa_ord": [
+        "uspesifisert"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "I74.1",
+          "vekt": 5
+        },
+        {
+          "kode": "I74.0",
+          "vekt": 6
+        }
+      ]
+    },
+    {
+      "id": "aorta_emboli",
+      "beskrivelse": "Aorta-emboli/trombose: I74.0 før I74.1 (I74.1 først hvis 'uspesifisert' skrives)",
+      "trigger_ord": [
+        "aorta"
+      ],
+      "ikke_hvis_ord": [
+        "uspesifisert"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "I74.0",
+          "vekt": 10
+        },
+        {
+          "kode": "I74.1",
+          "vekt": 11
+        }
+      ]
+    },
+    {
+      "id": "ekstremitet_uspes",
+      "beskrivelse": "I74.4 vektes høyt kun når 'uspesifisert' skrives",
+      "trigger_ord": [
+        "emboli",
+        "embolus",
+        "trombose",
+        "trombosering",
+        "okklusjon",
+        "iskemi",
+        "ekstremitet"
+      ],
+      "krever_ogsa_ord": [
+        "uspesifisert"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "I74.4",
+          "vekt": 1
+        }
+      ]
+    },
+    {
+      "id": "ekstremitet_emboli_lav",
+      "beskrivelse": "I74.4 vektes lavt med mindre 'uspesifisert' skrives",
+      "trigger_ord": [
+        "emboli",
+        "embolus",
+        "trombose",
+        "trombosering",
+        "okklusjon",
+        "iskemi",
+        "ekstremitet"
+      ],
+      "ikke_hvis_ord": [
+        "uspesifisert"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "I74.4",
+          "vekt": 150
         }
       ]
     }
