@@ -5399,17 +5399,19 @@ function buildEngine(data) {
     qInput.value = ''; currentQuery = ''; shown = PAGE; qInput.focus(); renderResults();
   });
 
-  // «Forslag»-knappen åpner Google Forms. Skjemaet settes opp en gang:
-  //  - formId: id-en fra skjemaets lenke (docs.google.com/forms/d/<formId>/viewform)
-  //  - queryField / codeField (valgfritt): «entry.123456789» for feltene «Søkeord» og
-  //    «Ønsket resultat/diagnosekode». Fylles ut med gjeldende søk og valgt kode.
-  //  - choiceField + choiceValue (valgfritt): flervalgsspørsmålet «Hvordan vil du gi forslaget?» og
-  //    teksten på alternativet «Søkeord og ønsket diagnosekode». Forhåndsvelges bare når brukeren
-  //    har søkt eller valgt en kode, ellers velger brukeren selv (f.eks. fritekst).
-  // Er formId tom, vises ikke knappen. Hentes fra «Få forhåndsutfylt lenke» i Google Forms.
-  const FEEDBACK = { formId: '', queryField: '', codeField: '', choiceField: '', choiceValue: '' };
+  // «Forslag»-knappen åpner Google Forms.
+  //  - url: skjemaets offentlige adresse (…/forms/d/e/<id>/viewform)
+  //  - queryField / codeField (valgfritt): «entry.123456789» for feltene «Ønsket søkeord» og
+  //    «Ønsket diagnosekode». Fylles ut med gjeldende søk og valgt kode.
+  //  - choiceField + choiceValue (valgfritt): flervalgsspørsmålet og teksten på alternativet
+  //    «Søkeord og ønsket diagnosekode». Forhåndsvelges bare når brukeren har søkt eller valgt en kode.
+  // entry-numrene hentes fra «Få forhåndsutfylt lenke» i Google Forms. Er url tom, skjules knappen.
+  const FEEDBACK = {
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLScIOu8JEPq41IOgMza4xJwIF4KVNS-EIG-93Yo_vV0hoN0aVA/viewform',
+    queryField: '', codeField: '', choiceField: '', choiceValue: ''
+  };
   const feedbackBtn = document.getElementById('feedbackBtn');
-  if (feedbackBtn && FEEDBACK.formId) {
+  if (feedbackBtn && FEEDBACK.url) {
     feedbackBtn.hidden = false;
     feedbackBtn.addEventListener('click', () => {
       const params = new URLSearchParams();
@@ -5418,8 +5420,7 @@ function buildEngine(data) {
       if (FEEDBACK.codeField && selectedCode) params.set(FEEDBACK.codeField, selectedCode);
       if (FEEDBACK.choiceField && FEEDBACK.choiceValue && (q || selectedCode)) params.set(FEEDBACK.choiceField, FEEDBACK.choiceValue);
       const qs = params.toString();
-      const url = 'https://docs.google.com/forms/d/' + FEEDBACK.formId + '/viewform' + (qs ? '?usp=pp_url&' + qs : '');
-      window.open(url, '_blank', 'noopener');
+      window.open(FEEDBACK.url + (qs ? '?usp=pp_url&' + qs : ''), '_blank', 'noopener');
     });
   }
 
