@@ -127,6 +127,10 @@
     font-size: 12.5px; color: var(--bidiag); background: var(--bidiag-soft);
     padding: 9px 14px; border-bottom: 1px solid var(--line);
   }
+  .quote-box { padding: 48px 28px; text-align: center; }
+  .quote-text { font-family: var(--serif); font-size: 24px; font-style: italic; color: var(--ink); line-height: 1.4; margin-bottom: 10px; }
+  .quote-author { font-family: var(--mono, ui-monospace, monospace); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); }
+  .quote-hint { margin-top: 28px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
   .empty-state { padding: 40px 20px; text-align: center; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
   .empty-state .big { font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--ink); margin-bottom: 6px; }
   .more-btn {
@@ -5504,6 +5508,73 @@ function buildEngine(data) {
   // ---------------------------------------------------------------------
   // Treff
   // ---------------------------------------------------------------------
+  const QUOTES = [
+    { text: "Kjøre dunya som en vannsklie", author: "Karpe" },
+    { text: "We are thoe locust swarm", author: "Lorna Shore" },
+    { text: "Living is easy with eyes closed", author: "The Beatles" },
+    { text: "I fall in Love too easily", author: "Chet Baker" },
+    { text: "This life is more than just a readthrough", author: "Red Hot Chili Peppers" },
+    { text: "Du sa jeg kan sette meg ned, jeg sa jeg vil stå", author: "Karpe" },
+    { text: "Hva skal du ta med deg, yara. Når lufta går ut av lungene dine, ya ya. Penger og plastikkplanter.", author: "Karpe" },
+    { text: "Je ne regret rien", author: "Edith Piaff" },
+    { text: "Je vois la vie en rose", author: "Edith Piaff" },
+    { text: "I see trees of green, red roses too", author: "Louis Armstrong" },
+    { text: "When they say jump, you say how high", author: "Rage Against The Machine" },
+    { text: "Lett å være rebell i kjellerleiligheten din", author: "Karpe" },
+    { text: "Det som tar forstanden fra en voksen mann er ikke storm, men stille vann", author: "Siri Nilsen" },
+    { text: "A luminous fear of light grows stronger from behind the hilltop", author: "Motorpsycho" },
+    { text: "The proof that love´s not only blind, but deaf", author: "Arctic Monkeys" },
+    { text: "Ne me quitte pas", author: "Jacques Brel" },
+    { text: "You´re such a beautiful freak, I wish there were more just like you", author: "Eels" },
+    { text: "I owe myself life", author: "Gojira" },
+    { text: "I´ll salt the earth in a crimson blaze", author: "Lorna Shore" },
+    { text: "Du spør om et rykte og blir sint hvis det ikke er sant", author: "Cezinando" },
+    { text: "Og det gikk opp for seint at at eg faktisk hadde skjært av meg armen min for å holde deg", author: "John Olav Nilsen & Gjengen" },
+    { text: "Da har du problemer i følge peanøtthjerneforbundet", author: "Jokke" },
+    { text: "Når jeg dør har jeg gitt dem et good run for penga", author: "Karpe" },
+    { text: "Flower in a hailstorm", author: "Eels" },
+    { text: "And if I have to intervene, I inject a bit of ...white stuff", author: "Amateur Transplants" },
+    { text: "You cant bring me down", author: "Suicidal Tendencies" },
+    { text: "Jeg har sovet så lite jeg, at jeg har levd ekstra lenge i våken tilstand", author: "deLillos" },
+    { text: "Jeg skulle gjerne hatt en hånd å holde i når jeg skal møte Elvis", author: "Cezinando" },
+    { text: "Vi skulle redde verden, nå er de redde oss", author: "Karpe" },
+    { text: "Tu étais formidable, j'étais fort minable", author: "Stromae" },
+    { text: "Something in the way she moves attracts me like no other lover", author: "The Beatles" },
+    { text: "Ja det er sannelig flaks at du lever min venn", author: "Erik Bye" },
+    { text: "Å falle er noe alle gjør før de lærer å fly", author: "Lars Vaular" },
+    { text: "All you need is love", author: "The Beatles" },
+    { text: "At jeg elsker henne fortsatt, vel det bør jeg nå ha glemt", author: "deLilllos" },
+    { text: "Jeg har hørt at man blir klokere med alderen, jeg blir mer dust", author: "Cezinando" },
+    { text: "Every little thing is gonna be alright", author: "Bob Marley" },
+    { text: "Emancipate yourself from mental slavery", author: "Bob Marley" },
+    { text: "A friend in need is a friend indeed, a friend with weed is better", author: "Placebo" },
+    { text: "It´s better to regret something you did than something you didn´t do", author: "The Red Hot Chili Peppers" },
+    { text: "I feel stupid and contagious", author: "Nirvana" },
+    { text: "Du bøyer deg ner og eg står på tå", author: "Kaizers Orchestra" },
+    { text: "Ground control to Major Tom, your circuit´s dead, there´s something wrong", author: "David Bowie" },
+    { text: "I´m not a trendy asshole, I do what I want, I do what I feel like", author: "The Offspring" },
+    { text: "Baba jeg er ikke et fyrtårn, jeg har bare diskolys på", author: "Karpe" },
+    { text: "Ground control to major Tom, your circuit´s dead, there´s something wrong", author: "David Bowie" },
+    { text: "If they were right I´d agree, but it´s them they know, not me", author: "Cat Stevens" },
+    { text: "There's still time to change the road you're on", author: "Led Zeppelin" },
+    { text: "Down the street, you can hear her scream, You´re a disgrace", author: "Jimi Hendrix" },
+    { text: "A thousand girls, a thousand thrills", author: "The Doors" },
+    { text: "It hurts to set you free", author: "The Doors" },
+    { text: "If all the girls, yes, them live ´cross the sea. But what a great swimmer I and I would be", author: "Slightly Stoopid" },
+    { text: "Well, it´s love that I need" , author: "Sublime" },
+  ];
+
+  const QUOTE_HISTORY_KEY = 'karkode_diagnose_quote_v1';
+  function getRandomQuote() {
+    let last = -1;
+    try { last = JSON.parse(localStorage.getItem(QUOTE_HISTORY_KEY) || '{}').lastIndex; } catch (e) {}
+    const cand = QUOTES.map((_, i) => i).filter(i => i !== last);
+    const idx = cand[Math.floor(Math.random() * cand.length)];
+    try { localStorage.setItem(QUOTE_HISTORY_KEY, JSON.stringify({ lastIndex: idx })); } catch (e) {}
+    return QUOTES[idx];
+  }
+  const START_QUOTE = getRandomQuote();
+
   function renderResults() {
     const trimmed = currentQuery.trim();
     clearBtn.style.display = trimmed.length > 0 ? 'flex' : 'none';
@@ -5511,9 +5582,9 @@ function buildEngine(data) {
     if (trimmed.length < 2) {
       currentHits = [];
       headInfoEl.textContent = '';
-      resultsEl.innerHTML = '<div class="empty-state"><div class="big">Hva leter du etter?</div>' +
-        'Skriv <b>minst 2 tegn</b> — f.eks. «claudicatio», «AAA», «carotisstenose».<br>' +
-        'Eller velg en diagnose i trevisningen.</div>';
+      resultsEl.innerHTML = '<div class="quote-box"><div class="quote-text">«' + escapeHtml(START_QUOTE.text) + '»</div>' +
+        '<div class="quote-author">— ' + escapeHtml(START_QUOTE.author) + '</div>' +
+        '<div class="quote-hint">Skriv minst 2 tegn, f.eks. «claudicatio», «AAA» eller «carotisstenose» — eller velg en diagnose i trevisningen.</div></div>';
       return;
     }
 
