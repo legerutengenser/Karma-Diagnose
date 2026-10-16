@@ -5505,6 +5505,18 @@ function buildEngine(data) {
     }[c]));
   }
 
+  let lastSentSearch = '', searchLogTimer = null;
+  function sendSearchToGoatCounter(query) {
+    const q = (query || '').trim().toLowerCase().replace(/\s+/g, ' ').slice(0, 40);
+    if (q.length < 3 || q === lastSentSearch) return;
+    lastSentSearch = q;
+    try {
+      if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+        window.goatcounter.count({ path: 'sok/' + q, title: q, event: true });
+      }
+    } catch (err) { /* statistikk skal aldri ødelegge appen */ }
+  }
+
   // ---------------------------------------------------------------------
   // Treff
   // ---------------------------------------------------------------------
@@ -5772,6 +5784,11 @@ function buildEngine(data) {
 
   qInput.addEventListener('input', () => {
     currentQuery = qInput.value; shown = PAGE; renderResults();
+    // Anonym søkestatistikk (GoatCounter): kun etter 800 ms pause, >= 3 tegn, maks 40 tegn,
+    // aldri samme term to ganger på rad. Ingen bruker-ID sendes.
+    if (searchLogTimer) clearTimeout(searchLogTimer);
+    const toLog = currentQuery;
+    searchLogTimer = setTimeout(() => sendSearchToGoatCounter(toLog), 800);
   });
   clearBtn.addEventListener('click', () => {
     qInput.value = ''; currentQuery = ''; shown = PAGE; qInput.focus(); renderResults();
