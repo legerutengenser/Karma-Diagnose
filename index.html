@@ -454,14 +454,14 @@ function buildEngine(data) {
     for (const regel of prioriteringsregler) {
       const triggerHit = regel.trigger_ord.some(t => {
         const tWords = canonicalizeWords(t);
-        return tWords.every(tw => queryWordsCanon.some(qw => tw.startsWith(qw) || qw.startsWith(tw)));
+        return tWords.every(tw => queryWordsCanon.some(qw => qw === tw || (qw.length >= 3 && (tw.startsWith(qw) || qw.startsWith(tw)))));
       });
       if (!triggerHit) continue;
       const treffOrd = lst => lst.some(t => canonicalizeWords(t).every(tw =>
         queryWordsCanon.some(qw => qw.length >= 3 && (tw.startsWith(qw) || qw.includes(tw)))));
       if (regel.krever_ogsa_ord && !treffOrd(regel.krever_ogsa_ord)) continue;
       if (regel.ikke_hvis_ord && treffOrd(regel.ikke_hvis_ord)) continue;
-      const p = regel.prioriteringer.find(p => p.kode === code);
+      const p = regel.prioriteringer.find(p => p.kode === code || (p.kode.endsWith('*') && code.startsWith(p.kode.slice(0, -1))));
       if (p) return p.vekt;
     }
     return null;
@@ -1981,7 +1981,13 @@ function buildEngine(data) {
       "gruppe": "I77 Andre sykdommer i arterier og arterioler",
       "relevans": "lav",
       "synonyms": [
-        "ulcus arterie"
+        "ulcus arterie",
+        "popliteal entrapment",
+        "poplitealt entrapment",
+        "poplietal entrapment",
+        "poplitea entrapment",
+        "PAES",
+        "popliteal artery entrapment syndrome"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -3683,7 +3689,7 @@ function buildEngine(data) {
     }
   ],
   "tilstotende_koder_readme": "Koder utenfor hovedintervallene, klinisk relevante for karkirurgi. Verifisert mot samme offisielle kodeliste. Traumekodene (S15/S25/S35/S45/S55/S65/S75/S85/S95) er nå fylt ut med alle offisielle underkoder (blodåre/type) fra Helsedirektoratet.",
-  "count_tilstotende": 87,
+  "count_tilstotende": 118,
   "tilstotende_koder": [
     {
       "code": "E10.5",
@@ -3713,7 +3719,7 @@ function buildEngine(data) {
     {
       "code": "E11.5",
       "term_no": "Diabetes mellitus type 2 med perifer sirkulasjonsforstyrrelse",
-      "gruppe": "Diabetisk angiopati",
+      "gruppe": "E11 Diabetes mellitus type 2",
       "relevans": "hoy",
       "synonyms": [
         "diabetisk fot",
@@ -3729,7 +3735,7 @@ function buildEngine(data) {
     {
       "code": "E11.7",
       "term_no": "Diabetes mellitus type 2 med flere komplikasjoner",
-      "gruppe": "Diabetisk angiopati",
+      "gruppe": "E11 Diabetes mellitus type 2",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -4820,9 +4826,416 @@ function buildEngine(data) {
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
       "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.0",
+      "term_no": "Diabetes mellitus type 2 med koma",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.1",
+      "term_no": "Diabetes mellitus type 2 med ketoacidose",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.2",
+      "term_no": "Diabetes mellitus type 2 med nyrekomplikasjoner",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.3",
+      "term_no": "Diabetes mellitus type 2 med øyekomplikasjoner",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.4",
+      "term_no": "Diabetes mellitus type 2 med nevrologiske komplikasjoner",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.6",
+      "term_no": "Diabetes mellitus type 2 med andre spesifiserte komplikasjoner",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.8",
+      "term_no": "Diabetes mellitus type 2 med uspesifiserte komplikasjoner",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.9",
+      "term_no": "Diabetes mellitus type 2 uten komplikasjoner",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L88",
+      "term_no": "Pyoderma gangrenosum",
+      "gruppe": "L88 Pyoderma gangrenosum",
+      "relevans": "hoy",
+      "synonyms": [
+        "pyoderma",
+        "pyoderma gangraenosum"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L89.0",
+      "term_no": "Dekubitalsår og trykksone, stadium I",
+      "gruppe": "L89 Dekubitalsår og trykksone",
+      "relevans": "middels",
+      "synonyms": [
+        "trykksår",
+        "decubitus",
+        "decubitalsår",
+        "liggesår"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L89.1",
+      "term_no": "Dekubitalsår og trykksone, stadium II",
+      "gruppe": "L89 Dekubitalsår og trykksone",
+      "relevans": "middels",
+      "synonyms": [
+        "trykksår",
+        "decubitus",
+        "decubitalsår",
+        "liggesår"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L89.2",
+      "term_no": "Dekubitalsår og trykksone, stadium III",
+      "gruppe": "L89 Dekubitalsår og trykksone",
+      "relevans": "middels",
+      "synonyms": [
+        "trykksår",
+        "decubitus",
+        "decubitalsår",
+        "liggesår"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L89.3",
+      "term_no": "Dekubitalsår og trykksone, stadium IV",
+      "gruppe": "L89 Dekubitalsår og trykksone",
+      "relevans": "middels",
+      "synonyms": [
+        "trykksår",
+        "decubitus",
+        "decubitalsår",
+        "liggesår"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L89.9",
+      "term_no": "Dekubitalsår og trykksone, uspesifisert",
+      "gruppe": "L89 Dekubitalsår og trykksone",
+      "relevans": "middels",
+      "synonyms": [
+        "trykksår",
+        "decubitus",
+        "decubitalsår",
+        "liggesår"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L95.8",
+      "term_no": "Annen spesifisert vaskulitt begrenset til hud",
+      "gruppe": "L95 Vaskulitt begrenset til hud",
+      "relevans": "middels",
+      "synonyms": [
+        "hudvaskulitt",
+        "vasculitt"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L95.9",
+      "term_no": "Uspesifisert vaskulitt begrenset til hud",
+      "gruppe": "L95 Vaskulitt begrenset til hud",
+      "relevans": "middels",
+      "synonyms": [
+        "hudvaskulitt",
+        "vasculitt"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L98.4",
+      "term_no": "Kronisk hudsår, ikke klassifisert annet sted",
+      "gruppe": "L98 Andre sykdommer i hud og underhud",
+      "relevans": "middels",
+      "synonyms": [
+        "kronisk sår",
+        "kronisk hudsår"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": [],
+      "merknad": "Ikke ment for iskemiske sår (bruk I70.2x) eller trykksår (L89.*)."
+    },
+    {
+      "code": "J93.0",
+      "term_no": "Spontan trykkpneumotoraks",
+      "gruppe": "J93 Pneumotoraks",
+      "relevans": "middels",
+      "synonyms": [
+        "punktert lunge",
+        "kollapset lunge",
+        "pneumothorax",
+        "spontan pneumotoraks"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "J93.1",
+      "term_no": "Annen spontan pneumotoraks",
+      "gruppe": "J93 Pneumotoraks",
+      "relevans": "middels",
+      "synonyms": [
+        "punktert lunge",
+        "kollapset lunge",
+        "pneumothorax",
+        "spontan pneumotoraks"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "J93.8",
+      "term_no": "Annen pneumotoraks",
+      "gruppe": "J93 Pneumotoraks",
+      "relevans": "middels",
+      "synonyms": [
+        "punktert lunge",
+        "kollapset lunge",
+        "pneumothorax",
+        "spontan pneumotoraks"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "J93.9",
+      "term_no": "Uspesifisert pneumotoraks",
+      "gruppe": "J93 Pneumotoraks",
+      "relevans": "middels",
+      "synonyms": [
+        "punktert lunge",
+        "kollapset lunge",
+        "pneumothorax",
+        "spontan pneumotoraks"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.0",
+      "term_no": "Traumatisk pneumotoraks",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.1",
+      "term_no": "Traumatisk hemotoraks",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "pneumotoraks",
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.2",
+      "term_no": "Traumatisk hemopneumotoraks",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "pneumotoraks",
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.3",
+      "term_no": "Annen og uspesifisert skade på lunge",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.4",
+      "term_no": "Skade på bronkie",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.5",
+      "term_no": "Skade på trachea (torakal del)",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.6",
+      "term_no": "Skade på pleura",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.7",
+      "term_no": "Multiple skader på intratorakale organer",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.8",
+      "term_no": "Skade på andre spesifiserte intratorakale organer",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.9",
+      "term_no": "Skade på uspesifisert intratorakalt organ",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": false,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
     }
   ],
-  "count_totalt": 309,
+  "count_totalt": 340,
   "nye_koder_uten_egne_synonymer_main": [
     "I7000",
     "I7001",
@@ -4991,7 +5404,12 @@ function buildEngine(data) {
         "mesenterial",
         "mesenteriell",
         "mesenterielt",
-        "visceral"
+        "visceral",
+        "visceralt",
+        "viscerale",
+        "viceral",
+        "viceralt",
+        "viscerell"
       ],
       "kommentar": null
     },
@@ -5091,6 +5509,94 @@ function buildEngine(data) {
         "aneurysm"
       ],
       "kommentar": "aneurisme og aneurysme (også i sammensetninger som aortaaneurysme, popliteaaneurysme) skal behandles som samme ord. Samme mekanisme som tromb/thromb: normaliserer både indeksert tekst og brukerens søk."
+    },
+    {
+      "type": "frasesynonym_global",
+      "termer": [
+        "DM1",
+        "diabetes mellitus type 1",
+        "diabetes type 1"
+      ],
+      "kommentar": "DM1 = diabetes mellitus type 1"
+    },
+    {
+      "type": "frasesynonym_global",
+      "termer": [
+        "DM2",
+        "diabetes mellitus type 2",
+        "diabetes type 2"
+      ],
+      "kommentar": "DM2 = diabetes mellitus type 2"
+    },
+    {
+      "type": "frasesynonym_global",
+      "termer": [
+        "DM",
+        "diabetes mellitus"
+      ],
+      "kommentar": "DM = diabetes mellitus"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "diabetes",
+        "sukkersyke",
+        "sukkersjuke"
+      ],
+      "kommentar": "sukkersyke = diabetes"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "pneumotoraks",
+        "pneumotorak",
+        "pneumotorax"
+      ],
+      "kommentar": "pneumothorax/pneumotorax/pneumotoraks (thorax->torak normaliseres separat)"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "hemotoraks",
+        "hemotorak",
+        "hemotorax",
+        "hematotoraks",
+        "hematotorak",
+        "hematotorax"
+      ],
+      "kommentar": "hemothorax = hematothorax = hemotorax = hematotorax"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "hemopneumotoraks",
+        "hemopneumotorak",
+        "hemopneumotorax",
+        "hematopneumotoraks",
+        "hematopneumotorak",
+        "hematopneumotorax"
+      ],
+      "kommentar": "hemopneumothorax"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "dekubitalsår",
+        "decubitalsår",
+        "trykksår",
+        "liggesår",
+        "decubitus",
+        "dekubitus"
+      ],
+      "kommentar": "trykksår = decubitus"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "vaskulitt",
+        "vasculitt"
+      ],
+      "kommentar": "vaskulitt = vasculitt"
     }
   ],
   "termgrupper": [
@@ -5326,6 +5832,96 @@ function buildEngine(data) {
   "sokelogikk_flerordssok": "HYBRID OG/ELLER-logikk (revidert etter diskusjon med Simen): naar brukeren skriver flere ord, proev foerst streng OG-logikk (krev at ALLE ordene finnes for en kode - se tidligere eksempel med \"disseksjon a. radialis\" -> kun I72.1). HVIS DETTE GIR NULL TREFF, fall automatisk tilbake til ELLER-logikk: vis koder som treffer paa MINST ETT av ordene, rangert etter hvor mange av ordene som faktisk matcher (flest matchende ord = hoyest opp). Dette sikrer presise treff naar vi har tenkt paa riktig synonym, uten aa noensinne gi \"ingen treff\" naar brukeren bruker et ord vi ikke har forutsett. De eksplisitte \"sokeregler\" (som carotisstenose-logikken) er fortsatt unntak, styrt av sin egen logikk.",
   "normaliseringsregler_readme_tillegg": "Siden OG-logikken (se sokelogikk_flerordssok) sjekker paa tvers av HELE kodens tekst (kodetekst + alle synonymer samlet, ikke bare innad i en enkelt synonym-streng), holder det aa liste kar-navn/lokasjoner som egne, korte synonymer naar ordet \"aneurisme\"/\"disseksjon\" allerede finnes i kodeteksten (gjelder alle I72.x-koder). Kombinerte fraser som \"aneurisme X\" er derfor unngaatt fra og med denne opprydningen - MED UNNTAK av sammensatte norske ett-ords-varianter (f.eks. \"radialisaneurisme\"), som fortsatt legges inn separat siden de er ett eget soekbart ord.",
   "prioriteringsregler": [
+    {
+      "id": "diabetes_e10",
+      "beskrivelse": "DM1/type 1: E10.* først",
+      "trigger_ord": [
+        "DM1",
+        "diabetes type 1",
+        "diabetes mellitus type 1"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "E10*",
+          "vekt": 1
+        },
+        {
+          "kode": "E11*",
+          "vekt": 2
+        }
+      ]
+    },
+    {
+      "id": "diabetes_e11",
+      "beskrivelse": "Diabetes/DM: E11.* først (type 2 er vanligst), så E10.*",
+      "trigger_ord": [
+        "diabetes",
+        "diabetisk",
+        "diabetesfot",
+        "DM",
+        "DM2",
+        "sukkersyke"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "E11*",
+          "vekt": 1
+        },
+        {
+          "kode": "E10*",
+          "vekt": 2
+        }
+      ]
+    },
+    {
+      "id": "pneumotoraks",
+      "beskrivelse": "pneumotoraks: J93.* først, så S27.0-2",
+      "trigger_ord": [
+        "pneumotoraks",
+        "pneumothorax",
+        "pneumotorax",
+        "punktert lunge"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "J93*",
+          "vekt": 1
+        },
+        {
+          "kode": "S27.0",
+          "vekt": 2
+        },
+        {
+          "kode": "S27.1",
+          "vekt": 2
+        },
+        {
+          "kode": "S27.2",
+          "vekt": 2
+        }
+      ]
+    },
+    {
+      "id": "kronisk_saar",
+      "beskrivelse": "Kronisk sår: L98.4 først (med mindre ben/legg skrives, da L97)",
+      "trigger_ord": [
+        "kronisk sår",
+        "kronisk hudsår"
+      ],
+      "ikke_hvis_ord": [
+        "bein",
+        "legg",
+        "leggsår",
+        "underekstremitet",
+        "fot"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "L98.4",
+          "vekt": 1
+        }
+      ]
+    },
     {
       "id": "aorta_ruptur",
       "beskrivelse": "AAA/aorta sammen med ruptur/rumpert: I71.3 øverst, så I71.4",
@@ -5649,6 +6245,7 @@ function buildEngine(data) {
     if (e.synonyms && e.synonyms.length) {
       html += '<div class="dsyn"><b>Søkeord:</b> ' + e.synonyms.map(escapeHtml).join(' · ') + '</div>';
     }
+    if (e.merknad) html += '<div class="dsyn"><b>Merk:</b> ' + escapeHtml(e.merknad) + '</div>';
     const bi = (e.bidiagnose_forslag || []).filter(b => b && b.kode);
     for (const b of bi) {
       const be = BY_CODE.get(b.kode);
@@ -5783,7 +6380,7 @@ function buildEngine(data) {
   });
 
   qInput.addEventListener('input', () => {
-    currentQuery = qInput.value; shown = PAGE; renderResults();
+    currentQuery = qInput.value; shown = PAGE; selectedCode = null; detailEl.innerHTML = ''; renderResults();
     // Anonym søkestatistikk (GoatCounter): kun etter 800 ms pause, >= 3 tegn, maks 40 tegn,
     // aldri samme term to ganger på rad. Ingen bruker-ID sendes.
     if (searchLogTimer) clearTimeout(searchLogTimer);
@@ -5791,7 +6388,7 @@ function buildEngine(data) {
     searchLogTimer = setTimeout(() => sendSearchToGoatCounter(toLog), 800);
   });
   clearBtn.addEventListener('click', () => {
-    qInput.value = ''; currentQuery = ''; shown = PAGE; qInput.focus(); renderResults();
+    qInput.value = ''; currentQuery = ''; shown = PAGE; selectedCode = null; detailEl.innerHTML = ''; qInput.focus(); renderResults();
   });
 
   // «Forslag»-knappen åpner Google Forms.
