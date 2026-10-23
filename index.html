@@ -530,10 +530,8 @@ function buildEngine(data) {
         const ka = kapittelRang[a.entry.code[0]] ?? 9;
         const kb = kapittelRang[b.entry.code[0]] ?? 9;
         if (ka !== kb) return ka - kb;
-        const ra = relevansRang[a.entry.relevans] ?? 1;
-        const rb = relevansRang[b.entry.relevans] ?? 1;
-        if (ra !== rb) return ra - rb;
-        return a.entry.code.localeCompare(b.entry.code);
+        // Kronologisk kodeorden (I71.0, I71.1, ...; I70.2 før I70.20; N18.1, N18.2, ...)
+        return a.entry.code.localeCompare(b.entry.code, 'en', { numeric: true });
       });
     }
 
@@ -2394,7 +2392,10 @@ function buildEngine(data) {
       "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [
-        "pelvic congestion syndrom"
+        "pelvic congestion syndrom",
+        "bekkenvaricer",
+        "bekkenvaricer hos kvinner",
+        "varicer bekken"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -2408,7 +2409,10 @@ function buildEngine(data) {
       "relevans": "lav",
       "synonyms": [
         "vulvavaricer",
-        "vulva"
+        "vulva",
+        "labiavaricer",
+        "labia varicer",
+        "skamleppevaricer"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -3841,7 +3845,11 @@ function buildEngine(data) {
       "term_no": "Kronisk nyresykdom, stadium 1",
       "gruppe": "Dialyse/nyresvikt-relatert",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
       "termgruppe_referanser": [],
@@ -3852,7 +3860,11 @@ function buildEngine(data) {
       "term_no": "Kronisk nyresykdom, stadium 2",
       "gruppe": "Dialyse/nyresvikt-relatert",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
       "termgruppe_referanser": [],
@@ -3863,7 +3875,11 @@ function buildEngine(data) {
       "term_no": "Kronisk nyresykdom, stadium 3",
       "gruppe": "Dialyse/nyresvikt-relatert",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
       "termgruppe_referanser": [],
@@ -3874,7 +3890,11 @@ function buildEngine(data) {
       "term_no": "Kronisk nyresykdom, stadium 4",
       "gruppe": "Dialyse/nyresvikt-relatert",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
       "termgruppe_referanser": [],
@@ -3888,7 +3908,10 @@ function buildEngine(data) {
       "synonyms": [
         "terminal nyresvikt",
         "ESRD",
-        "dialysekrevende nyresvikt"
+        "dialysekrevende nyresvikt",
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -3901,7 +3924,10 @@ function buildEngine(data) {
       "gruppe": "Dialyse/nyresvikt-relatert",
       "relevans": "middels",
       "synonyms": [
-        "kronisk nyresvikt uspesifisert stadium"
+        "kronisk nyresvikt uspesifisert stadium",
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -5658,14 +5684,6 @@ function buildEngine(data) {
       "kommentar": null
     },
     {
-      "type": "frasesynonym_global",
-      "par": [
-        "AAA",
-        "abdominal aorta"
-      ],
-      "kommentar": null
-    },
-    {
       "type": "ordsynonym_global",
       "par": [
         "vene",
@@ -5833,6 +5851,15 @@ function buildEngine(data) {
         "vasculitt"
       ],
       "kommentar": "vaskulitt = vasculitt"
+    },
+    {
+      "type": "frasesynonym_global",
+      "termer": [
+        "ekstremitet",
+        "overekstremitet",
+        "underekstremitet"
+      ],
+      "kommentar": "Over-/underekstremitet er også 'ekstremitet': søk på 'emboli ekstremitet' skal treffe I74.2, I74.3, I74.5 osv."
     }
   ],
   "termgrupper": [
@@ -6185,9 +6212,8 @@ function buildEngine(data) {
     },
     {
       "id": "aorta_prioritet",
-      "beskrivelse": "Ved soek paa aorta/AAA skal I71.4 (AAA uten ruptur) og I71.3 (AAA med ruptur) vises oeverst, uten aa skjule andre aorta-relaterte treff",
+      "beskrivelse": "Ved søk på AAA vises I71.4 (uten ruptur) først, deretter I71.3. 'aortaaneurisme' osv. vises i kronologisk kodeorden.",
       "trigger_ord": [
-        "aorta",
         "AAA"
       ],
       "prioriteringer": [
@@ -6218,7 +6244,10 @@ function buildEngine(data) {
       "id": "aorta_emboli_uspes",
       "beskrivelse": "Aorta-emboli/trombose med 'uspesifisert': I74.1 først",
       "trigger_ord": [
-        "aorta"
+        "emboli aorta",
+        "trombose aorta",
+        "embolus aorta",
+        "okkludert aorta"
       ],
       "krever_ogsa_ord": [
         "uspesifisert"
@@ -6231,26 +6260,6 @@ function buildEngine(data) {
         {
           "kode": "I74.0",
           "vekt": 6
-        }
-      ]
-    },
-    {
-      "id": "aorta_emboli",
-      "beskrivelse": "Aorta-emboli/trombose: I74.0 før I74.1 (I74.1 først hvis 'uspesifisert' skrives)",
-      "trigger_ord": [
-        "aorta"
-      ],
-      "ikke_hvis_ord": [
-        "uspesifisert"
-      ],
-      "prioriteringer": [
-        {
-          "kode": "I74.0",
-          "vekt": 10
-        },
-        {
-          "kode": "I74.1",
-          "vekt": 11
         }
       ]
     },
