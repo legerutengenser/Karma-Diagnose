@@ -127,6 +127,10 @@
     font-size: 12.5px; color: var(--bidiag); background: var(--bidiag-soft);
     padding: 9px 14px; border-bottom: 1px solid var(--line);
   }
+  .quote-box { padding: 48px 28px; text-align: center; }
+  .quote-text { font-family: var(--serif); font-size: 24px; font-style: italic; color: var(--ink); line-height: 1.4; margin-bottom: 10px; }
+  .quote-author { font-family: var(--mono, ui-monospace, monospace); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); }
+  .quote-hint { margin-top: 28px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
   .empty-state { padding: 40px 20px; text-align: center; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
   .empty-state .big { font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--ink); margin-bottom: 6px; }
   .more-btn {
@@ -450,14 +454,14 @@ function buildEngine(data) {
     for (const regel of prioriteringsregler) {
       const triggerHit = regel.trigger_ord.some(t => {
         const tWords = canonicalizeWords(t);
-        return tWords.every(tw => queryWordsCanon.some(qw => tw.startsWith(qw) || qw.startsWith(tw)));
+        return tWords.every(tw => queryWordsCanon.some(qw => qw === tw || (qw.length >= 3 && (tw.startsWith(qw) || qw.startsWith(tw)))));
       });
       if (!triggerHit) continue;
       const treffOrd = lst => lst.some(t => canonicalizeWords(t).every(tw =>
         queryWordsCanon.some(qw => qw.length >= 3 && (tw.startsWith(qw) || qw.includes(tw)))));
       if (regel.krever_ogsa_ord && !treffOrd(regel.krever_ogsa_ord)) continue;
       if (regel.ikke_hvis_ord && treffOrd(regel.ikke_hvis_ord)) continue;
-      const p = regel.prioriteringer.find(p => p.kode === code);
+      const p = regel.prioriteringer.find(p => p.kode === code || (p.kode.endsWith('*') && code.startsWith(p.kode.slice(0, -1))));
       if (p) return p.vekt;
     }
     return null;
@@ -526,10 +530,8 @@ function buildEngine(data) {
         const ka = kapittelRang[a.entry.code[0]] ?? 9;
         const kb = kapittelRang[b.entry.code[0]] ?? 9;
         if (ka !== kb) return ka - kb;
-        const ra = relevansRang[a.entry.relevans] ?? 1;
-        const rb = relevansRang[b.entry.relevans] ?? 1;
-        if (ra !== rb) return ra - rb;
-        return a.entry.code.localeCompare(b.entry.code);
+        // Kronologisk kodeorden (I71.0, I71.1, ...; I70.2 før I70.20; N18.1, N18.2, ...)
+        return a.entry.code.localeCompare(b.entry.code, 'en', { numeric: true });
       });
     }
 
@@ -1977,7 +1979,13 @@ function buildEngine(data) {
       "gruppe": "I77 Andre sykdommer i arterier og arterioler",
       "relevans": "lav",
       "synonyms": [
-        "ulcus arterie"
+        "ulcus arterie",
+        "popliteal entrapment",
+        "poplitealt entrapment",
+        "poplietal entrapment",
+        "poplitea entrapment",
+        "PAES",
+        "popliteal artery entrapment syndrome"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -2384,7 +2392,10 @@ function buildEngine(data) {
       "gruppe": "I86 Åreknuter i andre lokalisasjoner",
       "relevans": "lav",
       "synonyms": [
-        "pelvic congestion syndrom"
+        "pelvic congestion syndrom",
+        "bekkenvaricer",
+        "bekkenvaricer hos kvinner",
+        "varicer bekken"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -2398,7 +2409,10 @@ function buildEngine(data) {
       "relevans": "lav",
       "synonyms": [
         "vulvavaricer",
-        "vulva"
+        "vulva",
+        "labiavaricer",
+        "labia varicer",
+        "skamleppevaricer"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -3679,7 +3693,7 @@ function buildEngine(data) {
     }
   ],
   "tilstotende_koder_readme": "Koder utenfor hovedintervallene, klinisk relevante for karkirurgi. Verifisert mot samme offisielle kodeliste. Traumekodene (S15/S25/S35/S45/S55/S65/S75/S85/S95) er nå fylt ut med alle offisielle underkoder (blodåre/type) fra Helsedirektoratet.",
-  "count_tilstotende": 87,
+  "count_tilstotende": 138,
   "tilstotende_koder": [
     {
       "code": "E10.5",
@@ -3709,7 +3723,7 @@ function buildEngine(data) {
     {
       "code": "E11.5",
       "term_no": "Diabetes mellitus type 2 med perifer sirkulasjonsforstyrrelse",
-      "gruppe": "Diabetisk angiopati",
+      "gruppe": "E11 Diabetes mellitus type 2",
       "relevans": "hoy",
       "synonyms": [
         "diabetisk fot",
@@ -3725,7 +3739,7 @@ function buildEngine(data) {
     {
       "code": "E11.7",
       "term_no": "Diabetes mellitus type 2 med flere komplikasjoner",
-      "gruppe": "Diabetisk angiopati",
+      "gruppe": "E11 Diabetes mellitus type 2",
       "relevans": "lav",
       "synonyms": [],
       "verifisert_mot_offisiell_liste": true,
@@ -3831,7 +3845,11 @@ function buildEngine(data) {
       "term_no": "Kronisk nyresykdom, stadium 1",
       "gruppe": "Dialyse/nyresvikt-relatert",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
       "termgruppe_referanser": [],
@@ -3842,7 +3860,11 @@ function buildEngine(data) {
       "term_no": "Kronisk nyresykdom, stadium 2",
       "gruppe": "Dialyse/nyresvikt-relatert",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
       "termgruppe_referanser": [],
@@ -3853,7 +3875,11 @@ function buildEngine(data) {
       "term_no": "Kronisk nyresykdom, stadium 3",
       "gruppe": "Dialyse/nyresvikt-relatert",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
       "termgruppe_referanser": [],
@@ -3864,7 +3890,11 @@ function buildEngine(data) {
       "term_no": "Kronisk nyresykdom, stadium 4",
       "gruppe": "Dialyse/nyresvikt-relatert",
       "relevans": "lav",
-      "synonyms": [],
+      "synonyms": [
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
+      ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": true,
       "termgruppe_referanser": [],
@@ -3878,7 +3908,10 @@ function buildEngine(data) {
       "synonyms": [
         "terminal nyresvikt",
         "ESRD",
-        "dialysekrevende nyresvikt"
+        "dialysekrevende nyresvikt",
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -3891,7 +3924,10 @@ function buildEngine(data) {
       "gruppe": "Dialyse/nyresvikt-relatert",
       "relevans": "middels",
       "synonyms": [
-        "kronisk nyresvikt uspesifisert stadium"
+        "kronisk nyresvikt uspesifisert stadium",
+        "nyresvikt",
+        "kronisk nyresvikt",
+        "CKD"
       ],
       "verifisert_mot_offisiell_liste": true,
       "arvet_relevans_synonymer": false,
@@ -4816,9 +4852,652 @@ function buildEngine(data) {
       "arvet_relevans_synonymer": false,
       "termgruppe_referanser": [],
       "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.0",
+      "term_no": "Diabetes mellitus type 2 med koma",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.1",
+      "term_no": "Diabetes mellitus type 2 med ketoacidose",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.2",
+      "term_no": "Diabetes mellitus type 2 med nyrekomplikasjon",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.3",
+      "term_no": "Diabetes mellitus type 2 med øyekomplikasjon",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.4",
+      "term_no": "Diabetes mellitus type 2 med nevrologisk komplikasjon",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.6",
+      "term_no": "Diabetes mellitus type 2 med annen spesifisert komplikasjon",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.8",
+      "term_no": "Diabetes mellitus type 2 med uspesifisert komplikasjon",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "E11.9",
+      "term_no": "Diabetes mellitus type 2 uten komplikasjon",
+      "gruppe": "E11 Diabetes mellitus type 2",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L88",
+      "term_no": "Pyoderma gangrenosum",
+      "gruppe": "L88 Pyoderma gangrenosum",
+      "relevans": "hoy",
+      "synonyms": [
+        "pyoderma",
+        "pyoderma gangraenosum"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L89.0",
+      "term_no": "Dekubitalsår eller trykkskade stadium I",
+      "gruppe": "L89 Dekubitalsår og trykksone",
+      "relevans": "middels",
+      "synonyms": [
+        "trykksår",
+        "decubitus",
+        "decubitalsår",
+        "liggesår"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L89.1",
+      "term_no": "Dekubitalsår stadium II",
+      "gruppe": "L89 Dekubitalsår og trykksone",
+      "relevans": "middels",
+      "synonyms": [
+        "trykksår",
+        "decubitus",
+        "decubitalsår",
+        "liggesår"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L89.2",
+      "term_no": "Dekubitalsår stadium III",
+      "gruppe": "L89 Dekubitalsår og trykksone",
+      "relevans": "middels",
+      "synonyms": [
+        "trykksår",
+        "decubitus",
+        "decubitalsår",
+        "liggesår"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L89.3",
+      "term_no": "Dekubitalsår stadium IV",
+      "gruppe": "L89 Dekubitalsår og trykksone",
+      "relevans": "middels",
+      "synonyms": [
+        "trykksår",
+        "decubitus",
+        "decubitalsår",
+        "liggesår"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L89.9",
+      "term_no": "Uspesifisert dekubitalsår eller trykkskade",
+      "gruppe": "L89 Dekubitalsår og trykksone",
+      "relevans": "middels",
+      "synonyms": [
+        "trykksår",
+        "decubitus",
+        "decubitalsår",
+        "liggesår"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L95.8",
+      "term_no": "Annen spesifisert vaskulitt begrenset til hud",
+      "gruppe": "L95 Vaskulitt begrenset til hud",
+      "relevans": "middels",
+      "synonyms": [
+        "hudvaskulitt",
+        "vasculitt"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L95.9",
+      "term_no": "Uspesifisert vaskulitt begrenset til hud",
+      "gruppe": "L95 Vaskulitt begrenset til hud",
+      "relevans": "middels",
+      "synonyms": [
+        "hudvaskulitt",
+        "vasculitt"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "L98.4",
+      "term_no": "Kronisk hudsår, ikke klassifisert annet sted",
+      "gruppe": "L98 Andre sykdommer i hud og underhud",
+      "relevans": "middels",
+      "synonyms": [
+        "kronisk sår",
+        "kronisk hudsår"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": [],
+      "merknad": "Ikke ment for iskemiske sår (bruk I70.2x) eller trykksår (L89.*)."
+    },
+    {
+      "code": "J93.0",
+      "term_no": "Spontan overtrykkspneumotoraks",
+      "gruppe": "J93 Pneumotoraks",
+      "relevans": "middels",
+      "synonyms": [
+        "punktert lunge",
+        "kollapset lunge",
+        "pneumothorax",
+        "spontan pneumotoraks"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "J93.1",
+      "term_no": "Annen spontanpneumotoraks",
+      "gruppe": "J93 Pneumotoraks",
+      "relevans": "middels",
+      "synonyms": [
+        "punktert lunge",
+        "kollapset lunge",
+        "pneumothorax",
+        "spontan pneumotoraks"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "J93.8",
+      "term_no": "Annen spesifisert pneumotoraks",
+      "gruppe": "J93 Pneumotoraks",
+      "relevans": "middels",
+      "synonyms": [
+        "punktert lunge",
+        "kollapset lunge",
+        "pneumothorax",
+        "spontan pneumotoraks"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "J93.9",
+      "term_no": "Uspesifisert pneumotoraks",
+      "gruppe": "J93 Pneumotoraks",
+      "relevans": "middels",
+      "synonyms": [
+        "punktert lunge",
+        "kollapset lunge",
+        "pneumothorax",
+        "spontan pneumotoraks"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.0",
+      "term_no": "Traumatisk pneumotoraks",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.1",
+      "term_no": "Traumatisk hemotoraks",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "pneumotoraks",
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.2",
+      "term_no": "Traumatisk hemopneumotoraks",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "pneumotoraks",
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.3",
+      "term_no": "Annen skade i lunge",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.4",
+      "term_no": "Skade i bronkie",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.5",
+      "term_no": "Skade i torakaldel av luftrør",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.6",
+      "term_no": "Skade i brysthinne",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.7",
+      "term_no": "Flere skader på intratorakale organer",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.8",
+      "term_no": "Skade i annet spesifisert intratorakalt organ",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.9",
+      "term_no": "Skade i uspesifisert intratorakalt organ",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": false,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.00",
+      "term_no": "Traumatisk pneumotoraks uten åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.01",
+      "term_no": "Traumatisk pneumotoraks med åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.10",
+      "term_no": "Traumatisk hemotoraks uten åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "pneumotoraks",
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.11",
+      "term_no": "Traumatisk hemotoraks med åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "pneumotoraks",
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.20",
+      "term_no": "Traumatisk hemopneumotoraks uten åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "pneumotoraks",
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.21",
+      "term_no": "Traumatisk hemopneumotoraks med åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "hoy",
+      "synonyms": [
+        "pneumotoraks",
+        "punktert lunge"
+      ],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.30",
+      "term_no": "Annen skade i lunge uten åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.31",
+      "term_no": "Annen skade i lunge med åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.40",
+      "term_no": "Skade i bronkie uten åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.41",
+      "term_no": "Skade i bronkie med åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.50",
+      "term_no": "Skade i torakaldel av luftrør uten åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.51",
+      "term_no": "Skade i torakaldel av luftrør med åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.60",
+      "term_no": "Skade i brysthinne uten åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.61",
+      "term_no": "Skade i brysthinne med åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.70",
+      "term_no": "Flere skader på intratorakale organer uten åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.71",
+      "term_no": "Flere skader på intratorakale organer med åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.80",
+      "term_no": "Skade i annet spesifisert intratorakalt organ uten åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.81",
+      "term_no": "Skade i annet spesifisert intratorakalt organ med åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.90",
+      "term_no": "Skade i uspesifisert intratorakalt organ uten åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
+    },
+    {
+      "code": "S27.91",
+      "term_no": "Skade i uspesifisert intratorakalt organ med åpent sår til brysthule",
+      "gruppe": "S27 Skade på intratorakale organer",
+      "relevans": "lav",
+      "synonyms": [],
+      "verifisert_mot_offisiell_liste": true,
+      "arvet_relevans_synonymer": true,
+      "termgruppe_referanser": [],
+      "bidiagnose_forslag": []
     }
   ],
-  "count_totalt": 309,
+  "count_totalt": 360,
   "nye_koder_uten_egne_synonymer_main": [
     "I7000",
     "I7001",
@@ -4987,7 +5666,12 @@ function buildEngine(data) {
         "mesenterial",
         "mesenteriell",
         "mesenterielt",
-        "visceral"
+        "visceral",
+        "visceralt",
+        "viscerale",
+        "viceral",
+        "viceralt",
+        "viscerell"
       ],
       "kommentar": null
     },
@@ -4996,14 +5680,6 @@ function buildEngine(data) {
       "par": [
         "iskemi",
         "iskjemi"
-      ],
-      "kommentar": null
-    },
-    {
-      "type": "frasesynonym_global",
-      "par": [
-        "AAA",
-        "abdominal aorta"
       ],
       "kommentar": null
     },
@@ -5087,6 +5763,103 @@ function buildEngine(data) {
         "aneurysm"
       ],
       "kommentar": "aneurisme og aneurysme (også i sammensetninger som aortaaneurysme, popliteaaneurysme) skal behandles som samme ord. Samme mekanisme som tromb/thromb: normaliserer både indeksert tekst og brukerens søk."
+    },
+    {
+      "type": "frasesynonym_global",
+      "termer": [
+        "DM1",
+        "diabetes mellitus type 1",
+        "diabetes type 1"
+      ],
+      "kommentar": "DM1 = diabetes mellitus type 1"
+    },
+    {
+      "type": "frasesynonym_global",
+      "termer": [
+        "DM2",
+        "diabetes mellitus type 2",
+        "diabetes type 2"
+      ],
+      "kommentar": "DM2 = diabetes mellitus type 2"
+    },
+    {
+      "type": "frasesynonym_global",
+      "termer": [
+        "DM",
+        "diabetes mellitus"
+      ],
+      "kommentar": "DM = diabetes mellitus"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "diabetes",
+        "sukkersyke",
+        "sukkersjuke"
+      ],
+      "kommentar": "sukkersyke = diabetes"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "pneumotoraks",
+        "pneumotorak",
+        "pneumotorax"
+      ],
+      "kommentar": "pneumothorax/pneumotorax/pneumotoraks (thorax->torak normaliseres separat)"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "hemotoraks",
+        "hemotorak",
+        "hemotorax",
+        "hematotoraks",
+        "hematotorak",
+        "hematotorax"
+      ],
+      "kommentar": "hemothorax = hematothorax = hemotorax = hematotorax"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "hemopneumotoraks",
+        "hemopneumotorak",
+        "hemopneumotorax",
+        "hematopneumotoraks",
+        "hematopneumotorak",
+        "hematopneumotorax"
+      ],
+      "kommentar": "hemopneumothorax"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "dekubitalsår",
+        "decubitalsår",
+        "trykksår",
+        "liggesår",
+        "decubitus",
+        "dekubitus"
+      ],
+      "kommentar": "trykksår = decubitus"
+    },
+    {
+      "type": "ordsynonym_global",
+      "termer": [
+        "vaskulitt",
+        "vasculitt"
+      ],
+      "kommentar": "vaskulitt = vasculitt"
+    },
+    {
+      "type": "frasesynonym_global",
+      "termer": [
+        "ekstremitet",
+        "overekstremitet",
+        "underekstremitet"
+      ],
+      "kommentar": "Over-/underekstremitet er også 'ekstremitet': søk på 'emboli ekstremitet' skal treffe I74.2, I74.3, I74.5 osv."
     }
   ],
   "termgrupper": [
@@ -5323,6 +6096,96 @@ function buildEngine(data) {
   "normaliseringsregler_readme_tillegg": "Siden OG-logikken (se sokelogikk_flerordssok) sjekker paa tvers av HELE kodens tekst (kodetekst + alle synonymer samlet, ikke bare innad i en enkelt synonym-streng), holder det aa liste kar-navn/lokasjoner som egne, korte synonymer naar ordet \"aneurisme\"/\"disseksjon\" allerede finnes i kodeteksten (gjelder alle I72.x-koder). Kombinerte fraser som \"aneurisme X\" er derfor unngaatt fra og med denne opprydningen - MED UNNTAK av sammensatte norske ett-ords-varianter (f.eks. \"radialisaneurisme\"), som fortsatt legges inn separat siden de er ett eget soekbart ord.",
   "prioriteringsregler": [
     {
+      "id": "diabetes_e10",
+      "beskrivelse": "DM1/type 1: E10.* først",
+      "trigger_ord": [
+        "DM1",
+        "diabetes type 1",
+        "diabetes mellitus type 1"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "E10*",
+          "vekt": 1
+        },
+        {
+          "kode": "E11*",
+          "vekt": 2
+        }
+      ]
+    },
+    {
+      "id": "diabetes_e11",
+      "beskrivelse": "Diabetes/DM: E11.* først (type 2 er vanligst), så E10.*",
+      "trigger_ord": [
+        "diabetes",
+        "diabetisk",
+        "diabetesfot",
+        "DM",
+        "DM2",
+        "sukkersyke"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "E11*",
+          "vekt": 1
+        },
+        {
+          "kode": "E10*",
+          "vekt": 2
+        }
+      ]
+    },
+    {
+      "id": "pneumotoraks",
+      "beskrivelse": "pneumotoraks: J93.* først, så S27.0-2",
+      "trigger_ord": [
+        "pneumotoraks",
+        "pneumothorax",
+        "pneumotorax",
+        "punktert lunge"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "J93*",
+          "vekt": 1
+        },
+        {
+          "kode": "S27.0*",
+          "vekt": 2
+        },
+        {
+          "kode": "S27.1*",
+          "vekt": 2
+        },
+        {
+          "kode": "S27.2*",
+          "vekt": 2
+        }
+      ]
+    },
+    {
+      "id": "kronisk_saar",
+      "beskrivelse": "Kronisk sår: L98.4 først (med mindre ben/legg skrives, da L97)",
+      "trigger_ord": [
+        "kronisk sår",
+        "kronisk hudsår"
+      ],
+      "ikke_hvis_ord": [
+        "bein",
+        "legg",
+        "leggsår",
+        "underekstremitet",
+        "fot"
+      ],
+      "prioriteringer": [
+        {
+          "kode": "L98.4",
+          "vekt": 1
+        }
+      ]
+    },
+    {
       "id": "aorta_ruptur",
       "beskrivelse": "AAA/aorta sammen med ruptur/rumpert: I71.3 øverst, så I71.4",
       "trigger_ord": [
@@ -5349,9 +6212,8 @@ function buildEngine(data) {
     },
     {
       "id": "aorta_prioritet",
-      "beskrivelse": "Ved soek paa aorta/AAA skal I71.4 (AAA uten ruptur) og I71.3 (AAA med ruptur) vises oeverst, uten aa skjule andre aorta-relaterte treff",
+      "beskrivelse": "Ved søk på AAA vises I71.4 (uten ruptur) først, deretter I71.3. 'aortaaneurisme' osv. vises i kronologisk kodeorden.",
       "trigger_ord": [
-        "aorta",
         "AAA"
       ],
       "prioriteringer": [
@@ -5382,7 +6244,10 @@ function buildEngine(data) {
       "id": "aorta_emboli_uspes",
       "beskrivelse": "Aorta-emboli/trombose med 'uspesifisert': I74.1 først",
       "trigger_ord": [
-        "aorta"
+        "emboli aorta",
+        "trombose aorta",
+        "embolus aorta",
+        "okkludert aorta"
       ],
       "krever_ogsa_ord": [
         "uspesifisert"
@@ -5395,26 +6260,6 @@ function buildEngine(data) {
         {
           "kode": "I74.0",
           "vekt": 6
-        }
-      ]
-    },
-    {
-      "id": "aorta_emboli",
-      "beskrivelse": "Aorta-emboli/trombose: I74.0 før I74.1 (I74.1 først hvis 'uspesifisert' skrives)",
-      "trigger_ord": [
-        "aorta"
-      ],
-      "ikke_hvis_ord": [
-        "uspesifisert"
-      ],
-      "prioriteringer": [
-        {
-          "kode": "I74.0",
-          "vekt": 10
-        },
-        {
-          "kode": "I74.1",
-          "vekt": 11
         }
       ]
     },
@@ -5501,9 +6346,88 @@ function buildEngine(data) {
     }[c]));
   }
 
+  let lastSentSearch = '', searchLogTimer = null;
+  function sendSearchToGoatCounter(query) {
+    const q = (query || '').trim().toLowerCase().replace(/\s+/g, ' ').slice(0, 40);
+    if (q.length < 3 || q === lastSentSearch) return;
+    lastSentSearch = q;
+    try {
+      if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+        window.goatcounter.count({ path: 'sok/' + q, title: q, event: true });
+      }
+    } catch (err) { /* statistikk skal aldri ødelegge appen */ }
+  }
+
   // ---------------------------------------------------------------------
   // Treff
   // ---------------------------------------------------------------------
+  const QUOTES = [
+    { text: "Kjøre dunya som en vannsklie", author: "Karpe" },
+    { text: "We are thoe locust swarm", author: "Lorna Shore" },
+    { text: "Living is easy with eyes closed", author: "The Beatles" },
+    { text: "I fall in Love too easily", author: "Chet Baker" },
+    { text: "This life is more than just a readthrough", author: "Red Hot Chili Peppers" },
+    { text: "Du sa jeg kan sette meg ned, jeg sa jeg vil stå", author: "Karpe" },
+    { text: "Hva skal du ta med deg, yara. Når lufta går ut av lungene dine, ya ya. Penger og plastikkplanter.", author: "Karpe" },
+    { text: "Je ne regret rien", author: "Edith Piaff" },
+    { text: "Je vois la vie en rose", author: "Edith Piaff" },
+    { text: "I see trees of green, red roses too", author: "Louis Armstrong" },
+    { text: "When they say jump, you say how high", author: "Rage Against The Machine" },
+    { text: "Lett å være rebell i kjellerleiligheten din", author: "Karpe" },
+    { text: "Det som tar forstanden fra en voksen mann er ikke storm, men stille vann", author: "Siri Nilsen" },
+    { text: "A luminous fear of light grows stronger from behind the hilltop", author: "Motorpsycho" },
+    { text: "The proof that love´s not only blind, but deaf", author: "Arctic Monkeys" },
+    { text: "Ne me quitte pas", author: "Jacques Brel" },
+    { text: "You´re such a beautiful freak, I wish there were more just like you", author: "Eels" },
+    { text: "I owe myself life", author: "Gojira" },
+    { text: "I´ll salt the earth in a crimson blaze", author: "Lorna Shore" },
+    { text: "Du spør om et rykte og blir sint hvis det ikke er sant", author: "Cezinando" },
+    { text: "Og det gikk opp for seint at at eg faktisk hadde skjært av meg armen min for å holde deg", author: "John Olav Nilsen & Gjengen" },
+    { text: "Da har du problemer i følge peanøtthjerneforbundet", author: "Jokke" },
+    { text: "Når jeg dør har jeg gitt dem et good run for penga", author: "Karpe" },
+    { text: "Flower in a hailstorm", author: "Eels" },
+    { text: "And if I have to intervene, I inject a bit of ...white stuff", author: "Amateur Transplants" },
+    { text: "You cant bring me down", author: "Suicidal Tendencies" },
+    { text: "Jeg har sovet så lite jeg, at jeg har levd ekstra lenge i våken tilstand", author: "deLillos" },
+    { text: "Jeg skulle gjerne hatt en hånd å holde i når jeg skal møte Elvis", author: "Cezinando" },
+    { text: "Vi skulle redde verden, nå er de redde oss", author: "Karpe" },
+    { text: "Tu étais formidable, j'étais fort minable", author: "Stromae" },
+    { text: "Something in the way she moves attracts me like no other lover", author: "The Beatles" },
+    { text: "Ja det er sannelig flaks at du lever min venn", author: "Erik Bye" },
+    { text: "Å falle er noe alle gjør før de lærer å fly", author: "Lars Vaular" },
+    { text: "All you need is love", author: "The Beatles" },
+    { text: "At jeg elsker henne fortsatt, vel det bør jeg nå ha glemt", author: "deLilllos" },
+    { text: "Jeg har hørt at man blir klokere med alderen, jeg blir mer dust", author: "Cezinando" },
+    { text: "Every little thing is gonna be alright", author: "Bob Marley" },
+    { text: "Emancipate yourself from mental slavery", author: "Bob Marley" },
+    { text: "A friend in need is a friend indeed, a friend with weed is better", author: "Placebo" },
+    { text: "It´s better to regret something you did than something you didn´t do", author: "The Red Hot Chili Peppers" },
+    { text: "I feel stupid and contagious", author: "Nirvana" },
+    { text: "Du bøyer deg ner og eg står på tå", author: "Kaizers Orchestra" },
+    { text: "Ground control to Major Tom, your circuit´s dead, there´s something wrong", author: "David Bowie" },
+    { text: "I´m not a trendy asshole, I do what I want, I do what I feel like", author: "The Offspring" },
+    { text: "Baba jeg er ikke et fyrtårn, jeg har bare diskolys på", author: "Karpe" },
+    { text: "Ground control to major Tom, your circuit´s dead, there´s something wrong", author: "David Bowie" },
+    { text: "If they were right I´d agree, but it´s them they know, not me", author: "Cat Stevens" },
+    { text: "There's still time to change the road you're on", author: "Led Zeppelin" },
+    { text: "Down the street, you can hear her scream, You´re a disgrace", author: "Jimi Hendrix" },
+    { text: "A thousand girls, a thousand thrills", author: "The Doors" },
+    { text: "It hurts to set you free", author: "The Doors" },
+    { text: "If all the girls, yes, them live ´cross the sea. But what a great swimmer I and I would be", author: "Slightly Stoopid" },
+    { text: "Well, it´s love that I need" , author: "Sublime" },
+  ];
+
+  const QUOTE_HISTORY_KEY = 'karkode_diagnose_quote_v1';
+  function getRandomQuote() {
+    let last = -1;
+    try { last = JSON.parse(localStorage.getItem(QUOTE_HISTORY_KEY) || '{}').lastIndex; } catch (e) {}
+    const cand = QUOTES.map((_, i) => i).filter(i => i !== last);
+    const idx = cand[Math.floor(Math.random() * cand.length)];
+    try { localStorage.setItem(QUOTE_HISTORY_KEY, JSON.stringify({ lastIndex: idx })); } catch (e) {}
+    return QUOTES[idx];
+  }
+  const START_QUOTE = getRandomQuote();
+
   function renderResults() {
     const trimmed = currentQuery.trim();
     clearBtn.style.display = trimmed.length > 0 ? 'flex' : 'none';
@@ -5511,9 +6435,9 @@ function buildEngine(data) {
     if (trimmed.length < 2) {
       currentHits = [];
       headInfoEl.textContent = '';
-      resultsEl.innerHTML = '<div class="empty-state"><div class="big">Hva leter du etter?</div>' +
-        'Skriv <b>minst 2 tegn</b> — f.eks. «claudicatio», «AAA», «carotisstenose».<br>' +
-        'Eller velg en diagnose i trevisningen.</div>';
+      resultsEl.innerHTML = '<div class="quote-box"><div class="quote-text">«' + escapeHtml(START_QUOTE.text) + '»</div>' +
+        '<div class="quote-author">— ' + escapeHtml(START_QUOTE.author) + '</div>' +
+        '<div class="quote-hint">Skriv minst 2 tegn, f.eks. «claudicatio», «AAA» eller «carotisstenose» — eller velg en diagnose i trevisningen.</div></div>';
       return;
     }
 
@@ -5566,6 +6490,7 @@ function buildEngine(data) {
     if (e.synonyms && e.synonyms.length) {
       html += '<div class="dsyn"><b>Søkeord:</b> ' + e.synonyms.map(escapeHtml).join(' · ') + '</div>';
     }
+    if (e.merknad) html += '<div class="dsyn"><b>Merk:</b> ' + escapeHtml(e.merknad) + '</div>';
     const bi = (e.bidiagnose_forslag || []).filter(b => b && b.kode);
     for (const b of bi) {
       const be = BY_CODE.get(b.kode);
@@ -5700,10 +6625,15 @@ function buildEngine(data) {
   });
 
   qInput.addEventListener('input', () => {
-    currentQuery = qInput.value; shown = PAGE; renderResults();
+    currentQuery = qInput.value; shown = PAGE; selectedCode = null; detailEl.innerHTML = ''; renderResults();
+    // Anonym søkestatistikk (GoatCounter): kun etter 800 ms pause, >= 3 tegn, maks 40 tegn,
+    // aldri samme term to ganger på rad. Ingen bruker-ID sendes.
+    if (searchLogTimer) clearTimeout(searchLogTimer);
+    const toLog = currentQuery;
+    searchLogTimer = setTimeout(() => sendSearchToGoatCounter(toLog), 800);
   });
   clearBtn.addEventListener('click', () => {
-    qInput.value = ''; currentQuery = ''; shown = PAGE; qInput.focus(); renderResults();
+    qInput.value = ''; currentQuery = ''; shown = PAGE; selectedCode = null; detailEl.innerHTML = ''; qInput.focus(); renderResults();
   });
 
   // «Forslag»-knappen åpner Google Forms.
