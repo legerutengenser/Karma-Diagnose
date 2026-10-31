@@ -6448,7 +6448,7 @@ function buildEngine(data) {
     }
   } catch (e) {}
 
-  if (Date.now() - quotesFetchedAt > QUOTES_MAX_AGE_MS) {
+  if (typeof fetch === 'function' && Date.now() - quotesFetchedAt > QUOTES_MAX_AGE_MS) {
     // Bakgrunnsoppdatering; ny liste brukes fra neste sidevisning.
     fetch(QUOTES_URL, { cache: 'no-cache' })
       .then(r => (r.ok ? r.json() : Promise.reject()))
